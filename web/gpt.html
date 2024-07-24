@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../module/inpage.css">
+    <script src="../module/inpage.js"></script>
+    <style>
+   
+   
+    </style>
+    
+</head>
+
+<body>
+    <div id="header"></div>
+   
+    <div class="video">
+        <div style="padding:56.25% 0 0 0;position:relative; "><iframe src="https://player.vimeo.com/video/876900553?playsinlin=0h=ad045e21d6&autoplay=1&loop=1&muted=1&color=cd63e4&title=0&byline=0&portrait=0" style="position:absolute;top:0%;left:0%;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+    </div>
+
+    <div class="info">
+        <div class="title"> 'GPT competition', WEB,  2023</div>
+        <div class="credit">
+            
+          </div>
+        <div class="description">
+            <br>
+            What are metaphors and creativity to Chat GPT?<br>
+            I asked Chat GPT to input my project title and the related artist statement, then generate 10 similar metaphors. Subsequently, Chat GPT created image codes for each metaphor. These metaphors and images were evaluated based on four criteria: Clarity, Creativity, Descriptiveness, and Effectiveness.
+            <br><br>
+            chat gpt에게 은유와 창의성은 어떤것일까?
+            내가 작업하고 있는 작업의 제목과 관련 아티스트 스테이트먼트를 Chat GPT에 입력하고, 10개의 유사한 비유를 생성하라고 요청했다. 그런 다음, Chat GPT는 각 비유에 대한 이미지 코드를 생성하고, Clarity(명확성), Creativity(창의성), Descriptiveness(묘사력), Effectiveness(효과성) 이라는 4가지 기준을 기반으로 각 비유와 이미지를 평가했다.
+
+            <br><br><br>
+            
+        </div>
+     </div>
+
+    
+    
+=
+    
+    <script>
+      
+        // 모듈을 가져와서 삽입합니다.
+        fetch('../module/header')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+ 
+
+            const images = [];
+            for (let i = 1; i <= 5; i++) {
+            images.push(`./Gpt/g-${i}.jpg`);
+            }
+        
+        
+        let currentIndex = 0;
+        const imageElement = document.querySelector(".main img");
+        
+        function showImage(index) {
+          imageElement.src = images[index];
+        }
+        
+        function nextImage() {
+          currentIndex = (currentIndex + 1) % images.length;
+          showImage(currentIndex);
+        }
+        
+        function previousImage() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          showImage(currentIndex);
+        }
+        
+        // Automatically slide to the next image every 5 seconds
+        setInterval(nextImage, 1000);
+      </script>
+
+</body>
+</html>

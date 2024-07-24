@@ -1,0 +1,22 @@
+
+
+<svg>
+    <defs>
+        <filter id="distort">
+            <feTurbulence baseFrequency="0.01 0.01" numOctaves="1" result="noise"  />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="R">
+        </filter>
+    </defs>
+</svg>
+
+<link rel="stylesheet" href="https://use.typekit.net/xrw1hlh.css">
+
+<div class="name">
+    <div class="grid-item1">
+        <a href="../index.html">HOME</a> //  <a href="https://www.instagram.com/ziromons/">INSTAGRAM</a><a href="./cv.html"> // <a href="mailto:jiho6693@gmail.com">CONTACT</a>  //<a href="cv.pdf"> CV</a> 
+        <br><div class="marquee">JI-HO PARK // PROVIDENCE // SEOUL // WEATHER:CLOUD // Artist // JI-HO PARK // PROVIDENCE // SEOUL // WEATHER:CLOUD // Artist</div>
+    </div>
+    <hr/>
+</div>
+
+

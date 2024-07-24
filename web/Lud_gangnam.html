@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../module/inpage.css">
+    <script src="../module/inpage.js"></script>
+    <style>
+  
+   
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+   
+    <div class="main">
+        <img src="../labor/gangnam/web1.jpg">
+    </div>
+    <br>
+    <div class="info">
+        <div class="title"> "LoveYourDepot_GangnamPavilion", Website, 2021
+            <br>
+        <br> This is a Website for the public project "LoveYourDepot_GangnamPavilion".
+        <br>
+        <br> 이 웹사이트는 이주요 작가의 공공미술프로젝트인 '러브유어디포_강남파빌리온'을 위해 제작되었다.
+        <br>
+        <a href="../labor/Gangnam.html">-> (More info)</a>
+        
+        </div>
+        <div class="credit">
+            
+            <br>
+            Developer : Ji-ho Park</div>
+
+            <br>
+            <br>
+      
+               
+            
+            </div>
+
+
+
+   
+
+    
+    
+    <div class="mark"> 
+        © JI-HO PARK
+    </div>
+    
+    
+    <script>
+
+
+        // 모듈을 가져와서 삽입합니다.
+        fetch('../module/header')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+ 
+
+       
+
+        const images = [];
+            for (let i = 1; i <= 2; i++) {
+            images.push(`../labor/gangnam/web${i}.jpg`);
+            }
+        
+        
+        let currentIndex = 0;
+        const imageElement = document.querySelector(".main img");
+        
+        function showImage(index) {
+          imageElement.src = images[index];
+        }
+        
+        function nextImage() {
+          currentIndex = (currentIndex + 1) % images.length;
+          showImage(currentIndex);
+        }
+        
+        function previousImage() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          showImage(currentIndex);
+        }
+        
+        // Automatically slide to the next image every 5 seconds
+        setInterval(nextImage, 1000);
+      </script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../module/inpage.css">
+    <script src="../module/inpage.js"></script>
+    <style>
+   
+
+   
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+   
+    <div class="main">
+        <input type="image" class="leftbtn" src="../module/left.png" onclick="previousImage()">
+        <input type="image" class="rightbtn" src="../module/right.png" onclick="nextImage()">
+        <img src="./Cyanotype/C-1.jpg">
+    </div>
+   
+    <div class="info">
+        <div class="title">  <br>'Cyan No-type', Mixed media, 2022
+        <div class="credit">
+            
+            <br>
+            The Ink Group(Huanzhe Hu, Yangqi Deng and Jiho Park)</div>
+        
+               
+                <br> This is a collaborative mixed media installation project, including experimental cyanotype film, 3D print model, digital prints, projection, nature element, etc. 
+
+                The group reconstructed the landscape with fractured data from nature. Initiating on-going dialogues between new and old, physical and digital, handmade and machine. We try to bridge between the ancient craft and digital technology through a constant transformation in dimension and material, particularly the cyanotype process. The long-time exposure simultaneously captures a discrete moment in time but also evokes a feeling of timelessness. The traces left through Cyanotype chemical by natural and artificial light between organic and inorganic matter emerges as the evidence of memory.
+                
+    
+     </div>
+
+     <div class="sub">
+      <img src="./Cyanotype/C-05.jpg"> <img src="./Cyanotype/C-09.jpg"><img src="./Cyanotype/C-08.jpg"> <img src="./Cyanotype/C-12.jpg">
+      <img src="./Cyanotype/C-10.jpg">
+    </div>
+
+
+   
+
+    
+    
+    <div class="mark"> 
+        © JI-HO PARK
+    </div>
+    
+    
+    <script>
+
+
+        // 모듈을 가져와서 삽입합니다.
+        fetch('../module/header')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+ 
+
+       
+
+        const images = [];
+            for (let i = 1; i <= 3; i++) {
+            images.push(`./Cyanotype/C-${i}.jpg`);
+            }
+        
+        
+        let currentIndex = 0;
+        const imageElement = document.querySelector(".main img");
+        
+        function showImage(index) {
+          imageElement.src = images[index];
+        }
+        
+        function nextImage() {
+          currentIndex = (currentIndex + 1) % images.length;
+          showImage(currentIndex);
+        }
+        
+        function previousImage() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          showImage(currentIndex);
+        }
+        
+        // Automatically slide to the next image every 5 seconds
+        setInterval(nextImage, 1900);
+      </script>
+
+</body>
+</html>

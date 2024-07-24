@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../module/inpage.css">
+    <script src="../module/inpage.js"></script>
+    <style>
+       
+
+      
+
+        .main_image {
+           
+
+            text-align: center;
+            
+        }
+
+        .main_image img {
+            margin-bottom: 3%;
+            transition: transform 0.5s ease-in-out;
+            cursor: zoom-in;
+        }
+
+        .main_image img.zoomed {
+            transform: scale(10);
+            z-index: 0; /* 다른 이미지 위에 표시되도록 설정 */
+        }
+
+        
+
+       
+
+        
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+
+
+    <div class="main_drawing">
+        <!-- <input type="image" class="leftbtn" src="../module/left_b.png" onclick="previousImage()">
+        <input type="image" class="rightbtn" src="../module/right_b.png" onclick="nextImage()">
+       -->
+        <img src="Drawing/1.jpg"onclick="toggleImageSize(event)">
+      
+        <!-- <img src="Drawing/drawing12.png"onclick="toggleImageSize(event)">
+        <img src="Drawing/drawing7.png"onclick="toggleImageSize(event)">
+        <img src="Drawing/drawing9.png"onclick="toggleImageSize(event)">
+        <img src="Drawing/drawing13.png"onclick="toggleImageSize(event)">
+        <img src="Drawing/drawing14.png"onclick="toggleImageSize(event)">
+        <img src="Drawing/drawing15.png"onclick="toggleImageSize(event)">
+        <img src="Drawing/drawing16.png"onclick="toggleImageSize(event)">
+        <img src="Drawing/drawing17.png"onclick="toggleImageSize(event)">
+        <img src="Drawing/drawing18.png"onclick="toggleImageSize(event)">
+        <img src="Drawing/drawing3.png" onclick="toggleImageSize(event)">
+        <img src="Drawing/drawing5.png" onclick="toggleImageSize(event)">
+        <img src="Drawing/drawing6.png"onclick="toggleImageSize(event)">
+        -->
+    
+       
+   
+       
+       
+       
+        
+    </div>
+
+    <div class="info"><br>
+        <div class="title"> Daily Digital Drawings, , 2022 - Present
+        <br><br>
+            
+  
+        These drawings are a series that started as I began transitioning from physical to digital workspace in the United States in 2022, aiming to consistently draw by hand so as not to forget the sensation of drawing directly with my hand. <br>Subsequently, these works have been compiled into a database for the 'Drawing to Drawing' deep learning drawing model.
+        <br><br>
+        이 드로잉들은 2022년도 미국에서 작업의 공간을 디지털공간으로  전향하기 시작하면서, 손으로 직접 그림을 그린다는 감각을 잊지 않기 위해 꾸준히 그리기 시작한 드로잉 시리즈이다. <br>이후 이 작업들을 ‘Drawing to Drawing’의 딥 러닝 드로잉모델을 위해 데이터베이스가 되어졌다.
+                </div><br>
+                <div class="link">
+                    <br> <a href="./Drawing.html"> Details </a> 
+                </div>
+                <div class="process_image">
+                    <img src="Drawing/detail.jpg">
+                </div>
+                
+                   
+       
+     </div>
+   
+
+ 
+
+    
+   
+        
+  
+
+    <script>
+        
+        fetch('../module/header')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        function toggleImageSize(event) {
+            const image = event.target;
+
+            if (image.classList.contains('zoomed')) {
+                // 축소
+                image.classList.remove('zoomed');
+                image.style.cursor = "zoom-in";
+            } else {
+                // 확대
+                image.classList.add('zoomed');
+                image.style.cursor = "zoom-out";
+            }
+        }
+
+        const images = [];
+        for (let i = 1; i <= 10; i++) {
+        images.push(`./Drawing/${i}.jpg`);
+        }
+                
+        let currentIndex = 0;
+        const imageElement = document.querySelector(".main_drawing img");
+        
+        function showImage(index) {
+          imageElement.src = images[index];
+        }
+        
+        function nextImage() {
+          currentIndex = (currentIndex + 1) % images.length;
+          showImage(currentIndex);
+        }
+        
+        function previousImage() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          showImage(currentIndex);
+        }
+        
+        // Automatically slide to the next image every 5 seconds
+        setInterval(nextImage, 1500);
+    </script>
+</body>
+</html>

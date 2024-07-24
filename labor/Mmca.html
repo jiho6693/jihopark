@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../module/inpage.css">
+    <script src="../module/inpage.js"></script>
+    <style>
+  
+    
+   
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+   
+   
+
+    <div class="info">
+        <div class="title_labor"> Worked in Teamdepot on the project "Love Tour Depot_MMCA", 2019-2020
+        </div>
+    </div>
+        
+       
+
+    <div class="info">
+        <div class="title">
+        <br>   The Project "Love Your Depot (LUD)" is a warehouse system proposed by the artist Jewyo Rhii for art pieces. It was introduced at the National Museum of Modern and Contemporary Art (MMCA) during the "Artist of the Year Award 2019" exhibition.
+        
+        <br> <br>"Team Depot" is a young artist team that envisions stories that can emerge from the artworks stored in the warehouse. Team Depot has its office at Love Your Depot (LUD) and engages in research and interpretation of the artworks and artists in the warehouse to create content. Members share and discuss each other's work and release the created content both online and offline. Team Depot members voluntarily participate and operate individual production channels.
+        <br>
+        <br>Team depot Member: Jiho park, Sunmin Kim, Jisu Kim, Yerim Park, Choong-guen Yoon, Donghyun Lee, Hanbyol Cho, Yongseo Jee, Jihee Han, Junwon Kang
+        </div>     
+    </div>   
+            
+    <div class="title_role"> <span style="background-color: #fbff03">Contents :Web / Video </span></div>
+                     
+       
+    <div class="main">
+        <img src="./mmca/p-16.jpg">
+        <img src="./mmca/screen.jpg">
+    </div>
+
+    <div class="title_labor"> <span style="background-color: #fbff03">Peformance</span></div> 
+
+    <div class="main">
+        <img src="./mmca/g-14.jpg">
+        <img src="./mmca/p-17.jpg">
+        <img src="./mmca/g-8.jpg">
+    </div>
+
+
+    <div class="title_labor_sub">
+                Goodbye service, 2019<br>
+    </div>
+
+
+    <div class="main">
+            <img src="./mmca/w-2.jpg">
+        <img src="./mmca/w-3.jpg">
+    </div>
+
+
+    <div class="title_labor_sub">
+                We all dance, extended, 2019
+    </div>
+          
+
+
+   
+
+    <div class="title_labor"> <span style="background-color: #fbff03">Archive </span></div>
+
+
+    
+    <div class="title_labor_sub">
+        I performed the role of documenting and collecting all the materials related to the project.
+    </div>
+
+    <div class="main">  
+        <br><img src="./mmca/g-4.JPG">
+        <img src="./mmca/g-2.jpg">
+        <br><img src="./mmca/g-6.jpg">
+        <br><img src="./mmca/g-1.jpg">  
+            
+    </div>  
+
+    
+    <script>
+
+
+        // 모듈을 가져와서 삽입합니다.
+        fetch('../module/header')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+ 
+           
+            // 이미지 파일의 범위 (g-10부터 g-22까지)
+        const startImageNumber = 1;
+        const endImageNumber = 4;
+        const imageContainer = document.getElementById('imageContainer');
+
+        // 이미지를 동적으로 생성하여 페이지에 추가
+        for (let i = startImageNumber; i <= endImageNumber; i++) {
+            const img = document.createElement('img');
+            img.src = './Movinghouse/m-' + i + '.jpg'; // 이미지 파일의 경로 예: ./Goodbyeservice/g-10.jpg, ...
+            img.alt = '이미지 g-' + i;
+
+            // 이미지를 이미지 컨테이너에 추가
+            imageContainer.appendChild(img);
+        }
+
+
+//         const images = [];
+//         for (let i = 1; i <= 5; i++) {
+//   images.push(`./Demolition/d-${i}.jpg`);
+// }
+        
+//         let currentIndex = 0;
+//         const imageElement = document.querySelector(".main img");
+        
+//         function showImage(index) {
+//           imageElement.src = images[index];
+//         }
+        
+//         function nextImage() {
+//           currentIndex = (currentIndex + 1) % images.length;
+//           showImage(currentIndex);
+//         }
+        
+//         function previousImage() {
+//           currentIndex = (currentIndex - 1 + images.length) % images.length;
+//           showImage(currentIndex);
+//         }
+        
+//         // Automatically slide to the next image every 5 seconds
+//         setInterval(nextImage, 1000);
+      </script>
+
+</body>
+</html>

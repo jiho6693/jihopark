@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../module/inpage.css">
+    <script src="../module/inpage.js"></script>
+    <style>
+  
+     
+   
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+   
+    <div class="main">
+       <img src="./Demolition/d-0.jpg">
+    </div>
+
+    
+     
+     <div class="main">
+        <div id="imageContainer"></div>
+    </div>
+
+    <div class="info"><br>
+        <div class="title"> Demolition, Photography, 2019, MMCA
+        <br><br>
+            
+  
+           This is a photograph taken at the National Museum of Modern and Contemporary Art showing the space being dismantled after the exhibition.
+        </div><br>
+     </div>
+   
+
+ 
+    
+    <div class="mark"> 
+        © JI-HO PARK
+    </div>
+    
+    
+    <script>
+
+
+        // 모듈을 가져와서 삽입합니다.
+        fetch('../module/header')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+ 
+            const startImageNumber = 1;
+const endImageNumber = 4;
+const imageContainer = document.getElementById('imageContainer');
+
+// 이미지를 동적으로 생성하여 페이지에 추가
+for (let i = startImageNumber; i <= endImageNumber; i++) {
+    const img = document.createElement('img');
+    img.src = './Demolition/d-' + i + '.jpg';
+    img.alt = '이미지 d-' + i;
+
+    // 이미지를 이미지 컨테이너에 추가
+    imageContainer.appendChild(img);
+
+    // <br> 태그 추가 (두 번)
+    if (i !== endImageNumber) {
+        const lineBreak1 = document.createElement('br');
+       
+        imageContainer.appendChild(lineBreak1);
+     
+    }
+}
+
+
+//         const images = [];
+//         for (let i = 1; i <= 5; i++) {
+//   images.push(`./Demolition/d-${i}.jpg`);
+// }
+        
+//         let currentIndex = 0;
+//         const imageElement = document.querySelector(".main img");
+        
+//         function showImage(index) {
+//           imageElement.src = images[index];
+//         }
+        
+//         function nextImage() {
+//           currentIndex = (currentIndex + 1) % images.length;
+//           showImage(currentIndex);
+//         }
+        
+//         function previousImage() {
+//           currentIndex = (currentIndex - 1 + images.length) % images.length;
+//           showImage(currentIndex);
+//         }
+        
+//         // Automatically slide to the next image every 5 seconds
+//         setInterval(nextImage, 1000);
+      </script>
+
+</body>
+</html>

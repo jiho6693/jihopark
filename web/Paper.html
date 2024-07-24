@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../module/inpage.css">
+    <script src="../module/inpage.js"></script>
+    <style>
+
+    .sub_1{
+      text-align: center;
+    }
+      .sub_1 img{
+        margin-top:3%;
+    width:65%;
+   }
+    </style>
+
+   
+    
+</head>
+
+<body>
+    <div id="header"></div>
+   
+    <div class="video">
+        <div style="padding:56.25% 0 0 0;position:relative; "><iframe src="https://player.vimeo.com/video/947605159?playsinlin=0h=ad045e21d6&autoplay=1&loop=1&muted=1&color=cd63e4&title=0&byline=0&portrait=0" style="position:absolute;top:0%;left:10%;width:80%;height:100%;" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+    </div>
+      
+ 
+
+    <div class="info">
+        <div class="title">'Web page', WEB, 2024</div>
+        <div class="credit"></div>
+        <div class="description">
+          <br>
+          Skeuomorphism emphasizes creating a realistic visual effect by faithfully implementing the texture of the object. This design technique helps users experience familiar physical environments even in new digital spaces.
+          <br>
+          Inspired by this technique, the goal was to implement web pages to mimic actual paper pages, prompting reflection on the relationship between digital and physical spaces.
+          <br><br>
+          스큐어모피즘(Skeuomorphism)은 실감나는 시각적 효과를 중시하여 대상의 질감을 보이는 
+          그대로 구현하는 것에 중점을 두는 디자인 기법이다. 이 기법은 사용자들이 새로운 디지털 공간에서도 익숙한 물리환경을 경험하도록 도와준다. 
+          <br>
+          이 기법을 차용하면서, 웹 페이지를 실제 종이 페이지처럼 구현하여 디지털 공간과 현실 공간 사이의 관계에 대해 생각해보고자 하였다.
+          <br><br>
+
+          
+    
+  
+          
+      </div>
+       
+     </div>
+
+    
+    
+     <br><br><br><br>
+    
+    
+    <script>
+      
+        // 모듈을 가져와서 삽입합니다.
+        fetch('../module/header')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+ 
+
+            const images = [];
+            for (let i = 1; i <= 5; i++) {
+            images.push(`./Gpt/g-${i}.jpg`);
+            }
+        
+        
+        let currentIndex = 0;
+        const imageElement = document.querySelector(".main img");
+        
+        function showImage(index) {
+          imageElement.src = images[index];
+        }
+        
+        function nextImage() {
+          currentIndex = (currentIndex + 1) % images.length;
+          showImage(currentIndex);
+        }
+        
+        function previousImage() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          showImage(currentIndex);
+        }
+        
+        // Automatically slide to the next image every 5 seconds
+        setInterval(nextImage, 1000);
+      </script>
+
+</body>
+</html>
