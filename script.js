@@ -108,36 +108,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// // 페이지 로드 시 실행
-// document.addEventListener('DOMContentLoaded', function () {
-//   // 대상 클래스 선택
-//   var elements = document.getElementsByClassName('back');
+// 페이지 로드 시 실행
+document.addEventListener('DOMContentLoaded', function () {
+  // 대상 클래스 선택
+  var elements = document.getElementsByClassName('back');
 
-//   // 클래스가 적용된 모든 요소에 대해 일정 간격으로 텍스트 변경
-//   for (var i = 0; i < elements.length; i++) {
-//       setInterval(function (element) {
-//           randomizeText(element);
-//       }, 3000, elements[i]); // 5000ms(5초) 간격으로 변경 (원하는 간격으로 수정 가능)
-//   }
-// });
+  // 클래스가 적용된 모든 요소에 대해 일정 간격으로 텍스트 변경
+  for (var i = 0; i < elements.length; i++) {
+      setInterval(function (element) {
+          randomizeText(element);
+      }, 3000, elements[i]); // 5000ms(5초) 간격으로 변경 (원하는 간격으로 수정 가능)
+  }
+});
 
-// // 랜덤 텍스트 생성 및 적용 함수
-// function randomizeText(element) {
-//   // 원본 텍스트 가져오기
-//   var originalText = element.innerText;
+// 랜덤 텍스트 생성 및 적용 함수
+function randomizeText(element) {
+  // 원본 텍스트 가져오기
+  var originalText = element.innerText;
 
-//   // 랜덤한 인덱스 생성
-//   var randomIndex = Math.floor(Math.random() * originalText.length);
+  // 랜덤한 인덱스 생성
+  var randomIndex = Math.floor(Math.random() * originalText.length);
 
-//   // 랜덤한 글자 생성
-//   var randomChar = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+  // 랜덤한 글자 생성
+  var randomChar = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 
-//   // 텍스트를 랜덤한 글자로 대체
-//   var newText = originalText.substring(0, randomIndex) + randomChar + originalText.substring(randomIndex + 1);
+  // 텍스트를 랜덤한 글자로 대체
+  var newText = originalText.substring(0, randomIndex) + randomChar + originalText.substring(randomIndex + 1);
 
-//   // 대체된 텍스트를 요소에 적용
-//   element.innerText = newText;
-// }
+  // 대체된 텍스트를 요소에 적용
+  element.innerText = newText;
+}
 
 
 
