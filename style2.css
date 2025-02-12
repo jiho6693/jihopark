@@ -4,6 +4,11 @@
     src: url(font/MonumentGrotesk-Medium.ttf);
   } */
 
+  @font-face{
+    font-family:"Linefont";
+    src:url(./font/Linefont-ExtraLight.ttf); 
+    
+}
   @font-face {
     font-family: Monument_r;
     src: url(font/MonumentGrotesk-Regular.ttf);
@@ -314,6 +319,16 @@ svg {
       }
   
      
+      .back{
+        /* position : fixed;
+        bottom: 70%;
+        left:70%;  */
+        /* text-align: left; */
+        margin-left:2%;
+        font-size:4rem;
+        font-family: "Linefont";
+    }
+ 
  
 
 

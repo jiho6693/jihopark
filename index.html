@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>HOME</title>
+  
+  <!-- SVG 필터 등 기존 코드 -->
   <svg>
     <defs>
       <filter id="distort">
@@ -12,7 +14,22 @@
       </filter>
     </defs>
   </svg>
+  
   <link rel="stylesheet" href="style2.css" />
+  
+  <!-- 페이드인 애니메이션 CSS -->
+  <style>
+    .fade-in {
+      opacity: 0;
+      animation: fadeInAnimation 0.5s forwards;
+    }
+    @keyframes fadeInAnimation {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    /* .back 클래스에 대한 기본 스타일 (예시) */
+  </style>
+  
   <script type="text/javascript">
     var UserAgent = navigator.userAgent;
     if (UserAgent.match(/iPhone|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || 
@@ -24,8 +41,7 @@
 <body>
   <div class="head">
     <div class="Header_right">
-      <!-- 버튼 클릭 시 오른쪽 콘텐츠가 완전히 로드된 후 왼쪽 콘텐츠가 로드됩니다. -->
-      <div class="main" onclick="contentShowSection('detail/compression', 'part/work')">Work</div>
+      <div class="main" onclick="contentShowSection('detail/landscape', 'part/work')">Work</div>
       <div class="main" onclick="contentShowSection('detail/web/living', 'part/web')">Web</div>
       <div class="main" onclick="contentShowSection('detail/project/gangnam', 'part/project')">Project</div>
       <div class="main" onclick="showContent('https://jiho6693.github.io/archive/', 'https://jiho6693.github.io/archive/image.html')">library</div>
@@ -63,11 +79,23 @@
         .then(data => {
           container.innerHTML = data;
           container.scrollTop = 0;
+          container.classList.remove('fade-in');
+          void container.offsetWidth; // reflow 강제 발생
+          container.classList.add('fade-in');
         })
         .catch(error => {
           container.innerHTML = `<p style="color: red;">Error loading content: ${error.message}</p>`;
           console.error(error);
         });
+    }
+
+    async function loadInitialContent() {
+      try {
+        await loadContent('../part/intro', 'right');
+        await loadContent('../part/blank', 'left');
+      } catch (error) {
+        console.error('Sequential loading error:', error);
+      }
     }
 
     // 동적 파일 경로를 사용하여 콘텐츠를 로드하는 함수
@@ -76,65 +104,62 @@
       return loadContent(filePath, targetSide);
     }
 
-    // 초기 콘텐츠를 순차적으로 로드하는 함수
-    // 오른쪽 콘텐츠를 먼저 로드한 후(예: work),
-    // 오른쪽이 완전히 로드되면 왼쪽 콘텐츠(예: landscape) 및 공통 콘텐츠(header, intro)를 로드합니다.
-    async function loadInitialContent() {
-      try {
-        // 1. 오른쪽 콘텐츠 로드
-        await loadContent('../part/work', 'right');
-        // 2. 오른쪽 콘텐츠가 완전히 로드된 후 왼쪽 콘텐츠 로드
-        await loadContent('../detail/landscape', 'left');
-        // 3. 공통 콘텐츠 로드
-        await loadContent('../part/header', 'header');
-        await loadContent('../part/intro', 'intro');
-      } catch (error) {
-        console.error('Sequential loading error:', error);
-      }
-    }
-
-    // 버튼 클릭 시 iframe을 통해 콘텐츠를 로드하는 함수
+    // 버튼 클릭 시 iframe을 통해 콘텐츠를 로드하는 함수 (페이드인 효과 추가)
     function showContent(urlLeft, urlRight) {
       const rightContainer = document.querySelector('.right');
       const leftContainer = document.querySelector('.left');
 
       if (urlRight && rightContainer) {
         rightContainer.innerHTML = '';
+        rightContainer.classList.remove('fade-in');
         const iframeRight = document.createElement('iframe');
         iframeRight.src = urlRight;
         iframeRight.style.width = '100%';
         iframeRight.style.height = '100%';
         iframeRight.style.border = 'none';
         rightContainer.appendChild(iframeRight);
+        void rightContainer.offsetWidth;
+        rightContainer.classList.add('fade-in');
       }
 
       if (urlLeft && leftContainer) {
         leftContainer.innerHTML = '';
+        leftContainer.classList.remove('fade-in');
         const iframeLeft = document.createElement('iframe');
         iframeLeft.src = urlLeft;
         iframeLeft.style.width = '100%';
         iframeLeft.style.height = '100%';
         iframeLeft.style.border = 'none';
         leftContainer.appendChild(iframeLeft);
+        void leftContainer.offsetWidth;
+        leftContainer.classList.add('fade-in');
       }
     }
 
-    // 버튼 클릭 시 오른쪽 콘텐츠를 먼저 로드한 후,
-    // 오른쪽 콘텐츠가 완전히 로드되면 왼쪽 콘텐츠를 로드하는 함수
-    function contentShowSection(urlLeft, urlRight) {
-      if (urlRight) {
-        loadContent(urlRight, 'right')
-          .then(() => {
-            if (urlLeft) {
-              loadContent(urlLeft, 'left');
-            }
-          });
-      } else if (urlLeft) {
-        loadContent(urlLeft, 'left');
+    // 오른쪽 콘텐츠를 먼저 로드한 후 왼쪽 콘텐츠를 로드하고 observer를 활성화하는 함수
+    async function contentShowSection(urlLeft, urlRight, runAgain = false) {
+      try {
+        if (urlRight) {
+          await loadContent(urlRight, 'right');
+          if (urlLeft) {
+            await loadContent(urlLeft, 'left');
+          }
+        } else if (urlLeft) {
+          await loadContent(urlLeft, 'left');
+        }
+        initializeObserver();
+        observeNewContent();
+        enableDynamicObservation();
+
+        if (!runAgain) {
+          await contentShowSection(urlLeft, urlRight, true);
+        }
+      } catch (error) {
+        console.error('Error in contentShowSection:', error);
       }
     }
 
-    // Observer 관련 변수 및 함수들
+    // Observer 관련 함수들
     let observer;
     const observedElements = new Set();
 
@@ -169,25 +194,41 @@
     function enableDynamicObservation() {
       const targetNode = document.body;
       const config = { childList: true, subtree: true };
-
       const mutationObserver = new MutationObserver(() => {
         requestAnimationFrame(() => observeNewContent());
       });
-
       mutationObserver.observe(targetNode, config);
     }
 
-    // 페이지 로드 후, 초기 콘텐츠가 모두 로드된 다음에 observer 기능들을 활성화합니다.
+    // 모든 초기 기능이 실행된 후, window load 이벤트 내에서 runRandomText() 호출
     window.addEventListener('load', async () => {
-      // 1. 초기 콘텐츠 순차 로드 (오른쪽 먼저, 그 후 왼쪽 및 공통 콘텐츠)
+      // 초기 콘텐츠 로드 및 observer 기능 활성화
       await loadInitialContent();
-
-      // 2. 콘텐츠가 모두 로드된 후 observer 기능들을 초기화 및 활성화
       initializeObserver();
       observeNewContent();
       enableDynamicObservation();
+
+      // 앞의 기능들이 모두 실행된 후에 랜덤 텍스트 기능 실행
+      runRandomText();
     });
 
+    // 랜덤 텍스트 생성 및 적용 함수 (별도 DOMContentLoaded 이벤트 없이 사용)
+    function runRandomText() {
+      var elements = document.getElementsByClassName('back');
+      for (var i = 0; i < elements.length; i++) {
+        setInterval(function (element) {
+          randomizeText(element);
+        }, 600, elements[i]);
+      }
+    }
+
+    function randomizeText(element) {
+      var originalText = element.innerText;
+      var randomIndex = Math.floor(Math.random() * originalText.length);
+      var randomChar = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+      var newText = originalText.substring(0, randomIndex) + randomChar + originalText.substring(randomIndex + 1);
+      element.innerText = newText;
+    }
   </script>
 </body>
 </html>

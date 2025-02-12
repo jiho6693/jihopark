@@ -17,7 +17,6 @@
     </div> 
 </div>
 
-
 <!--Compression-->
 <div class="two" onclick="showSection('../detail/compression', 'left')">
     <div class="image_l">
@@ -65,8 +64,8 @@
         </div>
         </div>
         <div class="image_r">
-        <img src="Image/Drawing/drawing16.png"><br><br>
-        <img src="Image/Drawing/drawing7.png">
+        <img src="Image/Drawing/10.jpg"><br><br>
+        <img src="Image/Drawing/24.jpg">
     
         </div>
 
