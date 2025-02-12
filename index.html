@@ -37,24 +37,29 @@
       font-family: "Linefont";
     }
     
-    /* 로딩 오버레이에 페이드인 효과 적용 */
+    /* 로딩 오버레이 */
     #loading {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;        
-      height: 100%;       
+      width: 100%;
+      height: 100%;
       background-color: #fff;
-      display: flex;      
-      align-items: center; 
-      justify-content: center; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
       z-index: 9999;
-      opacity: 0;  
-      animation: fadeInAnimation 0.5s forwards; 
+      opacity: 1; /* 초기에 보임 */
+      transition: opacity 0.3s ease;
+    }
+  
+    #loading.hidden {
+      opacity: 0;
+      pointer-events: none;
     }
   
     #loading img {
-      width: 15%;   
+      width: 15%;
       height: auto;
     }
   </style>
@@ -104,36 +109,55 @@
     function showLoading() {
       const loadingElem = document.getElementById('loading');
       if (loadingElem) {
-        loadingElem.style.display = 'flex';
-        void loadingElem.offsetWidth;
+        loadingElem.classList.remove('hidden');
       }
     }
     
     function hideLoading() {
       const loadingElem = document.getElementById('loading');
       if (loadingElem) {
-        loadingElem.style.display = 'none';
+        loadingElem.classList.add('hidden');
       }
     }
     
-    // 순차적으로 이미지 로드하는 함수
+    // 컨텐츠 내 이미지들을 맨 위부터 순차적으로 로드하는 함수  
+    // 첫 번째 이미지가 로드되면 로딩 오버레이를 숨깁니다.
     function loadImagesSequentially(container) {
       const images = Array.from(container.querySelectorAll("img"));
-      return images.reduce((prevPromise, img) => {
+      if (images.length === 0) {
+        // 이미지가 없으면 바로 처리
+        hideLoading();
+        return Promise.resolve();
+      }
+      
+      let firstImageLoaded = false;
+      return images.reduce((prevPromise, img, index) => {
         return prevPromise.then(() => new Promise(resolve => {
           setTimeout(() => {
-            // data-src 값을 src로 복원하여 이미지 로드를 시작
+            // data-src에 저장된 실제 경로를 src로 복원하여 로드 시작
             img.src = img.getAttribute('data-src');
-            // 개별 이미지에 페이드인 효과 적용
+            // 개별 이미지에 fade-in 효과 적용
             img.classList.add('fade-in');
-            img.addEventListener('load', resolve, { once: true });
-            img.addEventListener('error', resolve, { once: true });
+            img.addEventListener('load', () => {
+              if (!firstImageLoaded) {
+                firstImageLoaded = true;
+                hideLoading();
+              }
+              resolve();
+            }, { once: true });
+            img.addEventListener('error', () => {
+              if (!firstImageLoaded) {
+                firstImageLoaded = true;
+                hideLoading();
+              }
+              resolve();
+            }, { once: true });
           }, 100); // 각 이미지 로드 전 100ms 딜레이 (필요에 따라 조정)
         }));
       }, Promise.resolve());
     }
     
-    // HTML 콘텐츠를 불러와 컨테이너에 삽입하고, 이미지들을 순차 로드 후 fade-in 적용
+    // HTML 콘텐츠를 불러와 컨테이너에 삽입한 후, 이미지들을 순차 로드합니다.
     function loadContent(url, targetSide) {
       const container = document.querySelector(`.${targetSide}`);
       if (!container) {
@@ -148,15 +172,14 @@
           return response.text();
         })
         .then(data => {
-          // <img> 태그의 src 속성을 data-src로 변경하여 브라우저 자동 로드를 막음
+          // <img> 태그의 src 속성을 data-src로 변경하여 브라우저의 자동 로드를 막음
           data = data.replace(/<img\s+([^>]*?)src=["']([^"']+)["']([^>]*?)>/gi, '<img $1data-src="$2"$3>');
           container.innerHTML = data;
           container.scrollTop = 0;
           container.classList.remove('fade-in');
-          
-          // 순차적으로 이미지 로드
+          // 이미지들을 순차적으로 로드 (맨 위 이미지가 로드되면 로딩 오버레이는 숨김)
           return loadImagesSequentially(container).then(() => {
-            void container.offsetWidth;
+            void container.offsetWidth; // 강제 reflow
             container.classList.add('fade-in');
           });
         })
@@ -166,12 +189,10 @@
         });
     }
     
-    // (기존의 showSection, showContent, contentShowSection, Observer 관련 함수들은 그대로 사용)
-    // 예시: 오른쪽 콘텐츠를 먼저 로드하고 나중에 왼쪽 콘텐츠를 로드
-    async function contentShowSection(urlLeft, urlRight, runAgain = false) {
+    // 예시: 오른쪽 콘텐츠를 먼저 로드한 후 왼쪽 콘텐츠를 로드
+    async function contentShowSection(urlLeft, urlRight) {
       try {
         showLoading();
-        
         if (urlRight) {
           await loadContent(urlRight, 'right');
           if (urlLeft) {
@@ -180,22 +201,12 @@
         } else if (urlLeft) {
           await loadContent(urlLeft, 'left');
         }
-    
-        initializeObserver();
-        observeNewContent();
-        enableDynamicObservation();
-    
-        if (!runAgain) {
-          await contentShowSection(urlLeft, urlRight, true);
-        }
       } catch (error) {
         console.error('Error in contentShowSection:', error);
-      } finally {
-        hideLoading();
       }
     }
     
-    // Observer 관련 함수 (기존 코드 유지)
+    // Observer 관련 함수 (필요 시 기존 코드 유지)
     let observer;
     const observedElements = new Set();
     
@@ -254,10 +265,11 @@
       element.innerText = newText;
     }
     
-    // 초기 콘텐츠 로드: 오른쪽 콘텐츠를 먼저 로드한 후 왼쪽 콘텐츠 로드
+    // 초기 콘텐츠 로드: 오른쪽 콘텐츠를 먼저 불러온 후, 왼쪽 콘텐츠 로드 및 observer 활성화
     window.addEventListener('load', async () => {
+      // 오른쪽 콘텐츠 로드 (여기에 이미지가 포함되어 있다면 맨 위 이미지가 로드되면 오버레이가 숨겨집니다)
       await loadContent('../part/intro', 'right');
-      hideLoading();
+      // 왼쪽 콘텐츠 로드
       await loadContent('../part/blank', 'left');
       
       initializeObserver();
