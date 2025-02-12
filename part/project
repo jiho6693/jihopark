@@ -1,0 +1,86 @@
+<!-- gangnam -->
+<div class="one">
+    <div class="scroll-trigger" data-content-url="./detail/project/gangnam" data-side="left">
+        <img src="labor/gangnam/g-12.jpg" alt="gangnam">
+    </div>
+</div>
+<div class="des">
+    <div class="l">러브유어디포_강남파빌리온, 서울시 강남구, 2022
+        역할: 행정대표, 참여작가
+    </div>
+
+    <div class="r">LoveYourDepot_GangnamPavillion,  Gangnam-gu, Seoul, 2022
+        Role:Director/CFO, Contributing Artist
+    </div>
+</div>
+
+ <!-- loucs -->
+ <div class="one">
+    <div class="scroll-trigger" data-content-url="../detail/project/locus" data-side="left">
+        <img src="labor/locus/l-9.jpg" alt="locus">
+    </div>
+</div>
+<div class="des">
+    <div class="l">로커스X, 런던, 2021
+        역할: 작가
+    </div>
+
+    <div class="r">locus X, London, 2021
+        Role: Artist
+    </div>
+</div>
+
+ <!-- london -->
+ <div class="one">
+    <div class="scroll-trigger" data-content-url="./detail/project/london" data-side="left">
+        <img src="labor/london/k-6.jpg" alt="london">
+    </div>
+</div>
+<div class="des">
+    <div class="l">러브유어디포, 런던 2021
+        역할: 영상제작, 퍼포머, 참여작가
+    </div>
+
+    <div class="r">LoveYourDepot, London, 2021
+        Role:VideoProduction, Performer, Contributing Artist
+    </div>
+</div>
+
+
+
+
+
+ <!-- mmca -->
+ <div class="one">
+    <div class="scroll-trigger" data-content-url="../detail/project/mmca" data-side="left">
+        <img src="labor/mmca/g-8.jpg" alt="mmca">
+    </div>
+</div>
+<div class="des">
+    <div class="l">러브유어디포, mmca, 2019
+    역할: 영상제작, 퍼포머, 참여작가
+    </div>
+
+    <div class="r">LoveYourDepot, mmca , 2019
+    Role:VideoProduction, Performer, Contributing Artist
+    </div>
+</div>
+
+<div class="one">
+    <div class="scroll-trigger" data-content-url="../detail/project/57" data-side="left">
+        <img src="labor/57/p-12.jpg" alt="57">
+    </div>
+</div>
+<div class="des">
+    <div class="l">57 Studio
+    역할: 촬영보조, 자막, 리서치, 모션그래픽
+    </div>
+
+    <div class="r">57 Studio
+    Role: Camera Assistant, Subtitles, Researcj, Motion graphic
+    </div>
+</div>
+
+
+
+

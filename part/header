@@ -1,0 +1,13 @@
+        <div class="Header_left">
+            <div class="main">박지호</div>
+            <div class="main">Jiho Park</div>
+            <div class="line"><hr/></div>
+        </div>
+        <div class="Header_right">
+            <div class="main3" onclick="toggleText()"><- Home</div>
+            <div class="main" onclick="showContent('https://jiho6693.github.io/archive/')">library</div>
+            <div class="main">Web</div>
+            <div class="main">Project</div>
+            <div class="line"><hr/></div>
+        </div>
+      

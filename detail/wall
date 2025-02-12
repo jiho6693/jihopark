@@ -1,0 +1,18 @@
+<div class="note">
+    
+
+    <div class="l">벽을 만들고, 돌을 던지기, 설치, 가변크기, 2023
+    
+    이 프로젝트는 벽에 관한 개인적 이야기로 시작한다. 의무 경찰로 일하면서 시위대를 상대로 만든 벽에서부터, 예술관련종사자로서 전시를 위해 만들고 해체한 벽에 이르기까지의 내용을 바탕으로 한다. 시위대가 벽에 돌을 던져서 벽을 부시듯, 외부 요소인 날씨를 공간에 삽입하여 벽 없이나 벽 너머의 상황을 상상하고자 했다.
+    웹을 이용해 실제 사용자의 위치를 기반으로 한 날씨 데이터를 사용하여 날씨가 공간에 영향을 미치는 환경을 만들었고, 구조물에 달린 프로젝터는 이 웹의 환경을 실제 공간에 투사하여 공간을 날씨와 시간에 따라 지속적으로 변화시킨다. 예를 들어 밤에는 보이지 않고 안개 낀 날에는 공간이 흐뜨러트리면서 벽을 기능을 무력화시키고자 하였다.
+    </div>
+    
+    <div class="r">Making a wall and Throwing a stone, Installation, 2023
+    
+    The project begins with a personal narrative about the wall. It is based on the contents from the wall I made toward the protesters while working as a riot police, to the wall I made and demolished for exhibition as an art worker. As protesters throw stones at a wall, I imagine a situation without walls or a space beyond the wall by inserting an external factor, weather, into the space. I use weather data based on the user's location to make an environment where the weather affects the space. The environment constantly changes with the weather and time of day, such as being invisible at night and obscuring on a foggy day.    </div>
+</div>
+
+<div class="one">
+    <img src="Installation/Wall/4.jpg">
+</div>
+

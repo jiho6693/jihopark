@@ -1,0 +1,171 @@
+<div class="one">
+    <div class="scroll-trigger" data-content-url="../detail/web/living" data-side="left">
+        <img src="/web/livingarchive/livingarchive.gif" alt="Image 1">
+    </div>
+</div>
+<div class="des">
+    <div class="l">수업'Living archive'을 위한 웹, 2024
+    </div>
+
+    <div class="r">Website for the ‘Living Archive’ Class, 2024
+    </div>
+</div>
+
+<div class="one">
+    <div class="scroll-trigger" data-content-url="../detail/web/page" data-side="left">
+        <img src="/web/paper/paper.gif" alt="Image 1">
+    </div>
+</div>
+<div class="des">
+    <div class="l">웹페이지, 웹, 2024
+    </div>
+
+    <div class="r">Web page, Web, 2024
+    </div>
+</div>
+
+<div class="one">
+    <div class="scroll-trigger" data-content-url="../detail/web/air" data-side="left">
+        <img src="/web/air/air.gif" alt="Image 1">
+    </div>
+</div>
+<div class="des">
+    <div class="l">공기 원근법, 웹, 2023
+    </div>
+
+    <div class="r">Aerial perspective, Web, 2023
+    </div>
+</div>
+
+<div class="one">
+    <div class="scroll-trigger" data-content-url="../detail/web/stone" data-side="left">
+        <img src="/web/Stonezine/stone.gif" alt="Image 1">
+    </div>
+</div>
+<div class="des">
+    <div class="l">Stone zine, 웹, 2023
+    </div>
+
+    <div class="r">Stone zine, Web, 2023
+    </div>
+</div>
+
+<div class="one">
+    <div class="scroll-trigger" data-content-url="../detail/web/going" data-side="left">
+        <img src="/web/going/goingforward.gif" alt="Image 1">
+    </div>
+</div>
+<div class="des">
+    <div class="l">Going Forward, 웹, 2023
+    </div>
+
+    <div class="r">Going Forward, Web, 2023
+    </div>
+</div>
+
+
+<div class="one">
+    <div class="scroll-trigger" data-content-url="../detail/web/lud" data-side="left">
+    <img src="/web/lud.gif" alt="Image 1">
+    </div>
+</div>
+<div class="des">
+    <div class="l">러브유어디포_강남파빌리온, 웹, 2021
+    </div>
+
+    <div class="r">LoveYourDepot_GangnamPavilion, Website, 2021
+
+    </div>
+</div>
+
+
+
+<!-- 
+<div class="one">
+    <div class="video-container">
+          <video class="video1" autoplay muted loop >
+      <source type="video/mp4" src="/web/livingarchive/living.gif" >
+      </video>
+    </div>  
+    </div> -->
+   
+
+<!-- <div class="one">
+    <div class="video">
+        <div style="padding:59% 0 0 0;position:relative;" ><iframe src="https://player.vimeo.com/video/973810621?playsinlin=0h=ad045e21d6&autoplay=1&loop=1&muted=1&color=cd63e4&title=0&byline=0&portrait=0" style="position:absolute;top:0%;left:0%;width:98.5%;height:100%;" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+    </div></div>
+    <div class="des">
+        <div class="l">압축, 디지털 이미지, 2023
+        </div>
+        <div class="r">Compression, Digital Image, 2023
+        </div>
+    </div>
+
+    <div class="one">
+        <div class="video">
+            <div style="padding:59% 0 0 0;position:relative;" ><iframe src="https://player.vimeo.com/video/947605159?playsinlin=0h=ad045e21d6&autoplay=1&loop=1&muted=1&color=cd63e4&title=0&byline=0&portrait=0" style="position:absolute;top:0%;left:0%;width:98.5%;height:100%;" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+        </div>
+        </div>
+        <div class="des">
+       
+          
+           
+            
+        </div>
+
+    <div class="one">
+        <div class="video">
+            <div style="padding:59% 0 0 0;position:relative;" ><iframe src="https://player.vimeo.com/video/879935029?playsinlin=0h=ad045e21d6&autoplay=1&loop=1&muted=1&color=cd63e4&title=0&byline=0&portrait=0" style="position:absolute;top:0%;left:0%;width:98.5%;height:100%;" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+        </div>
+        </div>
+        <div class="des">
+            <div class="l">압축, 디지털 이미지, 2023
+            </div>
+    
+            <div class="r">Compression, Digital Image, 2023
+
+            </div>
+        </div>
+
+  
+ 
+
+    <div class="one">
+        <div class="video">
+            <div style="padding:59% 0 0 0;position:relative;" ><iframe src="https://player.vimeo.com/video/879934890?playsinlin=0h=ad045e21d6&autoplay=1&loop=1&muted=1&color=cd63e4&title=0&byline=0&portrait=0" style="position:absolute;top:0%;left:0%;width:98.5%;height:100%;" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+        </div>
+        </div>
+        <div class="des">
+            <div class="l">압축, 디지털 이미지, 2023
+            </div>
+    
+            <div class="r">Compression, Digital Image, 2023
+
+            </div>
+        </div>
+
+        <div class="one">
+            <div class="video">
+                <div style="padding:59% 0 0 0;position:relative;" ><iframe src="https://player.vimeo.com/video/876894127?playsinlin=0h=ad045e21d6&autoplay=1&loop=1&muted=1&color=cd63e4&title=0&byline=0&portrait=0" style="position:absolute;top:0%;left:0%;width:98.5%;height:100%;" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+            </div>
+            <div class="des">
+                <div class="l">압축, 디지털 이미지, 2023
+                </div>
+        
+                <div class="r">Compression, Digital Image, 2023
+
+                </div>
+            </div>
+
+
+ 
+    <div class="one">
+        <img src="../labor/gangnam/web1.jpg">" alt="Drawing Storage" onclick="showContent('./installation/Drawingstorage_no.html')">
+    </div>
+
+    
+
+        
+
+   -->

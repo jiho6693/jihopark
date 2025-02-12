@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+/* @font-face {
+    font-family: Monument;
+    src: url(font/MonumentGrotesk-Medium.ttf);
+  } */
+
+  @font-face {
+    font-family: Monument_r;
+    src: url(font/MonumentGrotesk-Regular.ttf);
+  }
+
+
+svg {
+    position: absolute;
+} 
+
+
+  
+  .main:hover {
+  
+
+ 
+    color: #a3a3a3; /* 글자 색 변경 */
+  }
+  
+
+
+
+    body {
+        
+        color:rgb(0, 0, 0);
+        filter: url(#distort);
+        margin: 0 0 0 0;
+        font-size: 0.65rem;
+        font-family: 'Monument_r';
+        line-height: 1.5; /* 배수 사용 */
+        /* font-weight:500; */
+        /* font-family: 'Helvetica Neue', sans-serif; */
+        /* color:rgb(0, 0, 0); */
+        overflow: hidden;
+        -ms-overflow-style: none;
+        overscroll-behavior: none;
+        
+    
+    
+        
+    }
+
+
+    hr{
+        
+        
+        position:fixed;
+        pointer-events: none;
+        z-index:1;
+    
+        width:48%;
+        /* filter: url(#distort); */
+    }
+
+    .line{
+        padding-top:1%
+    }
+
+    .main{
+   
+       
+        margin-top:0%;
+    
+    }
+
+    .v-line {
+        z-index:1;
+        margin-top:0%;
+        margin-bottom:0.5%;
+        position:fixed;
+        /* filter: url(#distort); */
+        border: 0.5px solid #000000;
+        left: 50%;
+        height : 99%;
+      }
+
+      .Header_right .main {
+        /* 텍스트 주변에 여백을 추가하여 클릭 영역 확장 */
+        cursor: pointer; /* 클릭 가능한 커서 모양 */
+    }
+
+    .Header_left{
+        padding-top:0.5%;
+  
+        cursor: pointer;
+      
+        position: relative; /* 포지션을 설정해야 z-index 작동 */
+        z-index: 1000; /* 높은 값으로 설정 */
+        width:100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow-x: hidden;
+    }
+
+    li { position: 2px 0;
+        list-style-type: square; }
+
+
+    .Header_right{
+        padding-top:0.5%;
+
+        cursor: pointer;
+        position: relative; /* 포지션을 설정해야 z-index 작동 */
+        z-index: 1000; /* 높은 값으로 설정 */
+        width:100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        overflow-x: hidden;
+    }
+
+    .all{
+        width:100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow-x: hidden;
+        margin-left:1%;
+        margin-right:1%;
+    }
+
+    .head{
+        width:100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow-x: hidden;
+        margin-left:1%;
+        margin-right:1%;
+    }
+
+
+
+    .intro {
+        position: relative;
+        overflow-y: scroll; /* 세로 스크롤 가능 */
+        white-space: pre-line;
+        margin-top:1%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+       
+
+    }
+
+    .note {
+        white-space: pre-line;
+        margin-top:1.8%;
+      
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom:6%;
+
+    }
+
+    .l{
+        position: relative;
+        margin-right:8%;
+    }
+
+    .r{
+        position: relative;
+        margin-right:8%;
+    
+    }
+
+
+    .statement {
+        position: relative;
+        margin-right:8%;
+        
+    }
+    
+    .left {
+        position: relative;
+        overflow-y: scroll; /* 세로 스크롤 가능 */
+        height: 100vh; /* 고정된 높이 설정 */
+    }
+
+
+    .right {
+        
+        margin-top:1.5%;
+        
+        position: relative;
+        overflow-y: scroll; /* 세로 스크롤 가능 */
+        height: 100vh; /* 고정된 높이 설정 */
+    
+   
+    }
+
+    .two{ 
+        margin-top: 1%;
+        margin-right:2.5%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .two img{
+    
+        width:98%;
+       
+        
+    }
+
+    .two video{
+        width:98%;
+    }
+    .des{ 
+        margin-bottom: 15%;
+        white-space: pre-line;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .one{
+ 
+    
+        margin-top: 1.5%;
+        margin-right:2%;
+
+    }
+
+    .video-container {
+        display: flex; /* Flexbox 사용 */
+        justify-content: center; /* 가로 중앙 정렬 */
+        align-items: center; /* 세로 중앙 정렬 */
+        height: 100%; /* 필요에 따라 조정 */
+    }
+
+    .video1 {
+        width: 40%; /* 비율로 크기 조정 */
+        max-width: 800px; /* 최대 크기 제한 (옵션) */
+        height: auto; /* 비율을 유지하며 높이 자동 조정 */
+        margin: 0 auto; /* 추가적인 정렬 보장 */
+    }
+
+
+
+
+     .l a:link, a:visited {
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 0px 10px 10px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+      }
+      
+      .l a:hover, a:active {
+        background-color: rgb(172, 172, 172);
+      }
+    
+
+    .one img{
+        /* position: relative; */
+        width:98.5%;
+    }
+
+    
+
+    ::-webkit-scrollbar {
+         display: none;
+    }
+
+    a:link, a:visited {
+
+        color:inherit;
+        text-decoration: none;
+
+    }
+
+    a:hover{
+        color:blue;
+        text-decoration: line-through;
+     
+        /* filter: url(#distort); */
+  
+         
+       
+    }
+
+
+
+
+
+    
+
+    .hidden {
+        display: none;
+    }
+   
+  
+   
+  
+      /* iframe 크기 설정 */
+      #iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+  
+     
+ 
+
+
+    @media all and (max-width:960px){
+
+     
+    }
+    
+  
+   
+  
+
+  
+
+  
+
+
+

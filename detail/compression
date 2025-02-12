@@ -1,0 +1,19 @@
+<div class="note">
+    <div class="l">압축, 디지털 이미지, 2023
+        
+        디지털 이미지는 전송 속도와 저장 비용을 줄이기 위해 압축 방식을 사용한다. 손실 압축의 대표적 예인 JPEG은 DCT 테이블을 활용하며, 반복 압축 시 패턴이 나타나는데, 이 이미지는 JPG 압축방식 코드를 작성하여 6번 압축한 결과물이다.
+    </div>
+    <div class="r">Compression, Digital Image, 2023
+        
+        Digital images use compression methods to reduce transmission speed and storage costs. JPEG, a common lossy compression format, uses DCT tables, where repeated compression can reveal patterns. This image is the result of applying a custom JPG compression code six times.
+    </div>
+</div>
+
+<div class="one">
+    <img src="image/compression/1.png" alt="Image 1">
+</div>
+
+<div class="one">
+    <img src="image/compression/t-t.png" alt="Image 2">
+</div>
+

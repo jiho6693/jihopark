@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>HOME</title>
+    <svg>
+        <defs>
+            <filter id="distort">
+                <feTurbulence baseFrequency="0.01 0.01" numOctaves="1" result="noise"  />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="R">
+            </filter>
+            
+        </defs>
+    </svg>
+    <link rel="stylesheet" href="style3.css">
+
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        var UserAgent = navigator.userAgent;
+        if (UserAgent.match(/iPhone|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null) { location.href = "index_mb.html"; /* 모바일 홈페이지 경로 */ }
+    </script>
+
+</head>
+<body>
+    <div class='v-line'></div>
+
+    <div class="all">
+    <div class="Header_left">
+        <div class="main">박지호</div>
+        <div class="main1">Ji-ho Park</div>
+        <div class="line"><hr/></div>
+    </div>
+    <div class="Header_right">
+        <div class="main3" onclick="toggleText()">-> Home</div>
+        <div class="main" onclick="showContentAndReset('https://jiho6693.github.io/archive/', 'right', 'left')">library</div>
+        <div class="main">Contact</div>
+        <div class="line"><hr/></div>
+    </div>
+    </div>
+    </div>
+
+    
+  
+  
+
+    
+   
+    <div class="all">
+        <div class="left">
+            <div class="statement">박지호는 창작 과정에서 불필요한 요소를 수집하고 재구성하여 작업을 전개한다. 최근에는 이미지 압축과 픽셀화 등의 디지털 기술을 활용해 가치의 소거와 단순화 문제를 다룬다.
+                </div>
+            <div class="statement">Ji-ho Park collects and reconstructs unnecessary elements in his creative process. Recently, he explores issues of value erasure and simplification through digital technologies such as image compression and pixelation.
+
+            <div class="email">jiho6693@gmail.com</div>
+               </div>
+        
+        </div>
+
+   
+  
+    <div class="right">
+        <!-- <div class="one">
+            <img src="Installation/Drawingstorage/1.jpg" alt="Drawing Storage" onclick="showContent('./installation/Drawingstorage.html')">
+        </div>
+        <div class="des">
+            <div class="l">드로잉 보관소, 복합매체, 스튜디오 엘리베이터 사이즈, 2024
+                Drawing Storage, mixed media, studio elevator size, 2024
+            </div>
+
+            <div class="r">복합매체, 스튜디오 엘리베이터 사이즈, 2024
+                mixed media, studio elevator size, 2024
+            </div>
+        </div> -->
+
+       
+        
+
+        
+
+        <div class="two">
+            <div class="image_l">
+                <img src="image/Compression/5.png"></div>
+            <div class="image_r">
+                <img src="image/Compression/4.png"></div>
+            </div>
+        <div class="des">
+            <div class="l">드로잉 투 드로잉, 디지털 드로잉, 2023</div>
+            <div class="r">Drawing to Drawing, Digtital drawing, 2023
+        </div>
+        </div>
+
+
+
+        <div class="two">
+            <div class="image_l">
+                <img src="image/Landscape/1.jpg">
+                </div>
+                <div class="image_r">
+                <img src="image/Landscape/2.jpg">
+                </div>
+
+        </div>
+            <div class="des">
+                <div class="l">드로잉 투 드로잉, 디지털 드로잉, 2023</div>
+                <div class="r">Drawing to Drawing, Digtital drawing, 2023</div>
+            </div>
+
+            
+
+        <div class="two">
+            <div class="image_l">
+                <img src="image/Drawing/1.jpg">
+                </div>
+                <div class="image_r">
+                <img src="image/Drawing/2.jpg"><br><br>
+                <img src="image/Drawing/drawing16.png">
+                </div>
+
+        </div>
+            <div class="des">
+                <div class="l">드로잉 투 드로잉, 디지털 드로잉, 2023</div>
+                <!-- <div class="r">Drawing to Drawing, Digtital drawing, 2023</div> -->
+            </div>
+
+            <div class="one">
+                <img src="Installation/Goodbyeservice/g-1.jpg">
+            </div>
+            <div class="des">
+                <div class="l">압축, 디지털 이미지, 2023</div>
+                <div class="r">Compression, Digital Image, 2023</div>            
+            </div>
+
+
+        <br><br><br>
+        </div>
+        
+    </div>
+  
+
+<script>
+function showContent(link) {
+    const rightSide = document.querySelector('.right');
+    rightSide.innerHTML = ''; // Clear previous content
+    const iframe = document.createElement('iframe');
+    iframe.src = link;
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+    rightSide.appendChild(iframe);
+}
+    // });
+
+    let clicked = false;  // 클릭 상태를 추적하는 변수
+
+function toggleText() {
+    const homeText = document.querySelector(".main3");
+
+    // 클릭된 상태라면 텍스트 변경
+    if (!clicked) {
+        homeText.innerHTML = "<- Home";
+        clicked = true;
+    }
+
+    // 페이지 새로 고침
+    location.reload();
+}
+
+</script>
+
+</body>
+
+</html>
