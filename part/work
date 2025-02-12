@@ -44,7 +44,7 @@
 <!-- machine -->
 <div class="one">
     <div class="scroll-trigger" data-content-url="../detail/machine" data-side="left">
-        <img src="image/Drawingmachine/untitled folder/1.jpg" alt="Image 1">
+        <img src="Image/Drawingmachine/untitled folder/1.jpg" alt="Image 1">
     </div>
 </div>
 <div class="des">
@@ -61,12 +61,12 @@
 <div class="two">
     <div class="image_l">
         <div class="scroll-trigger" data-content-url="../detail/drawing" data-side="left">
-        <img src="image/Drawing/1.jpg">
+        <img src="Image/Drawing/1.jpg">
         </div>
         </div>
         <div class="image_r">
-        <img src="image/Drawing/drawing16.png"><br><br>
-        <img src="image/Drawing/drawing7.png">
+        <img src="Image/Drawing/drawing16.png"><br><br>
+        <img src="Image/Drawing/drawing7.png">
     
         </div>
 
