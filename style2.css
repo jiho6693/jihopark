@@ -97,6 +97,7 @@ svg {
 
     .Header_left{
         padding-top:0.5%;
+        padding-bottom:1%;
   
         cursor: pointer;
       
@@ -113,6 +114,7 @@ svg {
 
 
     .Header_right{
+        padding-bottom:1%;
         padding-top:0.5%;
 
         cursor: pointer;
@@ -148,7 +150,7 @@ svg {
         position: relative;
         overflow-y: scroll; /* 세로 스크롤 가능 */
         white-space: pre-line;
-        margin-top:1%;
+        margin-top:0%;
         display: grid;
         grid-template-columns: 1fr 1fr;
        
@@ -157,7 +159,7 @@ svg {
 
     .note {
         white-space: pre-line;
-        margin-top:1.8%;
+        margin-top:0%;
       
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -192,7 +194,7 @@ svg {
 
     .right {
         
-        margin-top:1.5%;
+        
         
         position: relative;
         overflow-y: scroll; /* 세로 스크롤 가능 */
@@ -230,7 +232,7 @@ svg {
     .one{
  
     
-        margin-top: 1.5%;
+        margin-top: 1%;
         margin-right:2%;
 
     }
