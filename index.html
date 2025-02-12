@@ -55,13 +55,11 @@
       opacity: 0;
       pointer-events: none;
     }
-    /* 로딩 이미지에 블러 효과 적용 */
     #loading img {
-      width: 15%;
+      width: 10%;
       height: auto;
-      filter: blur(5px);
-      transition: filter 0.5s ease-out;
     }
+
   </style>
   
   <script type="text/javascript">
@@ -85,7 +83,7 @@
       <div class="main" onclick="contentShowSection('detail/landscape', 'part/work')">Work</div>
       <div class="main" onclick="contentShowSection('detail/web/living', 'part/web')">Web</div>
       <div class="main" onclick="contentShowSection('detail/project/gangnam', 'part/project')">Project</div>
-      <div class="main" onclick="showContent('https://jiho6693.github.io/archive/', 'https://jiho6693.github.io/archive/image.html')">Library</div>
+      <!-- <div class="main" onclick="showContent('https://jiho6693.github.io/archive/')">Library</div> -->
       <div class="line"><hr /></div>
     </div>
     <div class="Header_left">
@@ -241,12 +239,6 @@
     
     // 초기 콘텐츠 로드 (예시)
     window.addEventListener('load', async () => {
-      // 페이지 로드 후 로딩 이미지의 블러 효과를 제거
-      const loadingImg = document.querySelector('#loading img');
-      if (loadingImg) {
-        loadingImg.style.filter = 'none';
-      }
-      
       await loadContent('../part/intro', 'right');
       await loadContent('../part/blank', 'left');
       
@@ -256,6 +248,10 @@
       
       runRandomText();
     });
+
+ 
+
+    
   </script>
 </body>
 </html>

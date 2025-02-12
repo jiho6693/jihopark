@@ -120,7 +120,7 @@ svg {
         z-index: 1000; /* 높은 값으로 설정 */
         width:100%;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         overflow-x: hidden;
     }
 
@@ -293,7 +293,6 @@ svg {
          
        
     }
-
 
 
 
