@@ -2,8 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" 
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>HOME</title>
   
   <!-- SVG 필터 등 기존 코드 (필요 시 유지) -->
@@ -11,8 +10,7 @@
     <defs>
       <filter id="distort">
         <feTurbulence baseFrequency="0.01 0.01" numOctaves="1" result="noise" />
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" 
-                             xChannelSelector="R" yChannelSelector="R" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="R" />
       </filter>
     </defs>
   </svg>
@@ -119,33 +117,32 @@
       }
     }
     
-    // IntersectionObserver를 이용한 lazy loading 함수
-    function lazyLoadImages(container) {
-      const lazyImages = container.querySelectorAll('img[data-src]');
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            img.src = img.getAttribute('data-src');
-            img.removeAttribute('data-src');
-            img.classList.add('fade-in');
-            obs.unobserve(img);
-          }
-        });
-      }, {
-        rootMargin: "0px",
-        threshold: 0.1
-      });
-      
-      lazyImages.forEach(img => {
-        // 네이티브 lazy loading 지원 (지원하는 브라우저에서)
-        img.setAttribute('loading', 'lazy');
-        observer.observe(img);
-      });
+    // 스크롤 트리거 일시 비활성화 관련 변수 및 함수
+    let scrollTriggerDisabled = false;
+    function disableScrollTriggerFor(duration) {
+      scrollTriggerDisabled = true;
+      setTimeout(() => {
+        scrollTriggerDisabled = false;
+      }, duration);
+    }
+    
+    // 순차적으로 이미지를 로드하는 함수 (수정된 버전)
+    function sequentialLoadImages(container) {
+      const img = container.querySelector('img[data-src]');
+      if (!img) return; // 더 이상 로드할 이미지가 없으면 종료
+      img.src = img.getAttribute('data-src');
+      img.removeAttribute('data-src');
+      img.classList.add('fade-in');
+      img.setAttribute('loading', 'eager');
+      img.addEventListener('load', function() {
+        sequentialLoadImages(container);
+      }, { once: true });
+      img.addEventListener('error', function() {
+        sequentialLoadImages(container);
+      }, { once: true });
     }
     
     // HTML 콘텐츠를 가져와 컨테이너에 삽입한 후 이미지 로딩 처리  
-    // 첫 번째 이미지는 즉시(eager) 로드하여 로딩 오버레이를 숨기고, 나머지는 lazy loading 처리
     function loadContent(url, targetSide) {
       const container = document.querySelector(`.${targetSide}`);
       if (!container) {
@@ -168,17 +165,22 @@
           container.scrollTop = 0;
           container.classList.remove('fade-in');
           
-          // 첫 번째 이미지 즉시 로드 (eager)
+          // 이미지 로드: 첫 번째 이미지를 즉시 로드한 후 나머지는 순차 로드
           const images = container.querySelectorAll('img[data-src]');
           if (images.length > 0) {
-            const firstImage = images[0];
-            firstImage.src = firstImage.getAttribute('data-src');
-            firstImage.removeAttribute('data-src');
-            firstImage.classList.add('fade-in');
-            firstImage.setAttribute('loading', 'eager');
-            firstImage.addEventListener('load', hideLoading, { once: true });
-            // 나머지 이미지들에 대해서는 lazy loading 적용
-            lazyLoadImages(container);
+            // 첫 번째 이미지 로드
+            images[0].src = images[0].getAttribute('data-src');
+            images[0].removeAttribute('data-src');
+            images[0].classList.add('fade-in');
+            images[0].setAttribute('loading', 'eager');
+            images[0].addEventListener('load', function() {
+              hideLoading();
+              sequentialLoadImages(container);
+            }, { once: true });
+            images[0].addEventListener('error', function() {
+              hideLoading();
+              sequentialLoadImages(container);
+            }, { once: true });
           } else {
             hideLoading();
           }
@@ -194,8 +196,9 @@
     }
     
     // contentShowSection 함수 (클릭 시 호출)
-    // 예를 들어, 오른쪽 콘텐츠를 먼저 로드한 후 왼쪽 콘텐츠를 불러옵니다.
     async function contentShowSection(urlLeft, urlRight) {
+      // 클릭 후 1초 동안 스크롤 트리거가 적용되지 않도록 함
+      disableScrollTriggerFor(1000);
       try {
         showLoading();
         if (urlRight) {
@@ -211,13 +214,15 @@
       }
     }
     
-    // (Observer 관련 기능은 필요 시 아래와 같이 유지)
+    // Observer 관련 기능
     let observer;
     const observedElements = new Set();
     function initializeObserver() {
       if (!observer) {
         observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
+            // 스크롤 트리거가 비활성화 된 경우 처리하지 않음
+            if (scrollTriggerDisabled) return;
             if (entry.isIntersecting) {
               const contentUrl = entry.target.getAttribute('data-content-url');
               const targetSide = entry.target.getAttribute('data-side');

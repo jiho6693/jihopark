@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>HOME</title>
+  <svg>
+    <defs>
+      <filter id="distort">
+        <feTurbulence baseFrequency="0.01 0.01" numOctaves="1" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="R"/>
+      </filter>
+    </defs>
+  </svg>
+  <link rel="stylesheet" href="style2.css">
+  <script type="text/javascript">
+    var UserAgent = navigator.userAgent;
+    if (UserAgent.match(/iPhone|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || 
+        UserAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+      location.href = "index_mb.html"; /* 모바일 홈페이지 경로 */
+    }
+  </script>
+</head>
+<body>
+  <div class="head">
+    <div class="Header_right">
+      <!-- 버튼 클릭 시 오른쪽 콘텐츠가 먼저 로드됩니다. -->
+      <div class="main" onclick="contentShowSection('detail/compression', 'part/work')">Work</div>
+      <div class="main" onclick="contentShowSection('detail/web/living', 'part/web')">Web</div>
+      <div class="main" onclick="contentShowSection('detail/project/gangnam', 'part/project')">Project</div>
+      <div class="main" onclick="showContent('https://jiho6693.github.io/archive/', 'https://jiho6693.github.io/archive/image.html')">library</div>
+      <div class="line"><hr/></div>
+    </div>
+    <div class="Header_left">
+      <div class="main" onclick="contentShowSection('part/cv', 'part/intro')">박지호</div>
+      <div class="main" onclick="contentShowSection('part/cv', 'part/intro')">Jiho Park</div>
+      <div class="line"><hr/></div>
+    </div>
+  </div>
+
+  <div class="v-line"></div>
+
+  <div class="all">
+    <div class="right"></div>
+    <div class="left"></div>    
+  </div>
+
+  <script>
+    // loadContent 함수가 Promise를 반환하도록 수정하여 순차 로딩이 가능하도록 함
+    function loadContent(url, targetSide) {
+      const container = document.querySelector(`.${targetSide}`);
+      if (!container) {
+        console.error(`Container with class ${targetSide} not found.`);
+        return Promise.reject(new Error(`Container with class ${targetSide} not found.`));
+      }
+      return fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Failed to load content from ${url}`);
+          }
+          return response.text();
+        })
+        .then(data => {
+          container.innerHTML = data;
+          container.scrollTop = 0; // 스크롤 초기화
+        })
+        .catch(error => {
+          container.innerHTML = `<p style="color: red;">Error loading content: ${error.message}</p>`;
+          console.error(error);
+        });
+    }
+
+    // showSection 함수 (동적 파일 경로 사용)
+    function showSection(sectionId, targetSide) {
+      const filePath = `../part/${sectionId}`;
+      return loadContent(filePath, targetSide);
+    }
+
+    // 초기 콘텐츠를 순차적으로 로드하는 함수
+    // 오른쪽 콘텐츠(예: work)를 먼저 로드한 후 왼쪽 콘텐츠(예: landscape)를 로드합니다.
+    async function loadInitialContent() {
+      try {
+        // 1. 오른쪽 콘텐츠 로드 (예: work)
+        await loadContent('../part/work', 'right');
+        // 2. 왼쪽 콘텐츠 로드 (예: landscape)
+        await loadContent('../detail/landscape', 'left');
+        // 3. 공통 콘텐츠 로드 (예: header, intro)
+        await loadContent('../part/header', 'header');
+        await loadContent('../part/intro', 'intro');
+      } catch (error) {
+        console.error('Sequential loading error:', error);
+      }
+    }
+
+    // 콘텐츠 로드 및 표시 함수 (iframe 포함)
+    function showContent(urlLeft, urlRight) {
+      const rightContainer = document.querySelector('.right');
+      const leftContainer = document.querySelector('.left');
+
+      if (urlRight && rightContainer) {
+        rightContainer.innerHTML = ''; // 기존 콘텐츠 제거
+        const iframeRight = document.createElement('iframe');
+        iframeRight.src = urlRight;
+        iframeRight.style.width = '100%';
+        iframeRight.style.height = '100%';
+        iframeRight.style.border = 'none';
+        rightContainer.appendChild(iframeRight);
+      }
+
+      if (urlLeft && leftContainer) {
+        leftContainer.innerHTML = ''; // 기존 콘텐츠 제거
+        const iframeLeft = document.createElement('iframe');
+        iframeLeft.src = urlLeft;
+        iframeLeft.style.width = '100%';
+        iframeLeft.style.height = '100%';
+        iframeLeft.style.border = 'none';
+        leftContainer.appendChild(iframeLeft);
+      }
+    }
+
+    // contentShowSection 함수 수정 (오른쪽 콘텐츠를 먼저 로드)
+    function contentShowSection(urlLeft, urlRight) {
+      if (urlRight) {
+        loadContent(urlRight, 'right')
+          .then(() => {
+            if (urlLeft) {
+              loadContent(urlLeft, 'left');
+            }
+          });
+      } else if (urlLeft) {
+        loadContent(urlLeft, 'left');
+      }
+    }
+
+    // IntersectionObserver 및 MutationObserver 관련 (원본 코드 유지)
+    let observer;
+    const observedElements = new Set();
+
+    function initializeObserver() {
+      if (!observer) {
+        observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const contentUrl = entry.target.getAttribute('data-content-url');
+              const targetSide = entry.target.getAttribute('data-side');
+              if (contentUrl) {
+                loadContent(contentUrl, targetSide);
+              }
+            }
+          });
+        }, {
+          rootMargin: '0px 0px -0% 0px',
+          threshold: 1
+        });
+      }
+    }
+
+    function observeNewContent() {
+      document.querySelectorAll('.scroll-trigger').forEach(element => {
+        if (!observedElements.has(element)) {
+          observer.observe(element);
+          observedElements.add(element);
+        }
+      });
+    }
+
+    function enableDynamicObservation() {
+      const targetNode = document.body;
+      const config = { childList: true, subtree: true };
+
+      const mutationObserver = new MutationObserver(() => {
+        requestAnimationFrame(() => observeNewContent());
+      });
+
+      mutationObserver.observe(targetNode, config);
+    }
+
+    // 페이지 로드 후 초기화
+    window.addEventListener('load', () => {
+      initializeObserver();
+      observeNewContent();
+      enableDynamicObservation();
+      // 초기 콘텐츠를 순차적으로 로드 (오른쪽 먼저)
+      loadInitialContent();
+    });
+  </script>
+</body>
+</html>
