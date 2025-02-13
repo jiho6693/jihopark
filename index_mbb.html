@@ -24,6 +24,7 @@
       margin-left: 2%;
       font-size: 4rem;
       font-family: "Linefont";
+      text-align: center;
     }
     /* 로딩 오버레이 */
     #loading {
@@ -37,7 +38,7 @@
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      opacity: 1; /* 초기에 보임 */
+      opacity: 1;
       transition: opacity 0.3s ease;
     }
     #loading.hidden {
@@ -60,6 +61,7 @@
   <!-- 헤더 -->
   <div class="head">
     <div class="Header_right">
+      <div class="main" onclick="showSection('intro copy')">Info</div>
       <div class="main" onclick="showSection('work')">Work</div>
       <div class="main" onclick="showSection('web')">Web</div>
       <div class="main" onclick="showSection('project')">Project</div>
@@ -76,84 +78,90 @@
   <div class="back">JihoPark</div>
 
   <script>
-    // ✅ 로딩 오버레이
     function showLoading() {
-      document.getElementById('loading').classList.remove('hidden');
+        document.getElementById('loading').classList.remove('hidden');
     }
+
     function hideLoading() {
-      document.getElementById('loading').classList.add('hidden');
+        document.getElementById('loading').classList.add('hidden');
     }
 
-    // ✅ 비동기 콘텐츠 로딩 함수
-    function loadContent(url, callback) {
-      const container = document.querySelector('.right');
-      if (!container) return;
+    function loadContent(url, sectionId, isBackNavigation = false) {
+        const container = document.querySelector('.right');
+        if (!container) return;
 
-      showLoading();
-      fetch(url)
-        .then(response => response.text())
-        .then(html => {
-          container.innerHTML = html;
-          container.classList.remove('fade-in');
-          void container.offsetWidth;
-          container.classList.add('fade-in');
-          hideLoading();
-          if (callback) callback();
-        })
-        .catch(error => {
-          console.error("콘텐츠 로드 실패:", error);
-          hideLoading();
-        });
+        showLoading();
+        fetch(url)
+            .then(response => response.text())
+            .then(html => {
+                container.innerHTML = html;
+                container.classList.remove('fade-in');
+                void container.offsetWidth; // Reflow 강제 실행
+                container.classList.add('fade-in');
+                hideLoading();
+
+                // runRandomText 실행
+                runRandomText();
+
+                if (!isBackNavigation) {
+                    history.pushState({ sectionId }, '', `#${sectionId}`);
+                }
+            })
+            .catch(error => {
+                console.error("콘텐츠 로드 실패:", error);
+                hideLoading();
+            });
     }
 
-    // ✅ 페이지가 처음 로드될 때 현재 URL을 히스토리에 등록
-    window.addEventListener('DOMContentLoaded', function() {
-      const initialSection = location.hash ? location.hash.substring(1) : 'home';
-      history.replaceState({ sectionId: initialSection, scrollY: window.scrollY }, '', `#${initialSection}`);
-
-      loadContent(`../part/${initialSection}`, () => {
-        window.scrollTo(0, history.state.scrollY || 0);
-      });
-    });
-
-    // ✅ 섹션 변경 시 상태를 히스토리에 추가
     function showSection(sectionId) {
-      const filePath = `../part/${sectionId}`;
-
-      // 현재 스크롤 위치 저장
-      const currentState = history.state || {};
-      currentState.scrollY = window.scrollY;
-      history.replaceState(currentState, '', location.href);
-
-      loadContent(filePath, () => {
-        history.pushState({ sectionId, scrollY: 0 }, '', `#${sectionId}`);
-        window.scrollTo(0, 0);
-      });
+        const filePath = `../part/${sectionId}`;
+        loadContent(filePath, sectionId);
     }
 
-    // ✅ 뒤로 가기 이벤트 처리 (스크롤 복원 포함)
     window.addEventListener('popstate', function(event) {
-      if (event.state && event.state.sectionId) {
-        const filePath = `../part/${event.state.sectionId}`;
-        loadContent(filePath, () => {
-          window.scrollTo(0, event.state.scrollY || 0);
-        });
-      } else {
-        loadContent('../part/home', () => {
-          window.scrollTo(0, 0);
-        });
-      }
+        if (event.state && event.state.sectionId) {
+            const sectionId = event.state.sectionId;
+            const filePath = `../part/${sectionId}`;
+
+            loadContent(filePath, sectionId, true);
+
+            // 뒤로가기가 실행될 때 runRandomText() 호출
+            runRandomText();
+        }
     });
 
-    // ✅ 스크롤 이벤트 감지하여 현재 상태 업데이트
-    window.addEventListener('scroll', function() {
-      if (history.state) {
-        const updatedState = { ...history.state, scrollY: window.scrollY };
-        history.replaceState(updatedState, '', location.href);
-      }
+    window.addEventListener('DOMContentLoaded', function() {
+        const initialSection = location.hash ? location.hash.substring(1) : 'blank';
+
+        if (!history.state) {
+            history.replaceState({ sectionId: initialSection }, '', `#${initialSection}`);
+        }
+
+        loadContent(`../part/${initialSection}`, initialSection);
     });
 
-  </script>
+    // 랜덤 텍스트 기능 (필요 시)
+    function runRandomText() {
+      const elements = document.getElementsByClassName('back');
+      for (let i = 0; i < elements.length; i++) {
+        setInterval(function(element) {
+          randomizeText(element);
+        }, 600, elements[i]);
+      }
+    }
 
+    function randomizeText(element) {
+      const originalText = element.innerText;
+      const randomIndex = Math.floor(Math.random() * originalText.length);
+      const randomChar = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+      const newText = originalText.substring(0, randomIndex) + randomChar + originalText.substring(randomIndex + 1);
+      element.innerText = newText;
+    }
+
+    window.addEventListener('load', () => {
+        runRandomText();
+    });
+
+</script>
 </body>
 </html>

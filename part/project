@@ -1,5 +1,5 @@
 <!-- gangnam -->
-<div class="one">
+<div class="one" onclick="showSection('../detail/project/gangnam', 'left')">
     <div class="scroll-trigger" data-content-url="./detail/project/gangnam" data-side="left">
         <img src="labor/gangnam/g-12.jpg" alt="gangnam">
     </div>
@@ -15,7 +15,7 @@
 </div>
 
  <!-- loucs -->
- <div class="one">
+ <div class="one" onclick="showSection('../detail/project/locus', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/project/locus" data-side="left">
         <img src="labor/locus/l-9.jpg" alt="locus">
     </div>
@@ -31,7 +31,7 @@
 </div>
 
  <!-- london -->
- <div class="one">
+ <div class="one" onclick="showSection('../detail/project/london', 'left')">
     <div class="scroll-trigger" data-content-url="./detail/project/london" data-side="left">
         <img src="labor/london/k-6.jpg" alt="london">
     </div>
@@ -51,7 +51,7 @@
 
 
  <!-- mmca -->
- <div class="one">
+ <div class="one" onclick="showSection('../detail/project/mmca', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/project/mmca" data-side="left">
         <img src="labor/mmca/g-8.jpg" alt="mmca">
     </div>
@@ -66,7 +66,7 @@
     </div>
 </div>
 
-<div class="one">
+<div class="one" onclick="showSection('../detail/project/57', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/project/57" data-side="left">
         <img src="labor/57/p-12.jpg" alt="57">
     </div>

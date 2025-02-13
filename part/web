@@ -1,9 +1,9 @@
-<div class="one">
+<div class="one" onclick="showSection('../detail/web/living', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/web/living" data-side="left">
         <img src="/web/livingarchive/livingarchive.gif" alt="Image 1">
     </div>
 </div>
-<div class="des">
+<div class="des" >
     <div class="l">수업'Living archive'을 위한 웹, 2024
     </div>
 
@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="one">
+<div class="one" onclick="showSection('../detail/web/page', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/web/page" data-side="left">
         <img src="/web/paper/paper.gif" alt="Image 1">
     </div>
@@ -24,7 +24,7 @@
     </div>
 </div>
 
-<div class="one">
+<div class="one" onclick="showSection('../detail/web/air', 'left')" >
     <div class="scroll-trigger" data-content-url="../detail/web/air" data-side="left">
         <img src="/web/air/air.gif" alt="Image 1">
     </div>
@@ -37,7 +37,7 @@
     </div>
 </div>
 
-<div class="one">
+<div class="one" onclick="showSection('../detail/web/stone', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/web/stone" data-side="left">
         <img src="/web/Stonezine/stone.gif" alt="Image 1">
     </div>
@@ -50,7 +50,7 @@
     </div>
 </div>
 
-<div class="one">
+<div class="one" onclick="showSection('../detail/web/going', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/web/going" data-side="left">
         <img src="/web/going/goingforward.gif" alt="Image 1">
     </div>
@@ -64,7 +64,7 @@
 </div>
 
 
-<div class="one">
+<div class="one" onclick="showSection('../detail/web/lud', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/web/lud" data-side="left">
     <img src="/web/lud.gif" alt="Image 1">
     </div>
