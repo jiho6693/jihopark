@@ -131,14 +131,20 @@
     });
 
     window.addEventListener('DOMContentLoaded', function() {
-        const initialSection = location.hash ? location.hash.substring(1) : 'blank';
-
+        // 최초 히스토리를 /blank로 설정
         if (!history.state) {
-            history.replaceState({ sectionId: initialSection }, '', `#${initialSection}`);
+            history.replaceState({ sectionId: 'blank' }, '', '#blank');
         }
 
-        loadContent(`../part/${initialSection}`, initialSection);
+        // 초기 콘텐츠 로드 (blank)
+        loadContent(`../part/blank`, 'blank');
+
+        // 2초 후 work 페이지 자동 로드 (최초 로드 시에만 실행됨)
+        setTimeout(() => {
+            showSection('work');
+        }, 2000);
     });
+
 
     // 랜덤 텍스트 기능 (필요 시)
     function runRandomText() {
@@ -165,3 +171,4 @@
 </script>
 </body>
 </html>
+

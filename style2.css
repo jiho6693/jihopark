@@ -41,7 +41,7 @@ svg {
         color:rgb(0, 0, 0);
         filter: url(#distort);
         margin: 0 0 0 0;
-        font-size: 0.65rem;
+        font-size: 0.72rem;
         font-family: 'Monument_r';
         line-height: 1.5; /* 배수 사용 */
         /* font-weight:500; */
