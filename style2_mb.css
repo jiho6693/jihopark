@@ -202,7 +202,7 @@ svg {
     }
     .des{ 
         
-        margin-bottom: 8%;
+        margin-bottom: 7%;
         white-space: pre-line;
         display: grid;
         grid-template-columns: 1fr 1fr;
