@@ -41,7 +41,7 @@
 
 
 <!-- machine -->
-<div class="one">
+<div class="one" onclick="showSection('../detail/machine', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/machine" data-side="left">
         <img src="Image/Drawingmachine/untitled folder/1.jpg" alt="Image 1">
     </div>
@@ -57,7 +57,7 @@
 
 
 <!-- drawing -->
-<div class="two">
+<div class="two" onclick="showSection('../detail/drawing', 'left')">
     <div class="image_l">
         <div class="scroll-trigger" data-content-url="../detail/drawing" data-side="left">
         <img src="Image/Drawing/1.jpg">
@@ -77,7 +77,7 @@
    
 
 <!-- drawingstorage -->
-<div class="one">
+<div class="one" onclick="showSection('../detail/drawingstorage', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/drawingstorage" data-side="left">
     <img src="Installation/Drawingstorage/1.jpg" alt="Drawing Storage">
     </div>
@@ -92,7 +92,7 @@
 
 
 <!-- wall -->
-<div class="one">
+<div class="one" onclick="showSection('../detail/wall', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/wall" data-side="left">
     <img src="Installation/Wall/1.jpg" alt="wall">
     </div>
@@ -106,7 +106,7 @@
 
 
 <!-- sword -->
-<div class="one">
+<div class="one" onclick="showSection('../detail/sword', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/sword" data-side="left">
     <img src="web/sword/s-1.jpg" alt="sword">
     </div>
@@ -121,7 +121,7 @@
 
 
 <!-- goodbye -->
-<div class="one">
+<div class="one" onclick="showSection('../detail/goodbye', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/goodbye" data-side="left">
     <img src="Installation/Goodbyeservice/g-8.jpg" alt="goodbye">
     </div>
@@ -137,7 +137,7 @@
 
 
 
-<div class="one">
+<div class="one" onclick="showSection('../detail/weall', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/weall" data-side="left">
     <img src="Installation/Wealldance/w-3.jpg" alt="Drawing Storage">
     </div>

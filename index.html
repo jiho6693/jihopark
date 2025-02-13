@@ -101,7 +101,7 @@
   </div>
   
   <!-- 랜덤 텍스트 기능 영역 -->
-  <div class="back">Hello, World!</div>
+  <div class="back">JihoPark</div>
   
   <script>
     // 로딩 오버레이 제어 함수
@@ -248,6 +248,11 @@
       
       runRandomText();
     });
+
+    function showSection(sectionId, targetSide) {
+    const filePath = `../part/${sectionId}`;  // 동적 파일 경로
+    loadContent(filePath, targetSide);        // 동적 콘텐츠 로드
+}
 
  
 

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>HOME</title>
+  
+  <link rel="stylesheet" href="style2_mb.css" />
+
+  <style>
+    @font-face {
+      font-family: "Linefont";
+      src: url(./font/Linefont-ExtraLight.ttf);
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeInAnimation 0.5s forwards;
+    }
+    @keyframes fadeInAnimation {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .back {
+      margin-left: 2%;
+      font-size: 4rem;
+      font-family: "Linefont";
+    }
+    /* 로딩 오버레이 */
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 1; /* 초기에 보임 */
+      transition: opacity 0.3s ease;
+    }
+    #loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #loading img {
+      width: 10%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 로딩 오버레이 -->
+  <div id="loading">
+    <img src="loading.gif" alt="Loading..." />
+  </div>
+
+  <!-- 헤더 -->
+  <div class="head">
+    <div class="Header_right">
+      <div class="main" onclick="showSection('work')">Work</div>
+      <div class="main" onclick="showSection('web')">Web</div>
+      <div class="main" onclick="showSection('project')">Project</div>
+      <div class="line"><hr /></div>
+    </div>
+  </div>
+
+  <!-- 컨텐츠 영역 -->
+  <div class="all">
+    <div class="right"></div>
+  </div>
+  
+  <!-- 랜덤 텍스트 -->
+  <div class="back">JihoPark</div>
+
+  <script>
+    // ✅ 로딩 오버레이
+    function showLoading() {
+      document.getElementById('loading').classList.remove('hidden');
+    }
+    function hideLoading() {
+      document.getElementById('loading').classList.add('hidden');
+    }
+
+    // ✅ 비동기 콘텐츠 로딩 함수
+    function loadContent(url, callback) {
+      const container = document.querySelector('.right');
+      if (!container) return;
+
+      showLoading();
+      fetch(url)
+        .then(response => response.text())
+        .then(html => {
+          container.innerHTML = html;
+          container.classList.remove('fade-in');
+          void container.offsetWidth;
+          container.classList.add('fade-in');
+          hideLoading();
+          if (callback) callback();
+        })
+        .catch(error => {
+          console.error("콘텐츠 로드 실패:", error);
+          hideLoading();
+        });
+    }
+
+    // ✅ 페이지가 처음 로드될 때 현재 URL을 히스토리에 등록
+    window.addEventListener('DOMContentLoaded', function() {
+      const initialSection = location.hash ? location.hash.substring(1) : 'home';
+      history.replaceState({ sectionId: initialSection, scrollY: window.scrollY }, '', `#${initialSection}`);
+
+      loadContent(`../part/${initialSection}`, () => {
+        window.scrollTo(0, history.state.scrollY || 0);
+      });
+    });
+
+    // ✅ 섹션 변경 시 상태를 히스토리에 추가
+    function showSection(sectionId) {
+      const filePath = `../part/${sectionId}`;
+
+      // 현재 스크롤 위치 저장
+      const currentState = history.state || {};
+      currentState.scrollY = window.scrollY;
+      history.replaceState(currentState, '', location.href);
+
+      loadContent(filePath, () => {
+        history.pushState({ sectionId, scrollY: 0 }, '', `#${sectionId}`);
+        window.scrollTo(0, 0);
+      });
+    }
+
+    // ✅ 뒤로 가기 이벤트 처리 (스크롤 복원 포함)
+    window.addEventListener('popstate', function(event) {
+      if (event.state && event.state.sectionId) {
+        const filePath = `../part/${event.state.sectionId}`;
+        loadContent(filePath, () => {
+          window.scrollTo(0, event.state.scrollY || 0);
+        });
+      } else {
+        loadContent('../part/home', () => {
+          window.scrollTo(0, 0);
+        });
+      }
+    });
+
+    // ✅ 스크롤 이벤트 감지하여 현재 상태 업데이트
+    window.addEventListener('scroll', function() {
+      if (history.state) {
+        const updatedState = { ...history.state, scrollY: window.scrollY };
+        history.replaceState(updatedState, '', location.href);
+      }
+    });
+
+  </script>
+
+</body>
+</html>
