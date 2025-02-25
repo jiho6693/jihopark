@@ -41,16 +41,22 @@
 
 
 <!-- machine -->
-<div class="one" onclick="showSection('../detail/machine', 'left')">
+ <div class="machine"  onclick="showSection('../detail/machine', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/machine" data-side="left">
+<div class="one">
         <img src="Image/Drawingmachine/untitled folder/1.jpg" alt="Image 1">
     </div>
 </div>
+<div class="one">
+        <img src="Image/square/square.png" alt="Image 1">
+    </div>
+</div>
+</div>
 <div class="des">
-    <div class="l">압축, 디지털 이미지, 2023
+    <div class="l">드로잉에서 드로잉, 디지털 이미지, 2023
     </div>
 
-    <div class="r">Compression, Digital Image, 2023
+    <div class="r">Drawing to Drawing, Digital Image, 2023
 
     </div>
 </div>
@@ -71,8 +77,8 @@
 
 </div>
     <div class="des">
-        <div class="l">드로잉 투 드로잉, 디지털 드로잉, 2023</div>
-        <div class="r">Drawing to Drawing, Digtital drawing, 2023</div>
+        <div class="l">픽셀드로잉, 디지털 드로잉, 2023</div>
+        <div class="r">Pixel drawing, Digtital drawing, 2023</div>
     </div>
    
 
