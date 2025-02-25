@@ -37,6 +37,21 @@
 </div>
 
 
+<!-- drawingstorage -->
+<div class="one" onclick="showSection('../detail/drawingstorage', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/drawingstorage" data-side="left">
+    <img src="Installation/Drawingstorage/1.jpg" alt="Drawing Storage">
+    </div>
+</div>
+<div class="des">
+    <div class="l">드로잉 보관소, 복합매체, 가변크기(스튜디오 엘레베이터 크기), 2024
+    </div>
+
+    <div class="r">Drawing Storage, mixed media, studio elevator size, 2024
+    </div>
+</div>
+
+
 
 
 
@@ -82,19 +97,7 @@
     </div>
    
 
-<!-- drawingstorage -->
-<div class="one" onclick="showSection('../detail/drawingstorage', 'left')">
-    <div class="scroll-trigger" data-content-url="../detail/drawingstorage" data-side="left">
-    <img src="Installation/Drawingstorage/1.jpg" alt="Drawing Storage">
-    </div>
-</div>
-<div class="des">
-    <div class="l">드로잉 보관소, 복합매체, 가변크기(스튜디오 엘레베이터 크기), 2024
-    </div>
 
-    <div class="r">Drawing Storage, mixed media, studio elevator size, 2024
-    </div>
-</div>
 
 
 <!-- wall -->
