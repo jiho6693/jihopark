@@ -18,10 +18,10 @@
 
 <div class="two">
     <div class="image_l">
-        <img src="image/square/square.gif">
+        <img src="Image/square/square.gif">
     </div>
     <div class="image_r">
-        <img src="image/square/ori.gif">
+        <img src="Image/square/ori.gif">
     </div>
 </div>
 
@@ -38,10 +38,10 @@
 
 <div class="two">
     <div class="image_l">
-        <img src="image/square/1.gif">
+        <img src="Image/square/1.gif">
     </div>
     <div class="image_r">
-        <img src="image/square/d.gif">
+        <img src="Image/square/d.gif">
     </div>
 </div>
 
