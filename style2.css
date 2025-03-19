@@ -289,8 +289,8 @@ svg {
     }
 
     a:hover{
-        color:blue;
-        text-decoration: line-through;
+        color:rgb(113, 113, 113);
+        /* text-decoration: line-through; */
      
         /* filter: url(#distort); */
   
