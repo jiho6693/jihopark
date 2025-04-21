@@ -56,16 +56,12 @@
 
 
 <!-- machine -->
- <div class="machine"  onclick="showSection('../detail/machine', 'left')">
+<div class="machine"  onclick="showSection('../detail/machine', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/machine" data-side="left">
-<div class="one">
-        <img src="Image/Drawingmachine/untitled folder/1.jpg" alt="Image 1">
+    <div class="one">
+    <img src="Image/Drawingmachine/untitled folder/1.jpg" alt="Image 1">
     </div>
-</div>
-<div class="one">
-        <img src="Image/square/square.png" alt="Image 1">
     </div>
-</div>
 </div>
 <div class="des">
     <div class="l">드로잉에서 드로잉, 디지털 이미지, 2023
