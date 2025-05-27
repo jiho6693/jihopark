@@ -1,0 +1,53 @@
+
+<div class="note">
+    <div class="l">박지호, 〈2100년의 한국 인구 기상도 #1-4〉, 2025. 한국 인구피라미드 데이터셋, 미래 예측 알고리즘, 잉크젯 프린트, 각각 148×105 cm
+
+1960년부터 2025년까지의 한국 인구 피라미드에 누적된 시각적 패턴의 흐름을 기반으로, 먼 미래의 인구 구성을 예측해 보는 작업이다. 각각의 예측 알고리즘은 ARIMA, LSTM, GEN, CNN 모델에 기반한다. 작가는 훨씬 더 먼 미래를 예측하려 했으나, 2100년 이후로는 제대로 연산이 되지 않았다.
+    </div>
+
+    <div class="r">Jiho Park, Forecasted South Korean Population Pyramid 2100 #1-4, 2025. South Korean population pyramid dataset, future forecasting algorithm, inkjet print, 14.8×10.5 cm(each)
+
+This work predicts the future composition of Korea’s population by analyzing the flow of visual patterns accumulated in population pyramids from 1960 to 2025. Each forecasting algorithm is based on ARIMA, LSTM, GEN, and CNN models. The artist attempted to project much further into the future, but proper computation was not possible beyond 2100.
+
+“Humans have long sought to foresee the future, and today, statistics and artificial neural networks have taken on that role. This work begins with questions about such ways of looking back on the future.”
+  </div>
+</div>
+
+<div class="two">
+    <div class="image_l">
+        <img src="Image/2100/1.jpg">
+    </div>
+    <div class="image_r">
+        <img src="Image/2100/2.jpg">
+    </div>
+</div>
+
+<div class="des">
+    <div class="l">〈2100년의 한국 인구 기상도 #1〉
+    </div>
+    <div class="r">〈2100년의 한국 인구 기상도 #2〉
+    </div> 
+</div>
+
+
+<div class="two">
+    <div class="image_l">
+        <img src="Image/2100/3.jpg">
+    </div>
+    <div class="image_r">
+        <img src="Image/2100/4.jpg">
+    </div>
+</div>
+
+<div class="des">
+    <div class="l">〈2100년의 한국 인구 기상도 #3〉
+    </div>
+    <div class="r">〈2100년의 한국 인구 기상도 #4〉
+    </div> 
+</div>
+ 
+   
+<br><br><br><br><br><br><br><br><br><br>
+
+
+
