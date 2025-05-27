@@ -1,51 +1,68 @@
 
 <div class="note">
-    <div class="l">박지호, 〈2100년의 한국 인구 기상도 #1-4〉, 2025. 한국 인구피라미드 데이터셋, 미래 예측 알고리즘, 잉크젯 프린트, 각각 148×105 cm
+    <div class="l">〈하루〉, 2025. 실시간 환율 데이터, 프로젝터, 컴퓨터, 가변크기.
 
-1960년부터 2025년까지의 한국 인구 피라미드에 누적된 시각적 패턴의 흐름을 기반으로, 먼 미래의 인구 구성을 예측해 보는 작업이다. 각각의 예측 알고리즘은 ARIMA, LSTM, GEN, CNN 모델에 기반한다. 작가는 훨씬 더 먼 미래를 예측하려 했으나, 2100년 이후로는 제대로 연산이 되지 않았다.
-     
+실시간 환율 데이터를 기반으로 1초마다 한 픽셀의 색상값이 변화한다. 그렇게 86,400초의 움직임이 모여, 또 다른 하루의 풍경을 그려낸다.
+
     </div>
 
-    <div class="r">Jiho Park, Forecasted South Korean Population Pyramid 2100 #1-4, 2025. South Korean population pyramid dataset, future forecasting algorithm, inkjet print, 14.8×10.5 cm(each)
+    <div class="r">A Day, 2025. Live exchange rate data, projector, computer, dimension variable.
 
-This work predicts the future composition of Korea’s population by analyzing the flow of visual patterns accumulated in population pyramids from 1960 to 2025. Each forecasting algorithm is based on ARIMA, LSTM, GEN, and CNN models. The artist attempted to project much further into the future, but proper computation was not possible beyond 2100.
-
-“Humans have long sought to foresee the future, and today, statistics and artificial neural networks have taken on that role. This work begins with questions about such ways of looking back on the future.”
-  </div>
+Based on real-time exchange rate data, the color value of a single pixel changes every second. The movement of 86,400 seconds accumulates over the course of a day, collectively drawing another kind of daily landscape.
+</div>
 </div>
 
-<div class="two">
-    <div class="image_l">
-        <img src="Image/2100/1.jpg">
-    </div>
-    <div class="image_r">
-        <img src="Image/2100/2.jpg">
-    </div>
+<div class="one">
+    <img src="Image/day/2025-03-14.jpg">
 </div>
 
 <div class="des">
-    <div class="l">〈2100년의 한국 인구 기상도 #1〉
+    <div class="l">2025년 3월 14일의 하루
     </div>
-    <div class="r">〈2100년의 한국 인구 기상도 #2〉
+    <div class="r">A Day on March 14, 2025
     </div> 
 </div>
 
-
-<div class="two">
-    <div class="image_l">
-        <img src="Image/2100/3.jpg">
-    </div>
-    <div class="image_r">
-        <img src="Image/2100/4.jpg">
-    </div>
+<div class="one">
+    <img src="Image/day/2025-03-22.jpg">
 </div>
-
 <div class="des">
-    <div class="l">〈2100년의 한국 인구 기상도 #3〉
+    <div class="l">2025년 3월 22일의 하루
     </div>
-    <div class="r">〈2100년의 한국 인구 기상도 #4〉
+    <div class="r">A Day on March 22, 2025
     </div> 
 </div>
+
+<div class="one">
+    <img src="Image/day/2025-04-23.jpg">
+</div>
+<div class="des">
+    <div class="l">2025년 4월 23일의 하루
+    </div>
+    <div class="r">A Day on April 23, 2025
+    </div> 
+</div>
+
+<div class="one">
+    <img src="Image/day/2025-04-28.jpg">
+</div>
+<div class="des">
+    <div class="l">2025년 4월 28일의 하루
+    </div>
+    <div class="r">A Day on April 28, 2025
+    </div> 
+</div>
+
+<div class="one">
+    <img src="Image/day/2025-05-01.jpg">
+</div>
+<div class="des">
+    <div class="l">2025년 5월 1일의 하루
+    </div>
+    <div class="r">A Day on May 28, 2025
+    </div> 
+</div>
+
  
    
 <br><br><br><br><br><br><br><br><br><br>

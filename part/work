@@ -1,15 +1,29 @@
-<!-- <div class="one" onclick="showSection('../detail/day', 'left')">
-    <div class="scroll-trigger" data-content-url="../detail/2100" data-side="left">
+<div class="one" onclick="showSection('../detail/110', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/110" data-side="left">
+    <img src="Image/110/110_2.jpg" alt="Drawing Storage">
+    </div>
+</div>
+<div class="des">
+    <div class="l"><하나부터 열까지>, 2025. 아이의 낙서 데이터셋, VAE와 Latent Diffusion 기반 기계 학습 알고리즘, 파이프, 바퀴, 조명 레일, LED 조명, 점토, 합판, 웹캠 컨트롤 박스, 컴퓨터, 아두이노, 마이크로스텝 드라이버, 모터, DC 파워 서플라이, 벨트, 타이밍 풀리, CR 튜브, 전선, 가변크기.
+    </div>
+
+    <div class="r">From One to Ten, 2025. Children’s doodle dataset, VAE and Latent Diffusion-based machine learning algorithm, pipes, wheels, lighting rail, LED lights, clay, plywood, webcam control box, computer, Arduino, microstep driver, motor, DC power supply, belt, timing pulley, CR tube, electrical wire, dimension variable.
+
+    </div>
+</div>
+
+<div class="one" onclick="showSection('../detail/day', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/day" data-side="left">
     <img src="Image/day/day.jpg" alt="Drawing Storage">
     </div>
 </div>
 <div class="des">
-    <div class="l">〈2100년의 한국 인구 기상도 #1-4〉, 2025. 한국 인구피라미드 데이터셋, 미래 예측 알고리즘, 잉크젯 프린트, 각각 148×105 cm
+    <div class="l">〈하루〉, 2025. 실시간 환율 데이터, 프로젝터, 컴퓨터, 가변크기.
     </div>
 
-    <div class="r">Forecasted South Korean Population Pyramid 2100 #1-4, 2025. South Korean population pyramid dataset, future forecasting algorithm, inkjet print, 14.8×10.5 cm(each)
+    <div class="r">A Day, 2025. Live exchange rate data, projector, computer, dimension variable
     </div>
-</div> -->
+</div>
 
 <div class="one" onclick="showSection('../detail/2100', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/2100" data-side="left">
