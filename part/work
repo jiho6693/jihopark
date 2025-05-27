@@ -1,4 +1,4 @@
-<div class="one" onclick="showSection('../detail/day', 'left')">
+<!-- <div class="one" onclick="showSection('../detail/day', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/2100" data-side="left">
     <img src="Image/day/day.jpg" alt="Drawing Storage">
     </div>
@@ -9,7 +9,7 @@
 
     <div class="r">Forecasted South Korean Population Pyramid 2100 #1-4, 2025. South Korean population pyramid dataset, future forecasting algorithm, inkjet print, 14.8×10.5 cm(each)
     </div>
-</div>
+</div> -->
 
 <div class="one" onclick="showSection('../detail/2100', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/2100" data-side="left">
