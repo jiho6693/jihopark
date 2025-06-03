@@ -4,10 +4,12 @@
     </div>
 </div>
 <div class="des">
-    <div class="l"><하나부터 열까지>, 2025. 아이의 낙서 데이터셋, VAE와 Latent Diffusion 기반 기계 학습 알고리즘, 파이프, 바퀴, 조명 레일, LED 조명, 점토, 합판, 웹캠 컨트롤 박스, 컴퓨터, 아두이노, 마이크로스텝 드라이버, 모터, DC 파워 서플라이, 벨트, 타이밍 풀리, CR 튜브, 전선, 가변크기.
+    <div class="l"><하나부터 열까지>, 2025. 아이의 낙서 데이터셋, VAE와 Latent Diffusion 기반 기계 학습 알고리즘, 가변크기.
+
     </div>
 
-    <div class="r">From One to Ten, 2025. Children’s doodle dataset, VAE and Latent Diffusion-based machine learning algorithm, pipes, wheels, lighting rail, LED lights, clay, plywood, webcam control box, computer, Arduino, microstep driver, motor, DC power supply, belt, timing pulley, CR tube, electrical wire, dimension variable.
+    <div class="r">From One to Ten, Children’s doodle dataset, VAE and Latent Diffusion-based machine learning algorithm, dimension variable.
+
 
     </div>
 </div>
@@ -18,10 +20,10 @@
     </div>
 </div>
 <div class="des">
-    <div class="l">〈하루〉, 2025. 실시간 환율 데이터, 프로젝터, 컴퓨터, 가변크기.
+    <div class="l">〈하루〉, 실시간 환율 데이터, 프로젝터, 컴퓨터, 가변크기.
     </div>
 
-    <div class="r">A Day, 2025. Live exchange rate data, projector, computer, dimension variable
+    <div class="r">A Day, Live exchange rate data, projector, computer, dimension variable.
     </div>
 </div>
 
@@ -35,6 +37,21 @@
     </div>
 
     <div class="r">Forecasted South Korean Population Pyramid 2100 #1-4, 2025. South Korean population pyramid dataset, future forecasting algorithm, inkjet print, 14.8×10.5 cm(each)
+
+    </div>
+</div>
+
+<div class="one" onclick="showSection('../detail/square', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/square" data-side="left">
+    <img src="Image/square/squ.jpg" alt="Drawing Storage">
+    </div>
+</div>
+<div class="des">
+    <div class="l">〈2100년의 한국 인구 기상도 #1-4〉, 2025. 한국 인구피라미드 데이터셋, 미래 예측 알고리즘, 잉크젯 프린트, 각각 148×105 cm
+    </div>
+
+    <div class="r">Forecasted South Korean Population Pyramid 2100 #1-4, 2025. South Korean population pyramid dataset, future forecasting algorithm, inkjet print, 14.8×10.5 cm(each)
+
     </div>
 </div>
 
@@ -52,9 +69,9 @@
         </div>
 </div>
 <div class="des">
-    <div class="l">212번 풍경, 사진, 534KB  
+    <div class="l"><212번 풍경>, 잉크젯 프린트, 각각 841x594 cm.
     </div>
-    <div class="r">'A Landscape 212th', Photograph, 534KB
+    <div class="r">'A Landscape 212th',inkjet print, 841×594 cm(each)
     </div> 
 </div>
 
@@ -70,10 +87,10 @@
     </div>
 </div>
 <div class="des">
-    <div class="l">압축, 디지털 이미지, 2023
+    <div class="l"><압축>, 디지털 이미지
     </div>
 
-    <div class="r">Compression, Digital Image, 2023
+    <div class="r">Compression, Digital Image.
     </div>
 </div>
 
@@ -85,10 +102,10 @@
     </div>
 </div>
 <div class="des">
-    <div class="l">드로잉 보관소, 복합매체, 가변크기(스튜디오 엘레베이터 크기), 2024
+    <div class="l"><드로잉 보관소>, 복합재료, 가변크기(스튜디오 엘레베이터 크기).
     </div>
 
-    <div class="r">Drawing Storage, mixed media, studio elevator size, 2024
+    <div class="r">Drawing Storage, mixed media, studio elevator size.
     </div>
 </div>
 
@@ -105,10 +122,10 @@
     </div>
 </div>
 <div class="des">
-    <div class="l">드로잉에서 드로잉, 디지털 이미지, 2023
+    <div class="l"><드로잉에서 드로잉> 디지털 이미지.
     </div>
 
-    <div class="r">Drawing to Drawing, Digital Image, 2023
+    <div class="r">Drawing to Drawing, Digital Image.
 
     </div>
 </div>
@@ -129,8 +146,8 @@
 
 </div>
     <div class="des">
-        <div class="l">픽셀드로잉, 디지털 드로잉, 2023</div>
-        <div class="r">Pixel drawing, Digtital drawing, 2023</div>
+        <div class="l"><픽셀드로잉> 디지털 드로잉.</div>
+        <div class="r">Pixel drawing, Digtital drawing.</div>
     </div>
    
 
@@ -144,9 +161,9 @@
     </div>
 </div>
 <div class="des">
-    <div class="l">벽을 만들고, 돌을 던지기, 설치, 가변크기, 2023
+    <div class="l"><벽을 만들고, 돌을 던지기>, 가상웹, 핸드폰 자이로센서, 프로젝터, 가벽, 바퀴, 가변크기.
     </div>
-    <div class="r">Making a wall and Throwing a stone, Installation, 2023
+    <div class="r">Making a wall and Throwing a stone, Installation, 
     </div>
 </div>
 
@@ -158,10 +175,10 @@
     </div>
 </div>
 <div class="des">
-    <div class="l">돌, 칼, 영웅들, VR 전시, 2021
+    <div class="l"><돌, 칼, 영웅들> VR 전시.
     </div>
 
-    <div class="r">Sword, Stone, Heroes, Online VR Exhibtion, 2021
+    <div class="r">Sword, Stone, Heroes, Online VR Exhibtion.
     </div>
 </div>
 
@@ -173,10 +190,10 @@
     </div>
 </div>
 <div class="des">
-    <div class="l">굿바이 서비스, 4K 비디오, 칼라, 사운드, 22’ 32”, 2020
+    <div class="l"><굿바이 서비스>, 4K 비디오, 칼라, 사운드, 22’ 32”.
     </div>
 
-    <div class="r">Goodbye Service, 4K video, colour, sound, 22’ 32”, 2020
+    <div class="r">Goodbye Service, 4K video, colour, sound, 22’ 32".
     </div>
 </div>
 
@@ -189,10 +206,10 @@
     </div>
 </div>
 <div class="des">
-    <div class="l">우리 모두 댄스, 4K 비디오, 칼라, 사운드, 1’ 35”, 2020
+    <div class="l"><우리 모두 댄스>, 4K 비디오, 칼라, 사운드, 1’ 35”.
     </div>
 
-    <div class="r">We all dance, Extended, 4K video, colour, sound, 1’ 35”, 2020
+    <div class="r">We all dance, Extended, 4K video, colour, sound, 1’ 35”.
     </div>
 </div>
 
