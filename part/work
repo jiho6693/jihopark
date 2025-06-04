@@ -1,7 +1,7 @@
 <!--OnetoTen-->
 <div class="one" onclick="showSection('../detail/110', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/110" data-side="left">
-    <img src="Image/110/110_2.jpg" alt="Drawing Storage">
+    <img src="Image/110/110_2.jpg" alt="">
     </div>
 </div>
 <div class="des">
@@ -48,7 +48,7 @@
 <!--tower-->
 <div class="one" onclick="showSection('../detail/tower', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/tower" data-side="left">
-    <img src="Image/tower/tower2.jpg" alt="Drawing Storage">
+    <img src="Image/tower/tower2.jpg" alt="tower">
     </div>
 </div>
 <div class="des">
