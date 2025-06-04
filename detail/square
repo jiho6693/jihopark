@@ -5,7 +5,9 @@
 〈네모 학습〉은 GAN* 기반의 기계 학습 알고리즘을 통해 네모의 형태를 생성하는 작업이다. 오른쪽 화면의 드로잉은 작가가 직접 그린 것이고, 왼쪽 화면은 이를 바탕으로 AI가 네모를 학습, 생성하는 과정을 보여준다. 
 
 *GAN(Generative Adversarial Network)은 두 개의 인공신경망이 서로 경쟁하며 이미지를 만들어내는 인공지능 알고리즘이다. 생성자는 실제와 유사한 데이터를 만들고, 판별자는 다른 하나는 그것이 진짜인지 가짜인지 식별한다. 이 과정을 반복하면서, 점점 더 실제와 가까운 이미지를 생성할 수 있게 된다.
-    
+
+기획: 박정우
+사진: 안윤기      
     </div>
 
     <div class="r">Learning the Square, 2025. GAN-based machine learning algorithm, square drawing dataset, 2 monitors, dimension variable.
@@ -13,6 +15,9 @@
 This work uses a GAN*-based machine learning algorithm to generate the shape of a square. The drawing on the right monitor is hand-drawn by the artist, while the left monitor displays the process by which the AI learns from these drawings and generates its own versions of squares.
 
 *GAN (Generative Adversarial Network) is an artificial intelligence algorithm made up of two neural networks that compete with each other to create images. One network, the generator, produces data that resemble real examples, while the other, the discriminator, tries to distinguish between real and generated data. Through this repeated competition, the AI gradually learns to create images that are increasingly close to reality.
+
+Curation: Wu Bak
+Photo: GIAHN 
 </div>
 </div>
 

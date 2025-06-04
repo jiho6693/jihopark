@@ -4,11 +4,17 @@
 
 
 “드로잉을 학습시키기 위해서는 먼저 드로잉이 무엇인지 정의하는 것부터 시작해야 한다”. 학습 과정은 한 아이가 냉장고 위에 남긴 낙서에서 출발하는데, 낙서는 사진으로 입력되고, 압축과 숫자화 과정을 거쳐 기계가 학습할 수 있는 형태의 데이터로 변환된다. 이렇게 변환된 이미지는 펜 플로터를 통해 물리적 표면 위에 그려지고, 재차 촬영되어 다음 학습의 재료가 된다. 작가는 이러한 순환 과정 속에 개입하여 형태를 다듬거나 알고리즘을 조율하면서, 어떻게 ‘드로잉’을 학습할 수 있는지 고민한다.    
+    
+기획: 박정우
+사진: 안윤기    
     </div>
 
     <div class="r">Jiho Park, From One to Ten, 2025. Children’s doodle dataset, VAE and Latent Diffusion-based machine learning algorithm, pipes, wheels, lighting rail, LED lights, clay, plywood, webcam control box, computer, Arduino, microstep driver, motor, DC power supply, belt, timing pulley, CR tube, electrical wire, dimension variable.
 
 “To enable drawing to be learned by the machine, the process begins with defining what constitutes a drawing”. Learning starts from a child’s doodle left on a refrigerator, which is photographed, compressed, and digitized into data that can be learned by the algorithm. The transformed image is then drawn by a pen plotter onto a physical surface, re-photographed, and fed back into the system as material for subsequent learning. The artist intervenes in this loop—refining forms and tuning algorithms—continually questioning how “drawing” can be learned, not only by the machine but also through the reciprocal process that includes the artist.
+ 
+Curation: Wu Bak
+Photo: GIAHN 
  </div>
 </div>
 

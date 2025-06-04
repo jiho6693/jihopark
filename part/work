@@ -1,3 +1,4 @@
+<!--OnetoTen-->
 <div class="one" onclick="showSection('../detail/110', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/110" data-side="left">
     <img src="Image/110/110_2.jpg" alt="Drawing Storage">
@@ -14,19 +15,8 @@
     </div>
 </div>
 
-<div class="one" onclick="showSection('../detail/day', 'left')">
-    <div class="scroll-trigger" data-content-url="../detail/day" data-side="left">
-    <img src="Image/day/day.jpg" alt="Drawing Storage">
-    </div>
-</div>
-<div class="des">
-    <div class="l">〈하루〉, 실시간 환율 데이터, 프로젝터, 컴퓨터, 가변크기.
-    </div>
 
-    <div class="r">A Day, Live exchange rate data, projector, computer, dimension variable.
-    </div>
-</div>
-
+<!--2100-->
 <div class="one" onclick="showSection('../detail/2100', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/2100" data-side="left">
     <img src="Image/2100/2100.jpg" alt="Drawing Storage">
@@ -41,6 +31,36 @@
     </div>
 </div>
 
+<!--Day-->
+<div class="one" onclick="showSection('../detail/day', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/day" data-side="left">
+    <img src="Image/day/day.jpg" alt="Drawing Storage">
+    </div>
+</div>
+<div class="des">
+    <div class="l">〈하루〉, 실시간 환율 데이터, 프로젝터, 컴퓨터, 가변크기.
+    </div>
+
+    <div class="r">A Day, Live exchange rate data, projector, computer, dimension variable.
+    </div>
+</div>
+
+<!--tower-->
+<div class="one" onclick="showSection('../detail/square', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/square" data-side="left">
+    <img src="Image/tower/tower2.jpg" alt="Drawing Storage">
+    </div>
+</div>
+<div class="des">
+    <div class="l">〈2100년의 한국 인구 기상도 #1-4〉, 2025. 한국 인구피라미드 데이터셋, 미래 예측 알고리즘, 잉크젯 프린트, 각각 148×105 cm
+    </div>
+
+    <div class="r">Forecasted South Korean Population Pyramid 2100 #1-4, 2025. South Korean population pyramid dataset, future forecasting algorithm, inkjet print, 14.8×10.5 cm(each)
+
+    </div>
+</div>
+
+<!--Square-->
 <div class="one" onclick="showSection('../detail/square', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/square" data-side="left">
     <img src="Image/square/squ.jpg" alt="Drawing Storage">
