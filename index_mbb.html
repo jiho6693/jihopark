@@ -98,36 +98,37 @@
 
     // ✅ 콜백 포함 버전
     function loadContent(url, sectionId, isBackNavigation = false, onLoaded = null) {
-      const container = document.querySelector('.right');
-      if (!container) return;
+  const container = document.querySelector('.right');
+  if (!container) return;
 
-      showLoading();
-      fetch(url)
-        .then(response => response.text())
-        .then(html => {
-          container.innerHTML = html;
-          container.classList.remove('fade-in');
-          void container.offsetWidth;
-          container.classList.add('fade-in');
-          hideLoading();
-          runRandomText();
+  showLoading();
+  fetch(url)
+    .then(response => response.text())
+    .then(html => {
+      container.innerHTML = html;
+      container.classList.remove('fade-in');
+      void container.offsetWidth;
+      container.classList.add('fade-in');
+      hideLoading();
+      runRandomText();
 
-          if (!isBackNavigation) {
-            history.pushState(
-              { sectionId: sectionId, scrollY: 0 }, // 스크롤Y는 항상 0으로 저장 (클릭 시)
-              '',
-              `#${sectionId}`
-            );
-            container.scrollTop = 0; // ✅ 클릭 시 맨 위로 이동
-          }
+      if (onLoaded) onLoaded(container);
 
-          if (onLoaded) onLoaded(container); // ✅ 콜백 실행
-        })
-        .catch(error => {
-          console.error("콘텐츠 로드 실패:", error);
-          hideLoading();
-        });
-    }
+      // ✅ pushState는 렌더링 완료 후에 실행
+      if (!isBackNavigation) {
+        history.pushState(
+          { sectionId: sectionId, scrollY: 0 },
+          '',
+          `#${sectionId}`
+        );
+        container.scrollTop = 0;
+      }
+    })
+    .catch(error => {
+      console.error("콘텐츠 로드 실패:", error);
+      hideLoading();
+    });
+}
 
     function showSection(sectionId) {
       const filePath = `../part/${sectionId}`;
@@ -162,9 +163,20 @@
       });
     }
 
-    window.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('DOMContentLoaded', function () {
+      const container = document.querySelector('.right');
+
       if (!history.state) {
         history.replaceState({ sectionId: 'blank', scrollY: 0 }, '', '#blank');
+      }
+
+      if (container) {
+        container.addEventListener('scroll', () => {
+          if (history.state) {
+            const updatedState = { ...history.state, scrollY: container.scrollTop };
+            history.replaceState(updatedState, '', window.location.hash);
+          }
+        });
       }
 
       loadContent(`../part/blank`, 'blank');
