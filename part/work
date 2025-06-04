@@ -67,25 +67,10 @@
     </div>
 </div>
 <div class="des">
-    <div class="l">〈2100년의 한국 인구 기상도 #1-4〉, 2025. 한국 인구피라미드 데이터셋, 미래 예측 알고리즘, 잉크젯 프린트, 각각 148×105 cm
+    <div class="l">〈네모 학습〉, 2025. 네모 드로잉 데이터셋, GAN 기반 기계 학습 알고리즘, 2개의 모니터, 가변크기.
     </div>
 
-    <div class="r">Forecasted South Korean Population Pyramid 2100 #1-4, 2025. South Korean population pyramid dataset, future forecasting algorithm, inkjet print, 14.8×10.5 cm(each)
-
-    </div>
-</div>
-
-<!--Square-->
-<div class="one" onclick="showSection('../detail/square', 'left')">
-    <div class="scroll-trigger" data-content-url="../detail/square" data-side="left">
-    <img src="Installation/Wealldance/weall.jpg" alt="Drawing Storage">
-    </div>
-</div>
-<div class="des">
-    <div class="l">〈2100년의 한국 인구 기상도 #1-4〉, 2025. 한국 인구피라미드 데이터셋, 미래 예측 알고리즘, 잉크젯 프린트, 각각 148×105 cm
-    </div>
-
-    <div class="r">Forecasted South Korean Population Pyramid 2100 #1-4, 2025. South Korean population pyramid dataset, future forecasting algorithm, inkjet print, 14.8×10.5 cm(each)
+    <div class="r">Learning the Square, 2025. GAN-based machine learning algorithm, square drawing dataset, 2 monitors, dimension variable.
 
     </div>
 </div>
@@ -130,7 +115,7 @@
 </div>
 
 
-<!-- drawingstorage -->
+<!-- drawingstorage
 <div class="one" onclick="showSection('../detail/drawingstorage', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/drawingstorage" data-side="left">
     <img src="Installation/Drawingstorage/1.jpg" alt="Drawing Storage">
@@ -142,7 +127,7 @@
 
     <div class="r">Drawing Storage, mixed media, studio elevator size.
     </div>
-</div>
+</div> -->
 
 
 
@@ -206,7 +191,7 @@
 <!-- sword -->
 <div class="one" onclick="showSection('../detail/sword', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/sword" data-side="left">
-    <img src="web/sword/s-1.jpg" alt="sword">
+    <img src="web/sword/s-6.jpg" alt="sword">
     </div>
 </div>
 <div class="des">
@@ -249,7 +234,7 @@
 </div>
 
 
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
 
 
 
