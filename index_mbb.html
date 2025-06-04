@@ -7,7 +7,6 @@
   
   <link rel="stylesheet" href="style2_mb.css">
   <style>
-    
     @font-face {
       font-family: "Linefont";
       src: url(./font/Linefont-ExtraLight.ttf);
@@ -31,11 +30,10 @@
     }
 
     .right {
-      height: 100vh;           /* ✅ 반드시 있어야 스크롤이 생깁니다 */
+      height: 100vh;
       overflow-y: auto;
     }
 
-    /* 로딩 오버레이 */
     #loading {
       position: fixed;
       top: 0;
@@ -57,7 +55,8 @@
     }
 
     #loading img {
-      width: 10%;
+      width: 100px;
+      max-width: 20%;
       height: auto;
     }
   </style>
@@ -97,46 +96,43 @@
       document.getElementById('loading').classList.add('hidden');
     }
 
-    // ✅ 콜백 포함 버전
     function loadContent(url, sectionId, isBackNavigation = false, onLoaded = null) {
-  const container = document.querySelector('.right');
-  if (!container) return;
+      const container = document.querySelector('.right');
+      if (!container) return;
 
-  showLoading();
-  fetch(url)
-    .then(response => response.text())
-    .then(html => {
-      container.innerHTML = html;
-      container.classList.remove('fade-in');
-      void container.offsetWidth;
-      container.classList.add('fade-in');
-      hideLoading();
-      runRandomText();
+      showLoading();
+      fetch(url)
+        .then(response => response.text())
+        .then(html => {
+          container.innerHTML = html;
+          container.classList.remove('fade-in');
+          void container.offsetWidth;
+          container.classList.add('fade-in');
+          hideLoading();
+          runRandomText();
 
-      if (onLoaded) onLoaded(container);
+          if (onLoaded) onLoaded(container);
 
-      // ✅ pushState는 렌더링 완료 후에 실행
-      if (!isBackNavigation) {
-        history.pushState(
-          { sectionId: sectionId, scrollY: 0 },
-          '',
-          `#${sectionId}`
-        );
-        container.scrollTop = 0;
-      }
-    })
-    .catch(error => {
-      console.error("콘텐츠 로드 실패:", error);
-      hideLoading();
-    });
-}
+          if (!isBackNavigation) {
+            history.pushState(
+              { sectionId: sectionId, scrollY: 0 },
+              '',
+              `#${sectionId}`
+            );
+            container.scrollTop = 0;
+          }
+        })
+        .catch(error => {
+          console.error("콘텐츠 로드 실패:", error);
+          hideLoading();
+        });
+    }
 
     function showSection(sectionId) {
       const filePath = `../part/${sectionId}`;
       loadContent(filePath, sectionId);
     }
 
-    // ✅ 뒤로가기 시 이전 스크롤 위치 복원
     window.addEventListener('popstate', function(event) {
       if (event.state && event.state.sectionId) {
         const sectionId = event.state.sectionId;
@@ -145,23 +141,25 @@
 
         loadContent(filePath, sectionId, true, (container) => {
           setTimeout(() => {
-            container.scrollTop = scrollY;
-          }, 10); // 콘텐츠 렌더 후 복원
+            requestAnimationFrame(() => {
+              container.scrollTop = scrollY;
+            });
+          }, 50);
         });
-
-        runRandomText();
       }
     });
 
-    // ✅ 스크롤 위치 저장 (사용자가 스크롤할 때마다)
-    const container = document.querySelector('.right');
-    if (container) {
-      container.addEventListener('scroll', () => {
-        if (history.state) {
-          const updatedState = { ...history.state, scrollY: container.scrollTop };
-          history.replaceState(updatedState, '', window.location.hash);
-        }
-      });
+    // 스크롤 위치 저장
+    function attachScrollSaver() {
+      const container = document.querySelector('.right');
+      if (container) {
+        container.addEventListener('scroll', () => {
+          if (history.state) {
+            const updatedState = { ...history.state, scrollY: container.scrollTop };
+            history.replaceState(updatedState, '', window.location.hash);
+          }
+        });
+      }
     }
 
     window.addEventListener('DOMContentLoaded', function () {
@@ -171,15 +169,7 @@
         history.replaceState({ sectionId: 'blank', scrollY: 0 }, '', '#blank');
       }
 
-      if (container) {
-        container.addEventListener('scroll', () => {
-          if (history.state) {
-            const updatedState = { ...history.state, scrollY: container.scrollTop };
-            history.replaceState(updatedState, '', window.location.hash);
-          }
-        });
-      }
-
+      attachScrollSaver();
       loadContent(`../part/blank`, 'blank');
 
       setTimeout(() => {
@@ -187,7 +177,12 @@
       }, 2000);
     });
 
+    // 텍스트 랜덤 변화 (1회만 실행)
+    let textIntervalStarted = false;
     function runRandomText() {
+      if (textIntervalStarted) return;
+      textIntervalStarted = true;
+
       const elements = document.getElementsByClassName('back');
       for (let i = 0; i < elements.length; i++) {
         setInterval(function (element) {
@@ -198,6 +193,7 @@
 
     function randomizeText(element) {
       const originalText = element.innerText;
+      if (originalText.length === 0) return;
       const randomIndex = Math.floor(Math.random() * originalText.length);
       const randomChar = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
       const newText = originalText.substring(0, randomIndex) + randomChar + originalText.substring(randomIndex + 1);
@@ -207,7 +203,6 @@
     window.addEventListener('load', () => {
       runRandomText();
     });
-
   </script>
 </body>
 </html>
