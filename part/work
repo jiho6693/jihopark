@@ -75,6 +75,8 @@
     </div>
 </div>
 
+<br>
+
 
 <!--Landscape-->
 <div class="two" onclick="showSection('../detail/landscape', 'left')">

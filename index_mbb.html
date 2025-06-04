@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>HOME</title>
-  
+
   <link rel="stylesheet" href="style2_mb.css">
   <style>
     @font-face {
@@ -83,17 +83,31 @@
   <div class="all">
     <div class="right"></div>
   </div>
-  
+
   <!-- 랜덤 텍스트 -->
   <div class="back">JihoPark</div>
 
   <script>
+    let currentSectionId = ''; // ✅ 현재 섹션 추적용
+
     function showLoading() {
       document.getElementById('loading').classList.remove('hidden');
     }
 
     function hideLoading() {
       document.getElementById('loading').classList.add('hidden');
+    }
+
+    function attachScrollSaver() {
+      const container = document.querySelector('.right');
+      if (container) {
+        container.addEventListener('scroll', () => {
+          if (history.state) {
+            const updatedState = { ...history.state, scrollY: container.scrollTop };
+            history.replaceState(updatedState, '', window.location.hash);
+          }
+        });
+      }
     }
 
     function loadContent(url, sectionId, isBackNavigation = false, onLoaded = null) {
@@ -108,18 +122,18 @@
           container.classList.remove('fade-in');
           void container.offsetWidth;
           container.classList.add('fade-in');
+
           hideLoading();
           runRandomText();
+          attachScrollSaver();
 
           if (onLoaded) onLoaded(container);
 
-          if (!isBackNavigation) {
-            history.pushState(
-              { sectionId: sectionId, scrollY: 0 },
-              '',
-              `#${sectionId}`
-            );
-            container.scrollTop = 0;
+          if (!isBackNavigation && history.state?.sectionId !== sectionId) {
+            history.pushState({ sectionId, scrollY: 0 }, '', `#${sectionId}`);
+            requestAnimationFrame(() => {
+              container.scrollTop = 0;
+            });
           }
         })
         .catch(error => {
@@ -129,6 +143,9 @@
     }
 
     function showSection(sectionId) {
+      if (sectionId === currentSectionId) return; // ✅ 중복 클릭 방지
+      currentSectionId = sectionId;
+
       const filePath = `../part/${sectionId}`;
       loadContent(filePath, sectionId);
     }
@@ -139,45 +156,37 @@
         const scrollY = event.state.scrollY || 0;
         const filePath = `../part/${sectionId}`;
 
+        currentSectionId = sectionId; // ✅ popstate 시도 추적 갱신
+
         loadContent(filePath, sectionId, true, (container) => {
-          setTimeout(() => {
+          requestAnimationFrame(() => {
             requestAnimationFrame(() => {
               container.scrollTop = scrollY;
             });
-          }, 50);
+          });
         });
       }
     });
-
-    // 스크롤 위치 저장
-    function attachScrollSaver() {
-      const container = document.querySelector('.right');
-      if (container) {
-        container.addEventListener('scroll', () => {
-          if (history.state) {
-            const updatedState = { ...history.state, scrollY: container.scrollTop };
-            history.replaceState(updatedState, '', window.location.hash);
-          }
-        });
-      }
-    }
 
     window.addEventListener('DOMContentLoaded', function () {
       const container = document.querySelector('.right');
 
       if (!history.state) {
         history.replaceState({ sectionId: 'blank', scrollY: 0 }, '', '#blank');
+        currentSectionId = 'blank';
+      } else {
+        currentSectionId = history.state.sectionId;
       }
 
       attachScrollSaver();
-      loadContent(`../part/blank`, 'blank');
+      loadContent(`../part/${currentSectionId}`, currentSectionId);
 
+      // 첫 진입 시 워크 자동 실행 (2초 후)
       setTimeout(() => {
         showSection('work');
       }, 2000);
     });
 
-    // 텍스트 랜덤 변화 (1회만 실행)
     let textIntervalStarted = false;
     function runRandomText() {
       if (textIntervalStarted) return;
