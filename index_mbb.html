@@ -107,21 +107,21 @@
         .then(html => {
           container.innerHTML = html;
           container.classList.remove('fade-in');
-          void container.offsetWidth; // 강제 리플로우
+          void container.offsetWidth;
           container.classList.add('fade-in');
           hideLoading();
-
           runRandomText();
 
           if (!isBackNavigation) {
             history.pushState(
-              { sectionId: sectionId, scrollY: container.scrollTop },
+              { sectionId: sectionId, scrollY: 0 }, // 스크롤Y는 항상 0으로 저장 (클릭 시)
               '',
               `#${sectionId}`
             );
+            container.scrollTop = 0; // ✅ 클릭 시 맨 위로 이동
           }
 
-          if (onLoaded) onLoaded(container);  // ✅ 콜백 실행
+          if (onLoaded) onLoaded(container); // ✅ 콜백 실행
         })
         .catch(error => {
           console.error("콘텐츠 로드 실패:", error);
@@ -134,20 +134,33 @@
       loadContent(filePath, sectionId);
     }
 
+    // ✅ 뒤로가기 시 이전 스크롤 위치 복원
     window.addEventListener('popstate', function(event) {
       if (event.state && event.state.sectionId) {
         const sectionId = event.state.sectionId;
         const scrollY = event.state.scrollY || 0;
         const filePath = `../part/${sectionId}`;
 
-        // ✅ 콘텐츠 로드 후 정확한 시점에 scrollTop 복원
         loadContent(filePath, sectionId, true, (container) => {
-          container.scrollTop = scrollY;
+          setTimeout(() => {
+            container.scrollTop = scrollY;
+          }, 10); // 콘텐츠 렌더 후 복원
         });
 
         runRandomText();
       }
     });
+
+    // ✅ 스크롤 위치 저장 (사용자가 스크롤할 때마다)
+    const container = document.querySelector('.right');
+    if (container) {
+      container.addEventListener('scroll', () => {
+        if (history.state) {
+          const updatedState = { ...history.state, scrollY: container.scrollTop };
+          history.replaceState(updatedState, '', window.location.hash);
+        }
+      });
+    }
 
     window.addEventListener('DOMContentLoaded', function() {
       if (!history.state) {
@@ -164,7 +177,7 @@
     function runRandomText() {
       const elements = document.getElementsByClassName('back');
       for (let i = 0; i < elements.length; i++) {
-        setInterval(function(element) {
+        setInterval(function (element) {
           randomizeText(element);
         }, 600, elements[i]);
       }
@@ -181,6 +194,7 @@
     window.addEventListener('load', () => {
       runRandomText();
     });
+
   </script>
 </body>
 </html>
