@@ -5,7 +5,7 @@
     </div>
 </div>
 <div class="des">
-    <div class="l"><하나부터 열까지>, 2025. 아이의 낙서 데이터셋, VAE와 Latent Diffusion 기반 기계 학습 알고리즘, 복합재료, 가변크기.
+    <div class="l"><하나부터 열까지>, 아이의 낙서 데이터셋, VAE와 Latent Diffusion 기반 기계 학습 알고리즘, 복합재료, 가변크기.
 
     </div>
 
@@ -23,10 +23,10 @@
     </div>
 </div>
 <div class="des">
-    <div class="l">〈2100년의 한국 인구 기상도 #1-4〉, 2025. 한국 인구피라미드 데이터셋, 미래 예측 알고리즘, 잉크젯 프린트, 각각 148×105 cm
+    <div class="l">〈2100년의 한국 인구 기상도 #1-4〉, 한국 인구피라미드 데이터셋, 미래 예측 알고리즘, 잉크젯 프린트, 각각 148×105 cm
     </div>
 
-    <div class="r">Forecasted South Korean Population Pyramid 2100 #1-4, 2025. South Korean population pyramid dataset, future forecasting algorithm, inkjet print, 14.8×10.5 cm(each)
+    <div class="r">Forecasted South Korean Population Pyramid 2100 #1-4, South Korean population pyramid dataset, future forecasting algorithm, inkjet print, 14.8×10.5 cm(each)
 
     </div>
 </div>
@@ -67,10 +67,10 @@
     </div>
 </div>
 <div class="des">
-    <div class="l">〈네모 학습〉, 2025. 네모 드로잉 데이터셋, GAN 기반 기계 학습 알고리즘, 2개의 모니터, 가변크기.
+    <div class="l">〈네모 학습〉, 네모 드로잉 데이터셋, GAN 기반 기계 학습 알고리즘, 2개의 모니터, 가변크기.
     </div>
 
-    <div class="r">Learning the Square, 2025. GAN-based machine learning algorithm, square drawing dataset, 2 monitors, dimension variable.
+    <div class="r">Learning the Square, GAN-based machine learning algorithm, square drawing dataset, 2 monitors, dimension variable.
 
     </div>
 </div>
@@ -222,16 +222,29 @@
 
 
 
+<div class="one" onclick="showSection('../detail/wealleve', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/wealleve" data-side="left">
+    <img src="Installation/Wealldance/eve.jpg" alt="Drawing Storage">
+    </div>
+</div>
+<div class="des">
+    <div class="l"><우리 모두 댄스, 전날밤>, 1채널 영상, 칼라, 사운드, 3’ 7”.
+    </div>
+
+    <div class="r">We all dance, on the Eve, One channel video, colour, sound, 3’ 7”.
+    </div>
+</div>
+
 <div class="one" onclick="showSection('../detail/weall', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/weall" data-side="left">
     <img src="Installation/Wealldance/w-3.jpg" alt="Drawing Storage">
     </div>
 </div>
 <div class="des">
-    <div class="l"><우리 모두 댄스>, 4K 비디오, 칼라, 사운드, 1’ 35”.
+    <div class="l"><우리 모두 댄스, 낮>, 1채널 영상, 칼라, 사운드, 1’ 35”.
     </div>
 
-    <div class="r">We all dance, Extended, 4K video, colour, sound, 1’ 35”.
+    <div class="r">We all dance, the day, One channel video, colour, sound, 1’ 35”.
     </div>
 </div>
 

@@ -1,3 +1,18 @@
+<div class="one" onclick="showSection('../detail/web/archive', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/web/archive" data-side="left">
+        <!-- <img src="/web/ziro2.jpg" alt="Image 1"> -->
+        <img src="/web/ziro.jpg" alt="Image 1">
+    </div>
+</div>
+<div class="des" >
+    <div class="l">GoogleSheet Archive, 2025
+    </div>
+
+    <div class="r">GoogleSheet Archive, 2025
+    </div>
+</div>
+
+
 <div class="one" onclick="showSection('../detail/web/living', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/web/living" data-side="left">
         <img src="/web/livingarchive/livingarchive.gif" alt="Image 1">
