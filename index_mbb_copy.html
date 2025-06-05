@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>HOME</title>
+  
+  <link rel="stylesheet" href="style2_mb.css">
+  <style>
+    @font-face {
+    font-family: "Linefont";
+    src: url(./font/Linefont-ExtraLight.ttf);
+  }
+  .fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 0.5s forwards;
+  }
+  @keyframes fadeInAnimation {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .back {
+    margin-left: 2%;
+    font-size: 4rem;
+    font-family: "Linefont";
+    text-align: center;
+  }
+  /* 로딩 오버레이 */
+  #loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  #loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  #loading img {
+    width: 10%;
+    height: auto;
+  }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- 로딩 오버레이 -->
+  <div id="loading">
+    <img src="loading.gif" alt="Loading..." />
+  </div>
+
+  <!-- 헤더 -->
+  <div class="head">
+    <div class="Header_right">
+      <div class="main" onclick="showSection('intro_copy')">Info</div>
+      <div class="main" onclick="showSection('work')">Work</div>
+      <div class="main" onclick="showSection('web')">Web</div>
+      <div class="main" onclick="showSection('project')">Project</div>
+      <div class="line"><hr /></div>
+    </div>
+  </div>
+
+  <!-- 컨텐츠 영역 -->
+  <div class="all">
+    <div class="right"></div>
+  </div>
+  
+  <!-- 랜덤 텍스트 -->
+  <div class="back">JihoPark</div>
+
+  <script>
+
+    function showLoading() {
+        document.getElementById('loading').classList.remove('hidden');
+    }
+
+    function hideLoading() {
+        document.getElementById('loading').classList.add('hidden');
+    }
+
+    function loadContent(url, sectionId, isBackNavigation = false) {
+        const container = document.querySelector('.right');
+        if (!container) return;
+
+        showLoading();
+        fetch(url)
+            .then(response => response.text())
+            .then(html => {
+                container.innerHTML = html;
+                container.classList.remove('fade-in');
+                void container.offsetWidth; // Reflow 강제 실행
+                container.classList.add('fade-in');
+                hideLoading();
+
+                // runRandomText 실행
+                runRandomText();
+
+                if (!isBackNavigation) {
+                    history.pushState({ sectionId }, '', `#${sectionId}`);
+                }
+            })
+            .catch(error => {
+                console.error("콘텐츠 로드 실패:", error);
+                hideLoading();
+            });
+    }
+
+    function showSection(sectionId) {
+        const filePath = `../part/${sectionId}`;
+        loadContent(filePath, sectionId);
+    }
+
+    window.addEventListener('popstate', function(event) {
+        if (event.state && event.state.sectionId) {
+            const sectionId = event.state.sectionId;
+            const filePath = `../part/${sectionId}`;
+
+            loadContent(filePath, sectionId, true);
+
+            // 뒤로가기가 실행될 때 runRandomText() 호출
+            runRandomText();
+        }
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
+        // 최초 히스토리를 /blank로 설정
+        if (!history.state) {
+            history.replaceState({ sectionId: 'blank' }, '', '#blank');
+        }
+
+        // 초기 콘텐츠 로드 (blank)
+        loadContent(`../part/blank`, 'blank');
+
+        // 2초 후 work 페이지 자동 로드 (최초 로드 시에만 실행됨)
+        setTimeout(() => {
+            showSection('work');
+        }, 2000);
+    });
+
+
+    // 랜덤 텍스트 기능 (필요 시)
+    function runRandomText() {
+      const elements = document.getElementsByClassName('back');
+      for (let i = 0; i < elements.length; i++) {
+        setInterval(function(element) {
+          randomizeText(element);
+        }, 600, elements[i]);
+      }
+    }
+
+    function randomizeText(element) {
+      const originalText = element.innerText;
+      const randomIndex = Math.floor(Math.random() * originalText.length);
+      const randomChar = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+      const newText = originalText.substring(0, randomIndex) + randomChar + originalText.substring(randomIndex + 1);
+      element.innerText = newText;
+    }
+
+    window.addEventListener('load', () => {
+        runRandomText();
+    });
+
+</script>
+</body>
+</html>
