@@ -23,6 +23,11 @@ Photo: GIAHN
 </div>
 
 <br>
+<div class="one">
+    <img src="Image/110/110_20.jpg">
+</div>
+
+<br>
 
 <div class="one">
     <img src="Image/110/110_10.jpg">
@@ -30,27 +35,8 @@ Photo: GIAHN
 
 <br>
 
-<div class="one">
-    <img src="Image/110/110_20.jpg">
-</div>
 
-<br>
 
-<div class="two">
-    <div class="image_l">
-        <img src="Image/110/110_30.jpg">
-    </div>
-    <div class="image_r">
-        <img src="Image/110/110_32.jpg">
-    </div>
-</div>
-
-<div class="des">
-    <div class="l">드로잉 #1
-    </div>
-    <div class="r">드로잉 #3
-    </div> 
-</div>
 
 
 
