@@ -31,19 +31,6 @@
     </div>
 </div>
 
-<!--Day-->
-<div class="one" onclick="showSection('../detail/day', 'left')">
-    <div class="scroll-trigger" data-content-url="../detail/day" data-side="left">
-    <img src="Image/day/day.jpg" alt="Drawing Storage">
-    </div>
-</div>
-<div class="des">
-    <div class="l">〈하루〉, 실시간 환율 데이터, 프로젝터, 컴퓨터, 가변크기.
-    </div>
-
-    <div class="r">A Day, Live exchange rate data, projector, computer, dimension variable.
-    </div>
-</div>
 
 <!--tower-->
 <div class="one" onclick="showSection('../detail/tower', 'left')">
@@ -59,6 +46,35 @@
 
     </div>
 </div>
+
+<!--Day-->
+<div class="one" onclick="showSection('../detail/day', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/day" data-side="left">
+    <img src="Image/day/day.jpg" alt="Drawing Storage">
+    </div>
+</div>
+<div class="des">
+    <div class="l">〈하루〉, 실시간 환율 데이터, 프로젝터, 컴퓨터, 가변크기.
+    </div>
+
+    <div class="r">A Day, Live exchange rate data, projector, computer, dimension variable.
+    </div>
+</div>
+
+<!--weall_night-->
+<div class="one" onclick="showSection('../detail/wealleve', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/wealleve" data-side="left">
+    <img src="Installation/Wealldance/pco.jpg" alt="Drawing Storage">
+    </div>
+</div>
+<div class="des">
+    <div class="l"><우리 모두 댄스, 전날밤>, 1채널 영상, 칼라, 사운드, 3’ 7”.
+    </div>
+
+    <div class="r">We all dance, on the Eve, One channel video, colour, sound, 3’ 7”.
+    </div>
+</div>
+
 
 <!--Square-->
 <div class="one" onclick="showSection('../detail/square', 'left')">
@@ -222,19 +238,8 @@
 
 
 
-<div class="one" onclick="showSection('../detail/wealleve', 'left')">
-    <div class="scroll-trigger" data-content-url="../detail/wealleve" data-side="left">
-    <img src="Installation/Wealldance/eve.jpg" alt="Drawing Storage">
-    </div>
-</div>
-<div class="des">
-    <div class="l"><우리 모두 댄스, 전날밤>, 1채널 영상, 칼라, 사운드, 3’ 7”.
-    </div>
 
-    <div class="r">We all dance, on the Eve, One channel video, colour, sound, 3’ 7”.
-    </div>
-</div>
-
+<!--weall_day-->
 <div class="one" onclick="showSection('../detail/weall', 'left')">
     <div class="scroll-trigger" data-content-url="../detail/weall" data-side="left">
     <img src="Installation/Wealldance/w-3.jpg" alt="Drawing Storage">
