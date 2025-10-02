@@ -95,7 +95,21 @@
 
 
 <!--Landscape-->
-<div class="two" onclick="showSection('../detail/landscape', 'left')">
+<div class="one" onclick="showSection('../detail/landscape', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/landscape" data-side="left">
+    <img src="Image/Landscape/tall.jpg" alt="Drawing Storage">
+    </div>
+</div>
+<div class="des">
+    <div class="l"><212번 풍경>, 잉크젯 프린트, 각각 84.1x59.4 cm.
+    </div>
+    <div class="r">'A Landscape 212th',inkjet print, 84.1×59.4 cm(each)
+    </div> 
+</div>
+<br>
+
+<!--Landscape-->
+<!-- <div class="two" onclick="showSection('../detail/landscape', 'left')">
     
     <div class="image_l">
         <div class="scroll-trigger" data-content-url="../detail/landscape" data-side="left"></div>
@@ -111,10 +125,26 @@
     </div>
     <div class="r">'A Landscape 212th',inkjet print, 841×594 cm(each)
     </div> 
-</div>
+</div> -->
 
 <!--Compression-->
-<div class="two" onclick="showSection('../detail/compression', 'left')">
+<div class="one" onclick="showSection('../detail/compression', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/compression" data-side="left">
+    <img src="Image/Compression/tall2.jpg" alt="Drawing Storage">
+    </div>
+</div>
+<div class="des">
+    <div class="l"><압축>, 잉크젯 프린트, 89x89 cm
+    </div>
+
+    <div class="r">Compression, Inkjet printm 89x89 cm
+    </div>
+</div>
+
+<br>
+
+<!--Compression-->
+<!-- <div class="two" onclick="showSection('../detail/compression', 'left')">
     <div class="image_l">
         <div class="scroll-trigger" data-content-url="../detail/compression" data-side="left">
         <img src="Image/Compression/5.png">
@@ -130,22 +160,9 @@
 
     <div class="r">Compression, Digital Image.
     </div>
-</div>
-
-
-<!-- drawingstorage
-<div class="one" onclick="showSection('../detail/drawingstorage', 'left')">
-    <div class="scroll-trigger" data-content-url="../detail/drawingstorage" data-side="left">
-    <img src="Installation/Drawingstorage/1.jpg" alt="Drawing Storage">
-    </div>
-</div>
-<div class="des">
-    <div class="l"><드로잉 보관소>, 복합재료, 가변크기(스튜디오 엘레베이터 크기).
-    </div>
-
-    <div class="r">Drawing Storage, mixed media, studio elevator size.
-    </div>
 </div> -->
+
+
 
 
 
@@ -169,7 +186,7 @@
 </div>
 
 
-<!-- drawing -->
+<!-- drawing
 <div class="two" onclick="showSection('../detail/drawing', 'left')">
     <div class="image_l">
         <div class="scroll-trigger" data-content-url="../detail/drawing" data-side="left">
@@ -187,8 +204,20 @@
         <div class="l"><픽셀드로잉> 디지털 드로잉.</div>
         <div class="r">Pixel drawing, Digtital drawing.</div>
     </div>
-   
+    -->
 
+<div class="one" onclick="showSection('../detail/cyanotype', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/cyanotype" data-side="left">
+    <img src="Installation/Cyanotype/C-1.jpg" alt="Drawing Storage">
+    </div>
+</div>
+<div class="des">
+    <div class="l">The ink Group(Huanzhe Hu, Yangqi Deng and Jiho Park), Cyan No-type, 복합재료, 가변크기
+    </div>
+
+    <div class="r">The ink Group(Huanzhe Hu, Yangqi Deng and Jiho Park), Cyan No-type, mixed media, Variable dimensions
+    </div>
+</div>
 
 
 
