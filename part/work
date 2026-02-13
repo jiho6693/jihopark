@@ -283,6 +283,21 @@
 </div>
 
 
+<!--jacob's ladder-->
+<div class="one" onclick="showSection('../detail/jacob', 'left')">
+    <div class="scroll-trigger" data-content-url="../detail/jacob" data-side="left">
+    <img src="Installation/Jacob'sladder/web.jpg" alt="Drawing Storage">
+    </div>
+</div>
+<div class="des">
+    <div class="l"><야곱의 사다리>, 1채널 영상, 칼라, 사운드, 2’ 01”.
+    </div>
+
+    <div class="r">Jacob's ladder, One channel video, colour, sound, 2’ 01”.
+    </div>
+</div>
+
+
 <br><br><br><br><br><br>
 
 
