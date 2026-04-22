@@ -163,6 +163,48 @@ svg {
         margin-right:8%;
         
     }
+
+    .cv-heading,
+    .cv-subheading,
+    .cv-entry {
+        white-space: normal;
+    }
+
+    .cv-heading {
+        margin-top: 1.2rem;
+    }
+
+    .cv-heading:first-child {
+        margin-top: 0;
+    }
+
+    .cv-heading.cv-heading-solo {
+        margin-top: 1.2rem;
+    }
+
+    .cv-subheading {
+        margin-top: 0.35rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .cv-entry {
+        display: grid;
+        grid-template-columns: 1.5rem minmax(0, 1fr);
+        column-gap: 0.8rem;
+        align-items: start;
+    }
+
+    .cv-year {
+        white-space: nowrap;
+    }
+
+    .cv-body {
+        min-width: 0;
+    }
+
+    .cv-title {
+        font-style: italic;
+    }
     
     .left {
         position: relative;
@@ -315,6 +357,3 @@ svg {
   
 
   
-
-
-

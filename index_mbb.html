@@ -109,6 +109,105 @@
     function hideLoading() {
       document.getElementById('loading').classList.add('hidden');
     }
+
+    function formatCvStatements(root) {
+      root.querySelectorAll('.intro').forEach((intro) => {
+        intro.querySelectorAll('.statement').forEach((statement) => {
+          if (statement.dataset.cvFormatted === 'true') return;
+
+          const lines = statement.innerText
+            .split('\n')
+            .map(line => line.replace(/\r/g, '').trim())
+            .filter(line => line.length > 0);
+
+          const fragment = document.createDocumentFragment();
+          const yearPattern = /^(\d{4})\s+(.+)$/;
+          const isEnglishStatement = lines.some(line => line.startsWith('ㅇEducation'));
+
+          function appendTitleStyledText(target, text) {
+            if (!isEnglishStatement) {
+              target.textContent = text;
+              return;
+            }
+
+            const parts = text.split(/(《[^》]+》)/g).filter(Boolean);
+            if (parts.length === 0) {
+              target.textContent = text;
+              return;
+            }
+
+            parts.forEach((part) => {
+              const match = part.match(/^《([^》]+)》$/);
+              if (match) {
+                const title = document.createElement('span');
+                title.className = 'cv-title';
+                title.textContent = match[1];
+                target.appendChild(title);
+              } else {
+                target.appendChild(document.createTextNode(part));
+              }
+            });
+          }
+
+          lines.forEach((line) => {
+            const yearMatch = line.match(yearPattern);
+
+            if (line.startsWith('ㅇ')) {
+              const heading = document.createElement('div');
+              heading.className = 'cv-heading';
+              if (isEnglishStatement && line === 'ㅇSolo and Two-Person Exhibitions') {
+                heading.classList.add('cv-heading-solo');
+              }
+              heading.textContent = line;
+              fragment.appendChild(heading);
+              return;
+            }
+
+            if (yearMatch) {
+              const entry = document.createElement('div');
+              entry.className = 'cv-entry';
+
+              const year = document.createElement('div');
+              year.className = 'cv-year';
+              year.textContent = yearMatch[1];
+
+              const body = document.createElement('div');
+              body.className = 'cv-body';
+              appendTitleStyledText(body, yearMatch[2]);
+
+              entry.appendChild(year);
+              entry.appendChild(body);
+              fragment.appendChild(entry);
+              return;
+            }
+
+            const subheading = document.createElement('div');
+            subheading.className = 'cv-subheading';
+            subheading.textContent = line;
+            fragment.appendChild(subheading);
+          });
+
+          statement.textContent = '';
+          statement.appendChild(fragment);
+          statement.dataset.cvFormatted = 'true';
+        });
+      });
+    }
+
+    async function resolveIncludes(root) {
+      const includeNodes = Array.from(root.querySelectorAll('[data-include-html]'));
+      await Promise.all(includeNodes.map(async (node) => {
+        if (node.dataset.includeResolved === 'true') return;
+
+        const response = await fetch(node.dataset.includeHtml);
+        if (!response.ok) {
+          throw new Error(`Failed to load include from ${node.dataset.includeHtml}`);
+        }
+
+        node.innerHTML = await response.text();
+        node.dataset.includeResolved = 'true';
+      }));
+    }
   
     function loadContent(url, sectionId, isBackNavigation = false) {
       const container = document.querySelector('.right');
@@ -127,24 +226,27 @@
         .then(response => response.text())
         .then(html => {
           container.innerHTML = html;
-          container.classList.remove('fade-in');
-          void container.offsetWidth; // 강제 Reflow
-          container.classList.add('fade-in');
-          hideLoading();
+          return resolveIncludes(container).then(() => {
+            formatCvStatements(container);
+            container.classList.remove('fade-in');
+            void container.offsetWidth; // 강제 Reflow
+            container.classList.add('fade-in');
+            hideLoading();
   
-          runRandomText();
+            runRandomText();
   
-          if (!isBackNavigation) {
-            // 클릭으로 이동할 때는 맨 위로 이동
-            history.pushState({ sectionId, scrollTop: 0 }, '', `#${sectionId}`);
-            container.scrollTop = 0;
-          } else {
-            // 뒤로가기 시 이전 스크롤 위치로 복원
-            const savedScroll = history.state?.scrollTop ?? 0;
-            setTimeout(() => {
-              container.scrollTop = savedScroll;
-            }, 10);
-          }
+            if (!isBackNavigation) {
+              // 클릭으로 이동할 때는 맨 위로 이동
+              history.pushState({ sectionId, scrollTop: 0 }, '', `#${sectionId}`);
+              container.scrollTop = 0;
+            } else {
+              // 뒤로가기 시 이전 스크롤 위치로 복원
+              const savedScroll = history.state?.scrollTop ?? 0;
+              setTimeout(() => {
+                container.scrollTop = savedScroll;
+              }, 10);
+            }
+          });
         })
         .catch(error => {
           console.error("콘텐츠 로드 실패:", error);

@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const category1 = document.querySelector(".category1");
   let isScrolling;

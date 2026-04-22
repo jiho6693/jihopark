@@ -127,6 +127,105 @@
         loadingElem.classList.add('hidden');
       }
     }
+
+    function formatCvStatements(root) {
+      root.querySelectorAll('.intro').forEach((intro) => {
+        intro.querySelectorAll('.statement').forEach((statement) => {
+          if (statement.dataset.cvFormatted === 'true') return;
+
+          const lines = statement.innerText
+            .split('\n')
+            .map(line => line.replace(/\r/g, '').trim())
+            .filter(line => line.length > 0);
+
+          const fragment = document.createDocumentFragment();
+          const yearPattern = /^(\d{4})\s+(.+)$/;
+          const isEnglishStatement = lines.some(line => line.startsWith('ㅇEducation'));
+
+          function appendTitleStyledText(target, text) {
+            if (!isEnglishStatement) {
+              target.textContent = text;
+              return;
+            }
+
+            const parts = text.split(/(《[^》]+》)/g).filter(Boolean);
+            if (parts.length === 0) {
+              target.textContent = text;
+              return;
+            }
+
+            parts.forEach((part) => {
+              const match = part.match(/^《([^》]+)》$/);
+              if (match) {
+                const title = document.createElement('span');
+                title.className = 'cv-title';
+                title.textContent = match[1];
+                target.appendChild(title);
+              } else {
+                target.appendChild(document.createTextNode(part));
+              }
+            });
+          }
+
+          lines.forEach((line) => {
+            const yearMatch = line.match(yearPattern);
+
+            if (line.startsWith('ㅇ')) {
+              const heading = document.createElement('div');
+              heading.className = 'cv-heading';
+              if (isEnglishStatement && line === 'ㅇSolo and Two-Person Exhibitions') {
+                heading.classList.add('cv-heading-solo');
+              }
+              heading.textContent = line;
+              fragment.appendChild(heading);
+              return;
+            }
+
+            if (yearMatch) {
+              const entry = document.createElement('div');
+              entry.className = 'cv-entry';
+
+              const year = document.createElement('div');
+              year.className = 'cv-year';
+              year.textContent = yearMatch[1];
+
+              const body = document.createElement('div');
+              body.className = 'cv-body';
+              appendTitleStyledText(body, yearMatch[2]);
+
+              entry.appendChild(year);
+              entry.appendChild(body);
+              fragment.appendChild(entry);
+              return;
+            }
+
+            const subheading = document.createElement('div');
+            subheading.className = 'cv-subheading';
+            subheading.textContent = line;
+            fragment.appendChild(subheading);
+          });
+
+          statement.textContent = '';
+          statement.appendChild(fragment);
+          statement.dataset.cvFormatted = 'true';
+        });
+      });
+    }
+
+    async function resolveIncludes(root) {
+      const includeNodes = Array.from(root.querySelectorAll('[data-include-html]'));
+      await Promise.all(includeNodes.map(async (node) => {
+        if (node.dataset.includeResolved === 'true') return;
+
+        const response = await fetch(node.dataset.includeHtml);
+        if (!response.ok) {
+          throw new Error(`Failed to load include from ${node.dataset.includeHtml}`);
+        }
+
+        node.innerHTML = await response.text();
+        node.dataset.includeResolved = 'true';
+      }));
+    }
     
     // 스크롤 트리거 일시 비활성화 관련 변수 및 함수
     let scrollTriggerDisabled = false;
@@ -155,15 +254,18 @@
         })
         .then(data => {
           container.innerHTML = data;
-          container.scrollTop = 0;
-          container.classList.remove('fade-in');
-          
-          // 컨테이너에 페이드인 효과 적용
-          void container.offsetWidth; // reflow 강제
-          container.classList.add('fade-in');
-          
-          // 바로 로딩 오버레이 숨김 처리
-          hideLoading();
+          return resolveIncludes(container).then(() => {
+            formatCvStatements(container);
+            container.scrollTop = 0;
+            container.classList.remove('fade-in');
+
+            // 컨테이너에 페이드인 효과 적용
+            void container.offsetWidth; // reflow 강제
+            container.classList.add('fade-in');
+
+            // 바로 로딩 오버레이 숨김 처리
+            hideLoading();
+          });
         })
         .catch(error => {
           container.innerHTML = `<p style="color: red;">Error loading content: ${error.message}</p>`;
