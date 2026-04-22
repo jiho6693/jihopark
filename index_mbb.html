@@ -28,7 +28,7 @@
       </defs>
     </svg>
   
-  <link rel="stylesheet" href="style2_mb.css">
+  <link rel="stylesheet" href="style2_mb.css?v=20260422">
   <style>
     @font-face {
     font-family: "Linefont";
@@ -198,14 +198,18 @@
       });
     }
 
+    const MOBILE_CACHE_BUSTER = '20260422';
+
     async function resolveIncludes(root) {
       const includeNodes = Array.from(root.querySelectorAll('[data-include-html]'));
       await Promise.all(includeNodes.map(async (node) => {
         if (node.dataset.includeResolved === 'true') return;
 
-        const response = await fetch(node.dataset.includeHtml);
+        const separator = node.dataset.includeHtml.includes('?') ? '&' : '?';
+        const includeUrl = `${node.dataset.includeHtml}${separator}v=${MOBILE_CACHE_BUSTER}`;
+        const response = await fetch(includeUrl);
         if (!response.ok) {
-          throw new Error(`Failed to load include from ${node.dataset.includeHtml}`);
+          throw new Error(`Failed to load include from ${includeUrl}`);
         }
 
         node.innerHTML = await response.text();
@@ -259,14 +263,14 @@
     }
   
     function showSection(sectionId) {
-      const filePath = `../part/${sectionId}`;
+      const filePath = `../part/${sectionId}?v=${MOBILE_CACHE_BUSTER}`;
       loadContent(filePath, sectionId);
     }
   
     window.addEventListener('popstate', function (event) {
       if (event.state && event.state.sectionId) {
         const sectionId = event.state.sectionId;
-        const filePath = `../part/${sectionId}`;
+        const filePath = `../part/${sectionId}?v=${MOBILE_CACHE_BUSTER}`;
         loadContent(filePath, sectionId, true);
       }
     });
@@ -278,7 +282,7 @@
       }
   
       // 초기 콘텐츠 로드
-      loadContent(`../part/blank`, 'blank');
+      loadContent(`../part/blank?v=${MOBILE_CACHE_BUSTER}`, 'blank');
   
       // 2초 후 자동으로 work 페이지 로드
       setTimeout(() => {
