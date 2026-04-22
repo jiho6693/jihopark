@@ -133,6 +133,10 @@
         intro.querySelectorAll('.statement').forEach((statement) => {
           if (statement.dataset.cvFormatted === 'true') return;
 
+          const includePath = statement.dataset.includeHtml || '';
+          const isCvInclude = includePath.includes('cv_');
+          if (!isCvInclude) return;
+
           const lines = statement.innerText
             .split('\n')
             .map(line => line.replace(/\r/g, '').trim())
