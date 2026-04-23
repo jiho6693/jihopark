@@ -118,6 +118,14 @@
   <div class="back">JihoPark</div>
   
   <script>
+    function normalizeFragmentUrl(url) {
+      const [path, query = ''] = url.split('?');
+      if (/^(https?:)?\/\//.test(path) || /\.[a-z0-9]+$/i.test(path)) {
+        return url;
+      }
+      return `${path}.html${query ? `?${query}` : ''}`;
+    }
+
     // 로딩 오버레이 제어 함수
     function showLoading() {
       const loadingElem = document.getElementById('loading');
@@ -225,7 +233,7 @@
       await Promise.all(includeNodes.map(async (node) => {
         if (node.dataset.includeResolved === 'true') return;
 
-        const response = await fetch(node.dataset.includeHtml);
+        const response = await fetch(normalizeFragmentUrl(node.dataset.includeHtml));
         if (!response.ok) {
           throw new Error(`Failed to load include from ${node.dataset.includeHtml}`);
         }
@@ -253,7 +261,7 @@
         return Promise.reject(new Error(`Container with class ${targetSide} not found.`));
       }
       
-      return fetch(url)
+      return fetch(normalizeFragmentUrl(url))
         .then(response => {
           if (!response.ok) {
             throw new Error(`Failed to load content from ${url}`);

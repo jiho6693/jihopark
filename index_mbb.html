@@ -105,6 +105,14 @@
   <div class="back">JihoPark</div>
 
   <script>
+    function normalizeFragmentUrl(url) {
+      const [path, query = ''] = url.split('?');
+      if (/^(https?:)?\/\//.test(path) || /\.[a-z0-9]+$/i.test(path)) {
+        return url;
+      }
+      return `${path}.html${query ? `?${query}` : ''}`;
+    }
+
     function showLoading() {
       document.getElementById('loading').classList.remove('hidden');
     }
@@ -210,7 +218,7 @@
 
         const separator = node.dataset.includeHtml.includes('?') ? '&' : '?';
         const includeUrl = `${node.dataset.includeHtml}${separator}v=${MOBILE_CACHE_BUSTER}`;
-        const response = await fetch(includeUrl);
+        const response = await fetch(normalizeFragmentUrl(includeUrl));
         if (!response.ok) {
           throw new Error(`Failed to load include from ${includeUrl}`);
         }
@@ -233,7 +241,7 @@
         history.replaceState(updatedState, '', location.href);
       }
   
-      fetch(url)
+      fetch(normalizeFragmentUrl(url))
         .then(response => response.text())
         .then(html => {
           container.innerHTML = html;
