@@ -17,10 +17,12 @@ svg {
 
 .songeun{
     color:rgb(0, 196, 43);
+    margin-top: auto;
 }
 
 .seoul{
     color:rgb(13, 0, 196);
+    margin-top: auto;
 }
 
 .container {
@@ -156,12 +158,15 @@ svg {
     .l{
         position: relative;
         margin-right:8%;
+        display: flex;
+        flex-direction: column;
     }
 
     .r{
         position: relative;
         margin-right:8%;
-    
+        display: flex;
+        flex-direction: column;
     }
 
 
