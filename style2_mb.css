@@ -27,6 +27,10 @@ svg {
     color:rgb(255, 3, 3);
 }
 
+.ex-title{
+    font-style: italic;
+}
+
 .container {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
@@ -165,6 +169,29 @@ svg {
     .r{
         position: relative;
         margin-right:8%;
+    }
+
+    .note-aligned {
+        align-items: start;
+        row-gap: 0;
+    }
+
+    .note-aligned .note-title,
+    .note-aligned .note-meta,
+    .note-aligned .note-body {
+        margin-right: 8%;
+    }
+
+    .note-title {
+        margin-bottom: 0;
+    }
+
+    .note-meta {
+        margin-bottom: 1rem;
+    }
+
+    .note-body {
+        white-space: pre-line;
     }
 
     .des-venue {

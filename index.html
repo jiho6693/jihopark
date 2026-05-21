@@ -311,23 +311,29 @@
     // Observer 관련 기능
     let observer;
     const observedElements = new Set();
+    let lastObservedContentUrl = '';
     function initializeObserver() {
       if (!observer) {
+        const observerRoot = document.querySelector('.right');
         observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            // 스크롤 트리거가 비활성화 된 경우 처리하지 않음
+          const visibleEntries = entries
+            .filter(entry => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+          visibleEntries.forEach(entry => {
             if (scrollTriggerDisabled) return;
-            if (entry.isIntersecting) {
-              const contentUrl = entry.target.getAttribute('data-content-url');
-              const targetSide = entry.target.getAttribute('data-side');
-              if (contentUrl) {
-                loadContent(contentUrl, targetSide);
-              }
-            }
+
+            const contentUrl = entry.target.getAttribute('data-content-url');
+            const targetSide = entry.target.getAttribute('data-side');
+            if (!contentUrl || contentUrl === lastObservedContentUrl) return;
+
+            lastObservedContentUrl = contentUrl;
+            loadContent(contentUrl, targetSide);
           });
         }, {
-          rootMargin: '0px 0px 0% 0px',
-          threshold: 0.6
+          root: observerRoot,
+          rootMargin: '-35% 0px -35% 0px',
+          threshold: [0.2, 0.35, 0.5, 0.7]
         });
       }
     }
