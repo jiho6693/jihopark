@@ -111,7 +111,7 @@ svg {
         z-index: 1000; /* 높은 값으로 설정 */
         width:100%;
         display: grid;
-        grid-template-columns: 3fr 1fr 1fr 1fr; /* 콘텐츠 크기에 맞게 열 크기가 결정됨 */
+        grid-template-columns: 3fr 1fr 1.4fr 1fr; /* 콘텐츠 크기에 맞게 열 크기가 결정됨 */
         justify-content: space-between; /* 두 아이템 사이에 남은 공간을 배분 */
         overflow-x: hidden;
         
