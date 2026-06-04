@@ -218,6 +218,39 @@ svg {
         white-space: pre-line;
     }
 
+    .essay-full {
+        margin-right: 8%;
+        margin-bottom: 6%;
+    }
+
+    .essay-title {
+        margin-bottom: 0.6rem;
+    }
+
+    .essay-body {
+        white-space: normal;
+    }
+
+    .essay-body p {
+        margin: 0 0 1rem 0;
+    }
+
+    .essay-footnotes {
+        margin-top: 1.2rem;
+    }
+
+    .essay-footnotes p {
+        margin: 0 0 0.6rem 0;
+    }
+
+    .dump-footnotes {
+        margin-bottom: 6%;
+    }
+
+    .dump-footnotes .essay-footnotes {
+        margin-top: 0.4rem;
+    }
+
     .des-venue {
         align-items: start;
         row-gap: 0.25rem;
@@ -325,6 +358,11 @@ svg {
         display: grid;
         grid-template-columns: 1fr 1fr;
 
+    }
+
+    .work-des {
+        margin-top: 0;
+        margin-bottom: 6%;
     }
 
     .one{
