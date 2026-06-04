@@ -409,6 +409,12 @@ svg {
         width:98.5%;
     }
 
+    .one video{
+        width:98.5%;
+        height:auto;
+        display:block;
+    }
+
     
 
     ::-webkit-scrollbar {
