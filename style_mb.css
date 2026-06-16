@@ -1,143 +1,409 @@
-/* @import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700;800;900&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Linefont:wght@100&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Linefont:wght@4..1000&display=swap'); */
+/* @font-face {
+    font-family: Monument;
+    src: url(font/MonumentGrotesk-Medium.ttf);
+  } */
 
-@font-face{
-    font-family:"Linefont";
-    src:url(./font/Linefont-ExtraBold.ttf); 
-    
+ 
+  @font-face {
+    font-family: Monument_r;
+    src: url(font/MonumentGrotesk-Regular.ttf);
+  }
+
+
+svg {
+    position: absolute;
+} 
+
+.songeun{
+    color:rgb(0, 196, 43);
 }
 
-    svg {
-        position: absolute;
-    } 
+.seoul{
+    color:rgb(17, 0, 255);
+}
 
-    
+.pco{
+    color:rgb(255, 3, 3);
+}
 
-    hr{
-        border: 0.14vh solid #000000;
-    
+.ex-title{
+    font-style: italic;
+}
+
+.container {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.container.loaded {
+    opacity: 1;
+}
 
   
+  .main:hover {
+  
+
+ 
+    color: #a3a3a3; /* 글자 색 변경 */
+  }
+  
+
+
+
+    body {
+        
+        color:rgb(0, 0, 0);
+        filter: url(#distort);
+        margin: 0 0% 0 0%;
+        font-size: 0.6rem;
+        font-family: 'Monument_r';
+        line-height: 1.5; /* 배수 사용 */
+        /* font-weight:500; */
+        /* font-family: 'Helvetica Neue', sans-serif; */
+        /* color:rgb(0, 0, 0); */
+        overflow: hidden;
+        -ms-overflow-style: none;
+        overscroll-behavior: none;
+        
+    
+    
+        
+    }
+
+
+    hr{
+        
+        
+        position:fixed;
+        pointer-events: none;
+        z-index:9999;
+        margin-top: 2%;
+        margin-bottom: 2.5%;
+        
+        width:97%;
+        /* filter: url(#distort); */
     }
 
     .line{
-        border: 0px;
+        padding-top:1%
     }
 
+    .main{
    
-
-    body {
-      
-        font-size: 4.5vw;
-        margin: 0 0 0 0;
-        font-family: 'Montserrat', sans-serif;
-        font-weight:600;
-        /* font-weight:700; */
-       
-        color:rgb(0, 0, 0);
-        /* background: linear-gradient(360deg, #7178ff 40%, #ffffff); */
-        overscroll-behavior: none;
-        
-        
-     }
-
-    /* .content{
-        background-color: #ffffff; 
+        padding-bottom:1%;
+        margin-top:0%;
+    
     }
-         */
-    .category1 {
-        
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        position: fixed;
-        
-        /* transition: opacity 0.5s ease-out;  */
-      }
-   
 
-    .box{
-        height:100%;
+      .Header_right .main {
+        /* 텍스트 주변에 여백을 추가하여 클릭 영역 확장 */
+        cursor: pointer; /* 클릭 가능한 커서 모양 */
+    }
+
+
+    li { position: 2px 0;
+        list-style-type: square; }
+
+
+    .Header_right{
+        padding-bottom:3.5%;
+        padding-top:1%;
+        margin-left:1%;
+        cursor: pointer;
+        position: relative; /* 포지션을 설정해야 z-index 작동 */
+        z-index: 1000; /* 높은 값으로 설정 */
         width:100%;
-        background: linear-gradient(360deg,  #ffffff, #bcbfff 40%, #7178ff 1%, #bcbfff 30%, #ffffff);
-        opacity: 1;
+        display: grid;
+        grid-template-columns: 3fr 1fr 1.4fr 1fr; /* 콘텐츠 크기에 맞게 열 크기가 결정됨 */
+        justify-content: space-between; /* 두 아이템 사이에 남은 공간을 배분 */
+        overflow-x: hidden;
+        
     }
 
+ 
+    .all{
+        width:100%;
+        
+        overflow-x: hidden;
+        margin-left:1%;
+        margin-right:1%;
+    }
+
+    .head{
+        width:100%;
+        font-size: 0.9rem;
+        overflow-x: hidden;
+        margin-left:1%;
+        margin-right:1%;
+    }
+
+
+
+    .intro {
+        position: relative;
+        overflow-y: scroll; /* 세로 스크롤 가능 */
+        white-space: pre-line;
+        margin-top:0%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+       
+
+    }
+
+    .note {
+        white-space: pre-line;
+        margin-top:0%;
+      
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom:6%;
+
+    }
+
+    .l{
+        position: relative;
+        margin-right:8%;
+    }
+
+    .r{
+        position: relative;
+        margin-right:8%;
+    }
+
+    .note-aligned {
+        align-items: start;
+        row-gap: 0;
+    }
+
+    .note-aligned .note-title,
+    .note-aligned .note-meta,
+    .note-aligned .note-body {
+        margin-right: 8%;
+    }
+
+    .note-title {
+        margin-bottom: 0;
+    }
+
+    .note-meta {
+        margin-bottom: 1rem;
+    }
+
+    .note-body {
+        white-space: pre-line;
+    }
+
+    .essay-full {
+        margin-right: 8%;
+        margin-bottom: 6%;
+    }
+
+    .essay-title {
+        margin-bottom: 0.6rem;
+    }
+
+    .essay-body {
+        white-space: normal;
+    }
+
+    .essay-body p {
+        margin: 0 0 1rem 0;
+    }
+
+    .essay-footnotes {
+        margin-top: 1.2rem;
+    }
+
+    .essay-footnotes p {
+        margin: 0 0 0.6rem 0;
+    }
+
+    .dump-footnotes {
+        margin-bottom: 6%;
+    }
+
+    .dump-footnotes .essay-footnotes {
+        margin-top: 0.4rem;
+    }
+
+    .des-venue {
+        align-items: start;
+        row-gap: 0.25rem;
+    }
+
+    .des-venue .body {
+        min-width: 0;
+    }
+
+    .des-venue .venue-line {
+        margin-top: 0;
+    }
+
+
+    .statement {
+        position: relative;
+        margin-right:8%;
+        
+    }
+
+    .cv-heading,
+    .cv-subheading,
+    .cv-entry {
+        white-space: normal;
+    }
+
+    .cv-heading {
+        margin-top: 1.2rem;
+    }
+
+    .cv-heading:first-child {
+        margin-top: 0;
+    }
+
+    .cv-heading.cv-heading-solo {
+        margin-top: 1.2rem;
+    }
+
+    .cv-subheading {
+        margin-top: 0.35rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .cv-entry {
+        display: grid;
+        grid-template-columns: 1.5rem minmax(0, 1fr);
+        column-gap: 0.8rem;
+        align-items: start;
+    }
+
+    .cv-year {
+        white-space: nowrap;
+    }
+
+    .cv-body {
+        min-width: 0;
+    }
+
+    .cv-title {
+        font-style: italic;
+    }
     
-    a:link, a:visited {
+    .left {
+        position: relative;
+        overflow-y: scroll; /* 세로 스크롤 가능 */
+        height: 100vh; /* 고정된 높이 설정 */
+    }
+
+
+    .right {
+        
+        
+        
+        position: relative;
+        overflow-y: scroll; /* 세로 스크롤 가능 */
+        height: 100vh; /* 고정된 높이 설정 */
     
-        color: rgb(0, 0, 0);
-        text-decoration: none;
+   
+    }
+
+    .two{ 
+        margin-top: 1%;
+        margin-right:1%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .two img{
     
-      }
+        width:98%;
+       
+        
+    }
+
+    .two video{
+        width:98%;
+    }
+    .des{ 
+        
+        margin-bottom: 7%;
+        white-space: pre-line;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .work-des {
+        margin-top: 0;
+        margin-bottom: 4%;
+    }
+
+    .one{
  
     
-    .name{
-        font-size: 4.5vw;
-        filter: url(#distort);
-       
-        overflow: hidden;
-        
-        white-space: nowrap;
-        z-index:1;
-        margin-top:0%;
-        margin-bottom:0%;
-        padding-top:0%;
-     
-        color:#000000;
-      
-        
-       
-      
+        margin-top: 1%;
+        margin-right:0.5%;
+
     }
-    
-    .marquee {
-        
-        width:100%;
-    
-        white-space: nowrap;
-    
-    
-     
+
+    .video-container {
+        display: flex; /* Flexbox 사용 */
+        justify-content: center; /* 가로 중앙 정렬 */
+        align-items: center; /* 세로 중앙 정렬 */
+        height: 100%; /* 필요에 따라 조정 */
+    }
+
+    .video1 {
+        width: 40%; /* 비율로 크기 조정 */
+        max-width: 800px; /* 최대 크기 제한 (옵션) */
+        height: auto; /* 비율을 유지하며 높이 자동 조정 */
+        margin: 0 auto; /* 추가적인 정렬 보장 */
+    }
+
+
+
+
+     .l a:link, a:visited {
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 0px 10px 10px 10px;
+        text-align: center;
+        text-decoration: none;
         display: inline-block;
-        animation: marquee 20s linear infinite;
-        padding-bottom:2%;
-        
-    }
-    
-    @keyframes marquee {
-        0% {
-            transform: translate(0%, 0);
-        }
-        100% {
-            transform: translate(-100%, 0);
-        }
-    }
+      }
+      
+      .l a:hover, a:active {
+        background-color: rgb(172, 172, 172);
+      }
     
 
-    
-    .info {
-        
-        
-        color:#000000;
-        margin: 0.8% 0 0 0;
-        position: fixed;
-        margin-top:1rem;
-        font-size: 18vw; 
-        
-        
-        left:0.5%;
-    
+    .one img{
+        /* position: relative; */
+        width:98.5%;
+    }
+
+    .one video{
+        width:98.5%;
+        height:auto;
+        display:block;
     }
 
     
-    
+
+    ::-webkit-scrollbar {
+         display: none;
+    }
+
+    a:link, a:visited {
+
+        color:inherit;
+        text-decoration: none;
+
+    }
+
     a:hover{
-     
+        color:blue;
         text-decoration: line-through;
      
         /* filter: url(#distort); */
@@ -145,48 +411,43 @@
          
        
     }
-    
-    
-    
-    
-    .index{
-        filter: url(#distort);
-        margin-top:-5%;
-      
 
-      
+
+
+
+    
+
+    .hidden {
+        display: none;
     }
+   
+  
+   
+  
+      /* iframe 크기 설정 */
+      #iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+  
+     
     
-    .web{
-        padding-top:1%;
-        
-    
-    
-       
-       }
+ 
+      /* 로딩 요소가 화면 전체를 덮도록 설정 */
 
-    .project{
-        margin-bottom:0%;
-        margin-left: 2%;
-        margin-right: 2%;
-    }
-
-    .infomobile
-    {
-        /* text-decoration: line-through; */
-        position: absolute;
-        right:4%;
-    }
-
-
-    .back{
-        position : fixed;
-        bottom: 2%;
-        left:46%;
-        font-size:14vw;
-        font-family: "Linefont";
-    }
  
 
 
+    @media all and (max-width:960px){
 
+     
+    }
+    
+  
+   
+  
+
+  
+
+  
