@@ -32,8 +32,8 @@
       </defs>
     </svg>
   
-  <link rel="stylesheet" href="style_mb.css?v=20261116-3">
-  <script src="sky-color.js?v=20261116-3" defer></script>
+  <link rel="stylesheet" href="style_mb.css?v=20261116-5">
+  <script src="sky-color.js?v=20261116-5" defer></script>
   <style>
     @font-face {
     font-family: "Linefont";
@@ -122,6 +122,25 @@
   
     function hideLoading() {
       document.getElementById('loading').classList.add('hidden');
+    }
+
+    function insertContentWithLazyImages(container, html) {
+      const template = document.createElement('template');
+      template.innerHTML = html;
+      const images = Array.from(template.content.querySelectorAll('img'));
+
+      images.forEach((image, index) => {
+        image.decoding = 'async';
+
+        if (index === 0) {
+          image.loading = 'eager';
+          image.fetchPriority = 'high';
+        } else if (!image.hasAttribute('loading')) {
+          image.loading = 'lazy';
+        }
+      });
+
+      container.replaceChildren(template.content);
     }
 
     function formatCvStatements(root) {
@@ -226,7 +245,7 @@
           throw new Error(`Failed to load include from ${includeUrl}`);
         }
 
-        node.innerHTML = await response.text();
+        insertContentWithLazyImages(node, await response.text());
         node.dataset.includeResolved = 'true';
       }));
     }
@@ -247,7 +266,7 @@
       fetch(normalizeFragmentUrl(url))
         .then(response => response.text())
         .then(html => {
-          container.innerHTML = html;
+          insertContentWithLazyImages(container, html);
           return resolveIncludes(container).then(() => {
             formatCvStatements(container);
             container.classList.remove('fade-in');

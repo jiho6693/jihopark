@@ -32,8 +32,8 @@
     </defs>
   </svg>
   
-  <link rel="stylesheet" href="style.css?v=20261116-3">
-  <script src="sky-color.js?v=20261116-3" defer></script>
+  <link rel="stylesheet" href="style.css?v=20261116-5">
+  <script src="sky-color.js?v=20261116-5" defer></script>
   <style>
     @font-face {
     font-family: "Linefont";
@@ -145,6 +145,25 @@
       }
     }
 
+    function insertContentWithLazyImages(container, html) {
+      const template = document.createElement('template');
+      template.innerHTML = html;
+      const images = Array.from(template.content.querySelectorAll('img'));
+
+      images.forEach((image, index) => {
+        image.decoding = 'async';
+
+        if (index === 0) {
+          image.loading = 'eager';
+          image.fetchPriority = 'high';
+        } else if (!image.hasAttribute('loading')) {
+          image.loading = 'lazy';
+        }
+      });
+
+      container.replaceChildren(template.content);
+    }
+
     function formatCvStatements(root) {
       root.querySelectorAll('.intro').forEach((intro) => {
         intro.querySelectorAll('.statement').forEach((statement) => {
@@ -243,7 +262,7 @@
           throw new Error(`Failed to load include from ${node.dataset.includeHtml}`);
         }
 
-        node.innerHTML = await response.text();
+        insertContentWithLazyImages(node, await response.text());
         node.dataset.includeResolved = 'true';
       }));
     }
@@ -274,7 +293,7 @@
           return response.text();
         })
         .then(data => {
-          container.innerHTML = data;
+          insertContentWithLazyImages(container, data);
           return resolveIncludes(container).then(() => {
             formatCvStatements(container);
             container.scrollTop = 0;

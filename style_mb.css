@@ -114,9 +114,13 @@ svg {
         box-sizing: border-box;
         padding: 10px;
         color: var(--foreground-color);
+        background: rgba(255, 255, 255, 0.82);
         background: color-mix(in srgb, var(--sky-color) 78%, transparent);
         border: 1px solid currentColor;
         backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        filter: none;
+        isolation: isolate;
         font: inherit;
     }
 

@@ -143,7 +143,8 @@
     });
 
     control.append(previewLabel, previewSlider, resetButton);
-    document.body.append(control);
+    // body의 SVG filter/overflow 영향을 피하도록 최상위 오버레이로 둔다.
+    document.documentElement.append(control);
     control.hidden = new URLSearchParams(window.location.search).get("sky-debug") !== "1";
 
     document.addEventListener("keydown", (event) => {
@@ -152,7 +153,9 @@
         'textarea, [contenteditable="true"], input:not([type="range"])'
       );
 
-      if (isTyping || !event.shiftKey || event.key.toLowerCase() !== "t") return;
+      // event.code를 사용해 한글 입력 상태와 브라우저 차이에도 같은 키로 동작하게 한다.
+      const isToggleKey = event.code === "KeyT" || event.key.toLowerCase() === "t";
+      if (isTyping || !event.shiftKey || !isToggleKey) return;
 
       event.preventDefault();
       control.hidden = !control.hidden;
