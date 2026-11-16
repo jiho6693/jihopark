@@ -79,7 +79,7 @@
   }
   </style>
   <script type="text/javascript">
-    const MOBILE_CACHE_BUSTER = '20261116-9';
+    const MOBILE_CACHE_BUSTER = '20261116-10';
     // 모바일 기기 감지 (필요 시)
     var UserAgent = navigator.userAgent;
     if (UserAgent.match(/iPhone|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || 
@@ -145,19 +145,17 @@
       }
     }
 
-    function insertContentWithLazyImages(container, html) {
+    function insertContent(container, html) {
       const template = document.createElement('template');
       template.innerHTML = html;
       const images = Array.from(template.content.querySelectorAll('img'));
 
       images.forEach((image, index) => {
         image.decoding = 'async';
+        image.removeAttribute('loading');
 
         if (index === 0) {
-          image.loading = 'eager';
           image.fetchPriority = 'high';
-        } else if (!image.hasAttribute('loading')) {
-          image.loading = 'lazy';
         }
       });
 
@@ -262,7 +260,7 @@
           throw new Error(`Failed to load include from ${node.dataset.includeHtml}`);
         }
 
-        insertContentWithLazyImages(node, await response.text());
+        insertContent(node, await response.text());
         node.dataset.includeResolved = 'true';
       }));
     }
@@ -293,7 +291,7 @@
           return response.text();
         })
         .then(data => {
-          insertContentWithLazyImages(container, data);
+          insertContent(container, data);
           return resolveIncludes(container).then(() => {
             formatCvStatements(container);
             container.scrollTop = 0;

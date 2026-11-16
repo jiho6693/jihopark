@@ -124,19 +124,17 @@
       document.getElementById('loading').classList.add('hidden');
     }
 
-    function insertContentWithLazyImages(container, html) {
+    function insertContent(container, html) {
       const template = document.createElement('template');
       template.innerHTML = html;
       const images = Array.from(template.content.querySelectorAll('img'));
 
       images.forEach((image, index) => {
         image.decoding = 'async';
+        image.removeAttribute('loading');
 
         if (index === 0) {
-          image.loading = 'eager';
           image.fetchPriority = 'high';
-        } else if (!image.hasAttribute('loading')) {
-          image.loading = 'lazy';
         }
       });
 
@@ -231,7 +229,7 @@
       });
     }
 
-    const MOBILE_CACHE_BUSTER = '20261116-9';
+    const MOBILE_CACHE_BUSTER = '20261116-10';
     let currentSectionId = null;
 
     async function resolveIncludes(root) {
@@ -246,7 +244,7 @@
           throw new Error(`Failed to load include from ${includeUrl}`);
         }
 
-        insertContentWithLazyImages(node, await response.text());
+        insertContent(node, await response.text());
         node.dataset.includeResolved = 'true';
       }));
     }
@@ -273,7 +271,7 @@
       return fetch(normalizeFragmentUrl(url))
         .then(response => response.text())
         .then(html => {
-          insertContentWithLazyImages(container, html);
+          insertContent(container, html);
           return resolveIncludes(container).then(() => {
             currentSectionId = sectionId;
             formatCvStatements(container);
