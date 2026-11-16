@@ -32,7 +32,7 @@
     </defs>
   </svg>
   
-  <link rel="stylesheet" href="style.css?v=20261116-5">
+  <link rel="stylesheet" href="style.css?v=20261116-7">
   <script src="sky-color.js?v=20261116-5" defer></script>
   <style>
     @font-face {
@@ -79,7 +79,7 @@
   }
   </style>
   <script type="text/javascript">
-    const MOBILE_CACHE_BUSTER = '20261116-7';
+    const MOBILE_CACHE_BUSTER = '20261116-8';
     // 모바일 기기 감지 (필요 시)
     var UserAgent = navigator.userAgent;
     if (UserAgent.match(/iPhone|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || 
@@ -299,9 +299,12 @@
             container.scrollTop = 0;
             container.classList.remove('fade-in');
 
-            // 컨테이너에 페이드인 효과 적용
-            void container.offsetWidth; // reflow 강제
-            container.classList.add('fade-in');
+            // 강제 리플로우 없이 다음 렌더링 프레임에서 페이드인을 재시작한다.
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                container.classList.add('fade-in');
+              });
+            });
 
             // 바로 로딩 오버레이 숨김 처리
             hideLoading();

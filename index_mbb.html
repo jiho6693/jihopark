@@ -32,7 +32,7 @@
       </defs>
     </svg>
   
-  <link rel="stylesheet" href="style_mb.css?v=20261116-5">
+  <link rel="stylesheet" href="style_mb.css?v=20261116-7">
   <script src="sky-color.js?v=20261116-5" defer></script>
   <style>
     @font-face {
@@ -231,7 +231,7 @@
       });
     }
 
-    const MOBILE_CACHE_BUSTER = '20261116-7';
+    const MOBILE_CACHE_BUSTER = '20261116-8';
     let currentSectionId = null;
 
     async function resolveIncludes(root) {
@@ -278,8 +278,11 @@
             currentSectionId = sectionId;
             formatCvStatements(container);
             container.classList.remove('fade-in');
-            void container.offsetWidth; // 강제 Reflow
-            container.classList.add('fade-in');
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                container.classList.add('fade-in');
+              });
+            });
             hideLoading();
   
             runRandomText();
@@ -322,14 +325,15 @@
       loadContent(`../part/work?v=${MOBILE_CACHE_BUSTER}`, 'work', true);
     });
   
-    // 랜덤 텍스트 실행
+    // 랜덤 텍스트 타이머는 메뉴 이동과 관계없이 하나만 유지한다.
+    let randomTextTimer = null;
+
     function runRandomText() {
-      const elements = document.getElementsByClassName('back');
-      for (let i = 0; i < elements.length; i++) {
-        setInterval(function (element) {
-          randomizeText(element);
-        }, 600, elements[i]);
-      }
+      if (randomTextTimer !== null) return;
+
+      randomTextTimer = window.setInterval(() => {
+        document.querySelectorAll('.back').forEach(randomizeText);
+      }, 600);
     }
   
     function randomizeText(element) {
