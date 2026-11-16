@@ -56,7 +56,8 @@ svg {
 
     body {
         
-        color:rgb(0, 0, 0);
+        color:rgb(1, 1, 1);
+        background-color: #f7f4f4;
         filter: url(#distort);
         margin: 0 0 0 0;
         font-size: 0.72rem;
