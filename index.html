@@ -4,6 +4,7 @@
   
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#ffffff" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
@@ -31,7 +32,8 @@
     </defs>
   </svg>
   
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261116-3">
+  <script src="sky-color.js?v=20261116-3" defer></script>
   <style>
     @font-face {
     font-family: "Linefont";
@@ -58,7 +60,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: var(--sky-color, #fff);
+    color: var(--foreground-color, #010101);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +84,9 @@
     var UserAgent = navigator.userAgent;
     if (UserAgent.match(/iPhone|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || 
         UserAgent.match(/LG|SAMSUNG|Samsung/) != null) {
-      location.href = `index_mbb.html?v=${MOBILE_CACHE_BUSTER}`;
+      const mobileParams = new URLSearchParams(location.search);
+      mobileParams.set('v', MOBILE_CACHE_BUSTER);
+      location.href = `index_mbb.html?${mobileParams.toString()}${location.hash}`;
     }
   </script>
 </head>

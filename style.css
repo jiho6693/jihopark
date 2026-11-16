@@ -54,10 +54,16 @@ svg {
 
 
 
+    :root {
+        --sky-color: #ffffff;
+        --foreground-color: #010101;
+    }
+
     body {
         
-        color:rgb(1, 1, 1);
-        background-color: #f7f4f4;
+        color: var(--foreground-color);
+        background-color: var(--sky-color);
+        transition: background-color 10s linear, color 3s linear;
         filter: url(#distort);
         margin: 0 0 0 0;
         font-size: 0.72rem;
@@ -75,6 +81,12 @@ svg {
         
     }
 
+    html.sky-previewing body,
+    html.sky-previewing hr,
+    html.sky-previewing .v-line {
+        transition: none;
+    }
+
 
     hr{
         
@@ -84,6 +96,10 @@ svg {
         z-index:1;
     
         width:48%;
+        border: 0;
+        border-top: 0.5px solid currentColor;
+        color: inherit;
+        transition: border-color 3s linear;
         /* filter: url(#distort); */
     }
 
@@ -104,10 +120,52 @@ svg {
         margin-bottom:0.5%;
         position:fixed;
         /* filter: url(#distort); */
-        border: 0.5px solid #000000;
+        border: 0.5px solid currentColor;
+        color: inherit;
+        transition: border-color 3s linear;
         left: 50%;
         height : 99%;
       }
+
+    .sky-time-control {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 10000;
+        display: grid;
+        grid-template-columns: 72px minmax(180px, 28vw) auto;
+        gap: 10px;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        color: var(--foreground-color);
+        background: color-mix(in srgb, var(--sky-color) 78%, transparent);
+        border: 1px solid currentColor;
+        backdrop-filter: blur(8px);
+        font: inherit;
+    }
+
+    .sky-time-control[hidden] {
+        display: none;
+    }
+
+    .sky-time-label {
+        font-variant-numeric: tabular-nums;
+    }
+
+    .sky-time-slider {
+        width: 100%;
+        accent-color: currentColor;
+    }
+
+    .sky-time-reset {
+        padding: 3px 7px;
+        color: inherit;
+        background: transparent;
+        border: 1px solid currentColor;
+        font: inherit;
+        cursor: pointer;
+    }
 
       .Header_right .main {
         /* 텍스트 주변에 여백을 추가하여 클릭 영역 확장 */

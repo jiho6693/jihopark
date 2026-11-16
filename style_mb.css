@@ -51,9 +51,16 @@ svg {
 
 
 
+    :root {
+        --sky-color: #ffffff;
+        --foreground-color: #010101;
+    }
+
     body {
         
-        color:rgb(0, 0, 0);
+        color: var(--foreground-color);
+        background-color: var(--sky-color);
+        transition: background-color 10s linear, color 3s linear;
         filter: url(#distort);
         margin: 0 0% 0 0%;
         font-size: 0.6rem;
@@ -71,6 +78,11 @@ svg {
         
     }
 
+    html.sky-previewing body,
+    html.sky-previewing hr {
+        transition: none;
+    }
+
 
     hr{
         
@@ -82,7 +94,51 @@ svg {
         margin-bottom: 2.5%;
         
         width:97%;
+        border: 0;
+        border-top: 0.5px solid currentColor;
+        color: inherit;
+        transition: border-color 3s linear;
         /* filter: url(#distort); */
+    }
+
+    .sky-time-control {
+        position: fixed;
+        right: 3%;
+        bottom: 3%;
+        left: 3%;
+        z-index: 10000;
+        display: grid;
+        grid-template-columns: 66px 1fr auto;
+        gap: 8px;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 10px;
+        color: var(--foreground-color);
+        background: color-mix(in srgb, var(--sky-color) 78%, transparent);
+        border: 1px solid currentColor;
+        backdrop-filter: blur(8px);
+        font: inherit;
+    }
+
+    .sky-time-control[hidden] {
+        display: none;
+    }
+
+    .sky-time-label {
+        font-variant-numeric: tabular-nums;
+    }
+
+    .sky-time-slider {
+        width: 100%;
+        accent-color: currentColor;
+    }
+
+    .sky-time-reset {
+        padding: 3px 7px;
+        color: inherit;
+        background: transparent;
+        border: 1px solid currentColor;
+        font: inherit;
     }
 
     .line{
