@@ -79,7 +79,7 @@
   }
   </style>
   <script type="text/javascript">
-    const MOBILE_CACHE_BUSTER = '20260422';
+    const MOBILE_CACHE_BUSTER = '20261116-7';
     // 모바일 기기 감지 (필요 시)
     var UserAgent = navigator.userAgent;
     if (UserAgent.match(/iPhone|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || 
@@ -319,16 +319,14 @@
       disableScrollTriggerFor(1000);
       try {
         showLoading();
-        if (urlRight) {
-          await loadContent(urlRight, 'right');
-          if (urlLeft) {
-            await loadContent(urlLeft, 'left');
-          }
-        } else if (urlLeft) {
-          await loadContent(urlLeft, 'left');
-        }
+        const requests = [];
+        if (urlRight) requests.push(loadContent(urlRight, 'right'));
+        if (urlLeft) requests.push(loadContent(urlLeft, 'left'));
+        await Promise.all(requests);
       } catch (error) {
         console.error('Error in contentShowSection:', error);
+      } finally {
+        hideLoading();
       }
     }
     

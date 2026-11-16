@@ -231,7 +231,8 @@
       });
     }
 
-    const MOBILE_CACHE_BUSTER = '20260422';
+    const MOBILE_CACHE_BUSTER = '20261116-7';
+    let currentSectionId = null;
 
     async function resolveIncludes(root) {
       const includeNodes = Array.from(root.querySelectorAll('[data-include-html]'));
@@ -252,7 +253,13 @@
   
     function loadContent(url, sectionId, isBackNavigation = false) {
       const container = document.querySelector('.right');
-      if (!container) return;
+      if (!container) return Promise.resolve();
+
+      // 이미 보고 있는 메뉴를 다시 누르면 이미지와 DOM을 재생성하지 않는다.
+      if (!isBackNavigation && sectionId === currentSectionId) {
+        container.scrollTop = 0;
+        return Promise.resolve();
+      }
   
       showLoading();
   
@@ -263,11 +270,12 @@
         history.replaceState(updatedState, '', location.href);
       }
   
-      fetch(normalizeFragmentUrl(url))
+      return fetch(normalizeFragmentUrl(url))
         .then(response => response.text())
         .then(html => {
           insertContentWithLazyImages(container, html);
           return resolveIncludes(container).then(() => {
+            currentSectionId = sectionId;
             formatCvStatements(container);
             container.classList.remove('fade-in');
             void container.offsetWidth; // 강제 Reflow
@@ -309,18 +317,9 @@
     });
   
     window.addEventListener('DOMContentLoaded', function () {
-      // 최초 히스토리 설정
-      if (!history.state) {
-        history.replaceState({ sectionId: 'blank', scrollTop: 0 }, '', '#blank');
-      }
-  
-      // 초기 콘텐츠 로드
-      loadContent(`../part/blank?v=${MOBILE_CACHE_BUSTER}`, 'blank');
-  
-      // 2초 후 자동으로 work 페이지 로드
-      setTimeout(() => {
-        showSection('work');
-      }, 2000);
+      // 빈 페이지와 2초 대기를 거치지 않고 첫 콘텐츠를 바로 표시한다.
+      history.replaceState({ sectionId: 'work', scrollTop: 0 }, '', '#work');
+      loadContent(`../part/work?v=${MOBILE_CACHE_BUSTER}`, 'work', true);
     });
   
     // 랜덤 텍스트 실행
