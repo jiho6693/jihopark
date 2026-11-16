@@ -231,7 +231,7 @@
       });
     }
 
-    const MOBILE_CACHE_BUSTER = '20261116-8';
+    const MOBILE_CACHE_BUSTER = '20261116-9';
     let currentSectionId = null;
 
     async function resolveIncludes(root) {
@@ -320,9 +320,13 @@
     });
   
     window.addEventListener('DOMContentLoaded', function () {
-      // 빈 페이지와 2초 대기를 거치지 않고 첫 콘텐츠를 바로 표시한다.
-      history.replaceState({ sectionId: 'work', scrollTop: 0 }, '', '#work');
-      loadContent(`../part/work?v=${MOBILE_CACHE_BUSTER}`, 'work', true);
+      history.replaceState({ sectionId: 'blank', scrollTop: 0 }, '', '#blank');
+      loadContent(`../part/blank?v=${MOBILE_CACHE_BUSTER}`, 'blank', true);
+
+      // 첫 화면을 2초간 유지한 뒤 Work로 자동 전환한다.
+      window.setTimeout(() => {
+        showSection('work');
+      }, 2000);
     });
   
     // 랜덤 텍스트 타이머는 메뉴 이동과 관계없이 하나만 유지한다.
