@@ -106,6 +106,7 @@
         ? `실시간 ${formatTime(minutes)}`
         : formatTime(minutes);
     }
+
   }
 
   function createPreviewControl() {
@@ -174,34 +175,20 @@
       toggleControl();
     });
 
-    // 모바일에서는 상단 Info 메뉴를 5초간 눌러 슬라이더를 토글한다.
-    const infoMenu = Array.from(document.querySelectorAll(".Header_right .main"))
-      .find((element) => element.textContent.trim() === "Info");
-    let holdTimer = null;
-    let didLongPress = false;
+    // Project 목록에 동적으로 삽입되는 검은 박스로 슬라이더를 토글한다.
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Element)) return;
+      if (!event.target.closest(".sky-preview-card")) return;
+      toggleControl();
+    });
 
-    infoMenu?.addEventListener("touchstart", () => {
-      didLongPress = false;
-      holdTimer = window.setTimeout(() => {
-        didLongPress = true;
-        toggleControl();
-      }, 5000);
-    }, { passive: true });
-
-    const cancelLongPress = () => {
-      window.clearTimeout(holdTimer);
-      holdTimer = null;
-    };
-
-    infoMenu?.addEventListener("touchend", cancelLongPress, { passive: true });
-    infoMenu?.addEventListener("touchcancel", cancelLongPress, { passive: true });
-    infoMenu?.addEventListener("touchmove", cancelLongPress, { passive: true });
-    infoMenu?.addEventListener("click", (event) => {
-      if (!didLongPress) return;
+    document.addEventListener("keydown", (event) => {
+      if (!(event.target instanceof Element)) return;
+      if (!event.target.closest(".sky-preview-card")) return;
+      if (event.key !== "Enter" && event.key !== " ") return;
       event.preventDefault();
-      event.stopImmediatePropagation();
-      didLongPress = false;
-    }, true);
+      toggleControl();
+    });
 
     updateSky();
   }

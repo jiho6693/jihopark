@@ -471,6 +471,13 @@ svg {
         width:98.5%;
     }
 
+    .sky-preview-card {
+        width: 98.5%;
+        aspect-ratio: 16 / 9;
+        background: #000;
+        cursor: pointer;
+    }
+
     .one video{
         width:98.5%;
         height:auto;
