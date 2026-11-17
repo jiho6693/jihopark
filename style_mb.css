@@ -158,6 +158,9 @@ svg {
       .Header_right .main {
         /* 텍스트 주변에 여백을 추가하여 클릭 영역 확장 */
         cursor: pointer; /* 클릭 가능한 커서 모양 */
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
     }
 
 

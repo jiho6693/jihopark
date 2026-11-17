@@ -147,6 +147,19 @@
     document.documentElement.append(control);
     control.hidden = new URLSearchParams(window.location.search).get("sky-debug") !== "1";
 
+    const toggleControl = () => {
+      control.hidden = !control.hidden;
+
+      if (control.hidden) {
+        previewMinutes = null;
+        document.documentElement.classList.remove("sky-previewing");
+      } else if (previewMinutes === null) {
+        previewSlider.value = String(Math.floor(currentMinutes()));
+      }
+
+      updateSky();
+    };
+
     document.addEventListener("keydown", (event) => {
       const target = event.target;
       const isTyping = target instanceof Element && target.matches(
@@ -158,17 +171,37 @@
       if (isTyping || !event.shiftKey || !isToggleKey) return;
 
       event.preventDefault();
-      control.hidden = !control.hidden;
-
-      if (control.hidden) {
-        previewMinutes = null;
-        document.documentElement.classList.remove("sky-previewing");
-      } else if (previewMinutes === null) {
-        previewSlider.value = String(Math.floor(currentMinutes()));
-      }
-
-      updateSky();
+      toggleControl();
     });
+
+    // 모바일에서는 상단 Info 메뉴를 5초간 눌러 슬라이더를 토글한다.
+    const infoMenu = Array.from(document.querySelectorAll(".Header_right .main"))
+      .find((element) => element.textContent.trim() === "Info");
+    let holdTimer = null;
+    let didLongPress = false;
+
+    infoMenu?.addEventListener("touchstart", () => {
+      didLongPress = false;
+      holdTimer = window.setTimeout(() => {
+        didLongPress = true;
+        toggleControl();
+      }, 5000);
+    }, { passive: true });
+
+    const cancelLongPress = () => {
+      window.clearTimeout(holdTimer);
+      holdTimer = null;
+    };
+
+    infoMenu?.addEventListener("touchend", cancelLongPress, { passive: true });
+    infoMenu?.addEventListener("touchcancel", cancelLongPress, { passive: true });
+    infoMenu?.addEventListener("touchmove", cancelLongPress, { passive: true });
+    infoMenu?.addEventListener("click", (event) => {
+      if (!didLongPress) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      didLongPress = false;
+    }, true);
 
     updateSky();
   }
